@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>首页</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/global.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/loading.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/swiper.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/global.js"></script>
+    <script type="text/javascript" src="../js/file-loader.js"></script>
+    <script type="text/javascript" src="../js/button.js"></script>
+    <script type="text/javascript" src="../js/loading.js"></script>
+    <script type="text/javascript" src="../js/swiper.js"></script>
+
+    <script type="text/javascript" src="js/img-item.js"></script>
+    <script type="text/javascript" src="../achv/js/list-item.js"></script>
+    <script type="text/javascript" src="../requ/js/list-item.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
+
+</head>
+<body>
+
+<div class="slideimg" id="slide-panel">
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="img-container">
+        </div>
+        <div class="swiper-pagination swiper-pagination-white"></div>
+    </div>
+</div>
+<!--菜单 start-->
+<div class="shor">
+    <figure id="comp" display="button">
+        <img src="../img/shor01.png"/>
+        <figcaption>企业</figcaption>
+    </figure>
+
+    <figure id="expert" display="button">
+        <img src="../img/shor03.png"/>
+        <figcaption>专家</figcaption>
+    </figure>
+    <figure id="requ" display="button">
+        <img src="../img/shor04.png"/>
+        <figcaption>需求</figcaption>
+    </figure>
+    <figure id="achv" display="button">
+        <img src="../img/shor05.png"/>
+        <figcaption>成果</figcaption>
+    </figure>
+    <figure id="product" display="button">
+        <img src="../img/shor07.png"/>
+        <figcaption>产品</figcaption>
+    </figure>
+</div>
+<!--菜单 end-->
+<!--悬赏需求 start-->
+<div class="reward_requ" id="requ-panel">
+    <div class="rq_tit">
+        <div class="rq_tit1">悬赏需求</div>
+    </div>
+    <div id="requ-list">
+
+
+    </div>
+</div>
+<!--悬赏需求 end-->
+<!--热门成果 start-->
+<div class="reward_requ" id="achv-panel">
+    <div class="rq_tit">
+        <div class="rq_tit2">热门成果</div>
+    </div>
+    <div id="achv-list">
+
+    </div>
+</div>
+
+<div id="achv-template" style="display:none;">
+
+    <div class="item">
+        <div class="item_img"><img src="" sid="logo"></div>
+        <div class="content">
+            <div class="ming" sid="name"></div>
+            <div class="trade" sid="trade"></div>
+            <div class="price_owner">
+                <p class="owner" sid="ownerName"></p>
+
+                <p class="price" sid="price"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="requ-template" style="display:none;">
+
+    <div class="item">
+        <div class="item_img"><img src="" sid="logo"></div>
+        <div class="content">
+            <div class="ming" sid="name"></div>
+            <div class="trade" sid="hj"></div>
+            <div class="price_owner">
+                <p class="owner" sid="ownerName"></p>
+
+                <p class="price"><em class="price_cankao">拟投入:&nbsp</em><span sid="price"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+

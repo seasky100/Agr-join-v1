@@ -1,0 +1,107 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>院所详细</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <link rel="stylesheet" type="text/css" href="../css/dialog.css">
+    <link rel="stylesheet" type="text/css" href="../css/call-dialog.css">
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="../css/swiper.css">
+    <link rel="stylesheet" type="text/css" href="css/detail.css">
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery.event.move.js"></script>
+    <script type="text/javascript" src="../js/jquery.event.swipe.js"></script>
+    <script type="text/javascript" src="../js/xml.js"></script>
+    <script type="text/javascript" src="../js/button.js"></script>
+    <script type="text/javascript" src="../js/global.js"></script>
+    <script type="text/javascript" src="../js/file-loader.js"></script>
+    <script type="text/javascript" src="../js/loading.js"></script>
+    <script type="text/javascript" src="../js/dialog.js"></script>
+
+    <script type="text/javascript" src="js/achv-img-item.js"></script>
+    <script type="text/javascript" src="js/expert-img-item.js"></script>
+    <script type="text/javascript" src="js/detail.js"></script>
+</head>
+
+<body>
+<div id="content-panel">
+    <div class="intro">
+        <img class="qy_logo" sid="logo" src="">
+
+        <div class="content">
+            <div class="name" sid="name"></div>
+            <!--改动的标签开始-->
+            <!--div class="zw">展位：<span sid="expoNo"></span></div-->
+            <div class="renz_guanzhu">
+                <div class="qy_renzheng" id="auth">已认证
+                </div>
+            </div>
+            <!--改动的标签结束-->
+
+        </div>
+    </div>
+    <div class="main">
+        <div class="summary">
+            <div class="sum_item">
+                <p class="sum_name">院所电话：</p>
+
+                <p class="sum_detail" display="button" id="tel" sid="tel"></p>
+            </div>
+            <!--       <div class="sum_item">
+                       <p class="sum_name">联系人：</p>
+
+                       <p class="sum_detail" display="button" id="linkman" sid="linkman"></p>
+                   </div>
+                   <div class="sum_item">
+                       <p class="sum_name">机构邮箱：</p>
+
+                       <p class="sum_detail" sid="email"></p>
+                   </div>
+                   <div class="sum_item">
+                       <p class="sum_name">机构官网：</p>
+
+                       <p class="sum_detail" sid="website" id="website" display="button"></p>
+                   </div>-->
+            <div class="sum_item">
+                <p class="sum_name">详细地址：</p>
+
+                <p class="sum_detail" sid="addr"></p>
+            </div>
+        </div>
+        <div class="comp_intro" style="clear:both;">
+            <div class="ci_name">服务范围</div>
+            <div class="ci_detail" sid="service">
+            </div>
+        </div>
+        <div class="comp_intro" style="clear:both;">
+            <div class="ci_name">院所介绍</div>
+            <div class="ci_detail" sid="intro">
+            </div>
+        </div>
+        <div class="more-info" id="intro-more" style="display:none;;" display="button">
+            查看全部&gt;&gt;</div>
+        <div class="org_exp" id="expert-panel" style="clear:both;">
+            <div class="exp_name">专家介绍</div>
+            <div class="swiper-container exp_details">
+                <div class="swiper-wrapper" id="expert-img-container">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hint" sid="hint" style="display:none;">
+    <p>加载数据超时,请稍后再试</p>
+</div>
+<script type="text/javascript" src="../js/swiper.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+.list {
+	background-color: #FAFAFA;
+/*	position:absolute;*/
+}
+.item {
+	position:relative;
+	padding:8px 8px;
+
+	border-top: 1px solid #F7F7F7;
+	border-bottom: 1px solid #bbb;
+	
+	display:-webkit-box;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.item:active {
+	background-color: rgba(235, 235, 235, 0.3);
+	/*border-top: 1px solid rgba(235, 235, 235, 0.1);*/
+}
+.item .icon {
+	position:relative;
+	/*box-shadow: 0px 0px 5px #D7D7D7;*/
+	/*box-shadow: 0px 0px 3px #ccc;*/
+	/*border-radius: 5px;*/
+	/*background-color: #ddd;*/
+	padding: 2px 0px;
+	/*overflow: hidden;*/
+	
+	display:-webkit-box;
+	-webkit-box-pack:start;
+	-webkit-box-align:start;
+}
+.item .icon .new {
+	position: absolute;
+	top: -10px;
+	right: -14px;
+	/*margin-left: 3px;*/
+	padding: 3px 0;;
+	-webkit-border-image: url(../../img/new-count-ico-2.png) 0 12/0 10px;
+	font-size: 12px;
+	color: white;
+}
+.item .icon img {
+	display:block;
+	height:48px;
+	width:48px;
+	border-radius: 8px;
+}
+.item .content {
+	padding-left:12px;
+	display:-webkit-box;
+	-webkit-box-orient:vertical;
+	-webkit-box-flex:1;
+}
+.item .content .top{
+
+	display:-webkit-box;
+	-webkit-box-align: center;
+	height:24px;
+	line-height:24px;
+}
+
+.item .content .bottom {
+height:24px;
+	line-height:24px;
+}
+.item .content .name {
+	-webkit-box-flex:1;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.item .content .msg {
+	padding-top: 4px;
+	font-size:12px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.item .time {
+
+	margin-left:10px;
+ 	font-size:12px;
+ }
+/*
+.list .item-selected, .list .item-selected .content .msg, .list  .item-selected .time {
+	background-color:#006699;
+	color:#FFFFFf
+}
+*/

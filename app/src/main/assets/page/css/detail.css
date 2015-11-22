@@ -1,0 +1,40 @@
+@charset "utf-8";
+/*成果*/
+#detail .fig{ width:100%; height:240px;}
+#detail .oper{ width:100%; background:#fff; margin-bottom:15px; }
+#detail .oper p{ padding:5px 10px;}
+#detail .oper .p1{ font-size:14px; white-space:nowrap; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+#detail .oper .p2{ font-size:14px;}
+#detail .oper .p3{}
+#detail .oper font{ color:red; font-size:20px;  }
+
+#detail .content{ background:#fff; padding:5px 10px 1px; margin-bottom:15px;}
+#detail .content p{ line-height:20px; margin-bottom:10px; word-wrap:break-word; word-break:break-all;}
+#detail .margin-bottom{ margin-bottom:50px;}
+#detail .content font{ color:red; font-weight:bold; font-size:15px;}
+
+
+
+
+/*专家*/
+#personal dl{ height:80px; background:url(../image/personal_bg.jpg); background-size:100%; display:-webkit-box;  }
+#personal dl dt{ width:80px; height:60px; margin-top:10px; margin-left:20px; border-radius:100%; -webkit-box-align:center; display:-webkit-box;  }
+#personal dl dt div{ width:40px; height:40px; margin-bottom:30px;}
+#personal dl dt div img{ width:40px; height:40px;}
+#personal dl dd{ margin-top:10px; line-height:30px; font-size:14px; margin-left:10px;}
+#personal dl dd .zp1{ font-size:16px; color:#000; white-space:nowrap; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+#personal dl img{ width:80px;  height:60px;  position:absolute;}
+ 
+
+/*按钮*/
+#but{ z-index:100;width:100%; position:fixed; bottom:0; margin-top:20px; border-top:1px solid #dcdcdc;}
+#but li{ width:40%; height:40px; float:left; line-height:40px; text-align:center; background:#fff; }
+#but .li_1 div{ width:70px ; margin:0 auto;}
+#but .li_1 img{ width:18px ; height:18px; margin-top:11px; float:left; margin-right:4px;}
+#but .li_1 span{ display:block; float:left;}
+#but .li_2{ width:30%; background:#f80;  color:#fff; font-weight:bold; font-size:14px;}
+
+#but .li_3{ width:30%; background:#ff4400; color:#fff; font-weight:bold; font-size:14px;}
+
+
+

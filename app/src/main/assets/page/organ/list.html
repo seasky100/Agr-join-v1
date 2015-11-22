@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>参展院所列表</title>
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="../css/dialog.css">
+    <link rel="stylesheet" type="text/css" href="css/list.css">
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/button.js"></script>
+    <script type="text/javascript" src="../js/global.js"></script>
+    <script type="text/javascript" src="../js/file-loader.js"></script>
+    <script type="text/javascript" src="../js/dialog.js"></script>
+    <script type="text/javascript" src="../js/loading.js"></script>
+    <script type="text/javascript" src="js/list-item.js"></script>
+    <script type="text/javascript" src="js/list.js"></script>
+
+</head>
+<body>
+
+<div id="list" class="list">
+
+</div>
+<div class="switch" display="button" id="switch" style="display:none">更多院所...</div>
+<div id="template" style="display:none;">
+
+    <div class="item">
+        <div class="item_img"><img src="" sid="logo"></div>
+        <div class="content">
+            <div class="name" sid="name"></div>
+            <div class="site_num">
+                <p class="site" sid="area"></p>
+
+                <!--p class="zh_num">展位（<span sid="expoNo"></span>）</p-->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

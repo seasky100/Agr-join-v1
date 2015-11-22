@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fundview="http://schemas.android.com/apk/res-auto"
+    style="@style/test"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/menu_top_border" />
+
+    <LinearLayout
+        style="@style/test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <cn.fundview.app.view.MenuItem
+            android:id="@+id/proj_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:tag="1"
+            android:clickable="true"
+            fundview:itemImgBgNormal="@mipmap/item_1"
+            fundview:itemImgBgPressed="@mipmap/item_1_1"
+            fundview:itemSelected="true"
+            fundview:itemTxt="@string/tab_first" />
+
+        <cn.fundview.app.view.MenuItem
+            android:id="@+id/msg_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:tag="2"
+            android:clickable="true"
+            fundview:itemImgBgNormal="@mipmap/item_2"
+            fundview:itemImgBgPressed="@mipmap/item_2_1"
+            fundview:itemSelected="false"
+            fundview:itemTxt="@string/tab_second" />
+
+        <cn.fundview.app.view.MenuItem
+            android:id="@+id/my_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:tag="3"
+            android:clickable="true"
+            fundview:itemImgBgNormal="@mipmap/item_3"
+            fundview:itemImgBgPressed="@mipmap/item_3_1"
+            fundview:itemSelected="false"
+            fundview:itemTxt="@string/tab_third" />
+    </LinearLayout>
+
+</LinearLayout>

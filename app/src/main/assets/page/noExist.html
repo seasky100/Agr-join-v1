@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>不存在页面</title>
+    <link rel="stylesheet" type="text/css" href="css/errorDialog.css">
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/api-test.js"></script>
+    <script type="text/javascript" src="js/button.js"></script>
+    <script type="text/javascript" src="js/errorDialog.js"></script>
+    <script>
+	
+	function OnBtnClick(id, e){
+
+	
+	}	
+	$(function(){
+		new ErrorDialog("项目不存在",
+			"无法找到此项目,请检查输入是否正确");
+
+		Button.loadAllButton({
+			onClick: OnBtnClick
+		});
+	});	
+   
+	
+
+    </script>
+
+    <style type="text/css">
+
+    </style>
+
+</head>
+<body>
+<!-- 关注成功的dialog-->
+<div id="errorTemplate" style="display:none">
+    <div class="container">
+        <div class="error"><span class="title">项目不存在</span><span
+                class="info">无法找到此项目,请检查输入是否正确</span>
+
+            <div class="btn" focusStyle="selected" display="button">确定</div>
+        </div>
+        <!--<div class="main"></div>--></div>
+</div>
+</body>
+</html>
+

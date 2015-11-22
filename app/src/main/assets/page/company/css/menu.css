@@ -1,0 +1,94 @@
+
+html, body {
+	background:none;
+}
+.panel{
+	position:relative;
+	float:right;
+	margin: 9px 4px;
+	display:-webkit-box;
+	-webkit-box-orient:vertical;
+	-webkit-box-align:end;
+	z-index:9999;
+}
+.panel .top{
+	position:absolute;
+	top: -8px;
+	right:15px;
+	width:20px;
+	height:10px;
+	z-index: 100;
+	
+	background: url(../../img/top-right-dialog-arrow.png) no-repeat 0 0;
+	/*
+	background-image:url(../img/top-right-dialog-arrow.png);
+	background-repeat:no-repeat;
+	background-size:18px 9px;
+	background-position:left 2px;
+	-webkit-box-sizing:border-box;*/
+}
+.panel .group {
+	border-radius: 8px;
+	-webkit-border-image:url(../../img/top-right-dialog-panel-bg.png) 6/6px;
+	color:white;
+	padding-right: 2px;
+}
+.group .item {
+	display:-webkit-box;
+	-webkit-box-align:center;
+	-webkit-box-pack:center;
+	padding:10px 5px;
+	border-top:1px solid #80ab35;
+	border-bottom:1px solid #a5c65d;
+	/*
+	background:url(../img/guid-focus.png) no-repeat right center;
+	-webkit-background-origin:content;
+	background-size:8px 11px;
+	*/
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.group .item:active {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+.group .item:first-child{
+	border-top:none;
+}
+.group .item:last-child {
+	border-bottom: 0;
+}
+.group .item .title {
+	text-align:left;
+	height: 26px;
+	text-align:center;
+	line-height: 26px;
+	padding-left:15px;
+	padding-right:15px;
+	background-size:26px 26px;
+}
+.group .item .attent_new {
+	margin-left:3px;
+	-webkit-border-image: url(../../img/list_newmessage.png) 0 12/0 10px;
+	padding:2px 0;
+	font-size:13px;
+	color:white;
+}
+.icon_1 {
+	background:url(../../img/proj-filter-ico-1.png) no-repeat left center;
+}
+.icon_2 {
+	background:url(../../img/proj-filter-ico-2.png) no-repeat left center;
+}
+.icon_3 {
+	background:url(../../img/proj-filter-ico-3.png) no-repeat left center;
+}
+.icon_4 {
+	background:url(../../img/proj-filter-ico-4.png) no-repeat left center;
+}
+.icon_5 {
+	background:url(../../img/proj-filter-ico-5.png) no-repeat left center;
+}
+
+.selected {
+	color:#FFFFFF;
+	background-color:#006699;
+}

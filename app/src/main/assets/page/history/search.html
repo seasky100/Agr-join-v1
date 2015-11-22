@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>搜索历史列表</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="css/search.css">
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/global.js"></script>
+    <script type="text/javascript" src="../js/button.js"></script>
+    <script type="text/javascript" src="../js/loading.js"></script>
+    <script type="text/javascript" src="js/search-key-item.js"></script>
+    <script type="text/javascript" src="js/search.js"></script>
+    <!--
+    <script type="text/javascript" src="js/search-test.js"></script>
+    -->
+</head>
+<body>
+
+<div class="result-list" style=";">
+    <div id="list">
+    </div>
+</div>
+
+<div class="no-history" style="display:none;">
+    <p class="cue">没有搜索历史</p>
+</div>
+
+<!-- key 模板 -->
+<div id="template" style="display:none;">
+    <div class="item" display="button"><p class="content" sid="key"></p>
+
+        <p class="delete-icon"></p></div>
+</div>
+</body>
+</html>
+

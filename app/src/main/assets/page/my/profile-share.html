@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>分享页面</title>
+
+    <link rel="stylesheet" type="text/css" href="css/global.css"/>
+    <link rel="stylesheet" type="text/css" href="css/profile-share.css"/>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/api.js"></script>
+    <script type="text/javascript" src="js/button.js"></script>
+    <script type="text/javascript" src="js/profile-share.js"></script>
+
+    <script>
+/*	$(function(){
+
+		$("li").each(function(){
+
+			var that=this;
+
+			$(that).toggle(
+
+				function(e){
+					var chkbox = $(that).children()[0];
+					$(chkbox).addClass("chk-select").removeClass("unchk-select");
+					chk();
+				},
+				function(e){
+					var chkbox = $(that).children()[0];
+					$(chkbox).removeClass("chk-select").addClass("unchk-select");;
+					chk();
+				}   
+			);
+
+		});
+	});
+
+//将选中的li 的信息填入hidden
+	function chk(){
+		var array=new Array();
+	    $(".chkbox").each(function(){
+			var that =$(this);
+			var  name = that.attr("name");
+			if(typeof name!=null && name=="shareItem"){
+				if(that.hasClass("chk-select")){
+					var  v=that.next().children()[0].innerHTML;
+					array.push(v);
+				}
+			}
+		});
+		var str=array.join(",");
+		$(":hidden").val(str);		
+	}*/
+
+    </script>
+
+
+</head>
+<body>
+
+<ul>
+    <li focusStyle="selected" display="button" id="ouda">
+        <div name="shareItem" class="chkbox unchk-select"></div>
+        <div class="right">
+            <div>欧达</div>
+            <div>13366131482</div>
+        </div>
+    </li>
+    <li focusStyle="selected" display="button" id="haichao">
+        <div name="shareItem" class="chkbox unchk-select"></div>
+        <div class="right">
+            <div>海朝</div>
+            <div>13366131482</div>
+        </div>
+    </li>
+    <li focusStyle="selected" display="button" id="jinwei">
+        <div name="shareItem" class="chkbox unchk-select"></div>
+        <div class="right">
+            <div>徐金伟</div>
+            <div>13366131482</div>
+        </div>
+    </li>
+    <li focusStyle="selected" display="button" id="lichengtao">
+        <div name="shareItem" class="chkbox unchk-select"></div>
+        <div class="right">
+            <div>李成涛</div>
+            <div>13366131482</div>
+        </div>
+    </li>
+</ul>
+<input type="hidden" value=""/>
+
+<div class="attent" style="display:none;">
+    <div class="dialog">
+        <div class="success"></div>
+        <span class="txt">分享成功</span>
+    </div>
+    <div class="main"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+/**
+group
+*/
+.group {
+	margin: 16px 10px;
+	border-radius: 8px;
+	box-shadow: 0 0 3px #bbb;
+	background-color: #FAFAFA;
+	overflow:hidden;
+}
+/**
+item
+*/
+.item {
+	display: -webkit-box;
+	-webkit-box-align: center;
+	height: 46px;
+	padding: 0px 10px;
+	border-top: 1px solid #F7F7F7;
+	border-bottom: 1px solid #bbb;
+	background: url(../../img/guid-default.png) no-repeat right center;
+	-webkit-background-origin: content;
+	background-size: 8px 11px;
+	
+	
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.item:active {
+	background-color: rgba(235, 235, 235, 0.3);
+}
+.item:active:first-child {
+	border-top: 1px solid rgba(235, 235, 235, 0.1);
+}
+.item:active:last-child {
+	border-bottom: 1px solid rgba(235, 235, 235, 0.1);
+}
+.item:first-child {
+	border-top: 1px solid #FAFAFA;
+}
+.item:last-child {
+	border-bottom: 1px solid #FAFAFA;
+}
+/**
+item content
+*/
+.item .title {
+	text-align: left;
+	padding-left: 36px;
+	line-height: 40px;
+	background-size:28px 28px
+	;
+	font-size:14px/*background-color:#006666;*/
+}
+.item .attent_new {
+	margin-left:3px;
+	-webkit-border-image: url(../../img/new-count-ico-2.png) 0 12/0 10px;
+	padding:2px 0;
+	font-size:13px;
+	color:white;
+	/*border-radius: 12px;
+	box-shadow: 0px 0px 5px #939393;*/
+}
+/**
+personal
+*/
+#personal {
+	height: 72px;
+}
+#personal img {
+	display:block;
+	width:50px;
+	height:50px;
+	border-radius: 5px;
+	overflow:hidden;
+}
+#personal .attr {
+	padding:0 10px;
+	-webkit-box-flex:1;
+}
+#personal .attr p {
+	height:25px;
+	line-height:25px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	font-size:14px;
+}
+/**
+item icon
+*/
+.icon_1 {
+	background:url(../../img/my-btn-ico-1.png) no-repeat left center;
+}
+.icon_2 {
+	background:url(../../img/my-btn-ico-2.png) no-repeat left center;
+}
+.icon_3 {
+	background:url(../../img/my-btn-ico-3.png) no-repeat left center;
+}
+.icon_4 {
+	background:url(../../img/my-btn-ico-4.png) no-repeat left center;
+}
+.icon_5 {
+	background:url(../../img/my-btn-ico-5.png) no-repeat left center;
+}
+.icon_6 {
+	background:url(../../img/my-btn-ico-6.png) no-repeat left center;
+}

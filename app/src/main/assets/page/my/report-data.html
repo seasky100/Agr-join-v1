@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>企业提报数据</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <link rel="stylesheet" type="text/css" href="css/report-data.css">
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/global.js"></script>
+    <script type="text/javascript" src="js/report-data.js"></script>
+    <!--
+    <script type="text/javascript" src="js/profile-name-test.js"></script>
+    -->
+</head>
+<body>
+
+<form id="" action="" method="post" sid="report-form">
+
+    <ul class="panel" sid="container" style="display:none;">
+    </ul>
+</form>
+<div class="saveDialog" style="display:none;">
+    <div class="dialog">
+        <div class="hintImg"></div>
+        <span class="hintTxt">提报成功</span>
+    </div>
+    <div class="main"></div>
+</div>
+
+<!-- 模版 -->
+<div sid="template" style="display:none;">
+    <li class="item">
+        <span class="label" sid="label"></span>
+
+        <div>
+
+            <input type="text" value="" class="value" placeholder="" sid="value"/>
+            <span class="delete-icon" sid="deleteIcon" style="display:none;"></span>
+            <span class="unit" sid="unit"></span>
+        </div>
+    </li>
+</div>
+
+</body>
+</html>

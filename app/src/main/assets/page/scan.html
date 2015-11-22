@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>扫一扫</title>
+
+    <style>
+        html, body, div, p, img {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        }
+        html, body {
+        word-break: normal;
+        word-wrap: break-word;
+        background: #EFF3F7;
+        font: 16px/1.5 'XinGothic-SinaWeibo', 'Microsoft Yahei', 'helvetica', 'arial';
+        /*color: #666;*/
+        color: #333;
+        font-weight:600;
+        }
+        body{
+        display:-webkit-box;
+        height:100%;
+        -webkit-box-pack:center;
+        -webkit-box-align:center;
+        }
+        .container{
+        width:100px;
+        height:100px;
+        margin:100px auto;
+        border:1px solid #000;
+        }
+        .container img{
+        width:100px;
+        height:100px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/api.js"></script>
+    <script type="text/javascript" src="js/button.js"></script>
+    <script type="text/javascript" src="js/scan.js"></script>
+
+</head>
+<body>
+<div class="container">
+
+</div>
+
+</body>
+<script type="text/javascript">
+ $(function(){
+ 	//$(".container").load("say-back.html");
+ });
+
+ 	var tat = "aaaaaa";
+ 	//alert(tat.indexOf("aaaa"));
+ 	if( tat.indexOf("b") > -1 ){
+ 		//alert("包含");
+ 	}
+ /* 
+ 	var attrs = new Array(1,2);
+	alert(attrs[1]);
+	var tt = "aaaaa";
+	var selects = tt.split(",");
+	alert(selects.length);
+	var attrs = new Array();
+	attrs.push(1);
+	attrs.push(2);
+	alert(attrs.toString());
+		   
+	alert($("#crop-v").attr("value"));
+		   
+	$("[value="+1+"]").attr("checked",true);
+	$("[value="+1+"]").addClass("chk-select").removeClass("unchk-select");
+*/
+
+</script>
+</html>

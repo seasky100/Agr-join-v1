@@ -1,0 +1,233 @@
+@charset "utf-8";
+* { margin:0; padding:0;}
+html {
+
+	background:white;
+}
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #565656;
+	background: #fff;
+}
+a{ text-decoration:none}
+li{ list-style:none;}
+header {
+	background-color: #31a864;
+	border-bottom: 2px solid #31a864;
+	position: relative;
+	height: 44px;
+	font-size: 18px;
+	color: #fff;
+	
+}
+.return {
+	width: 50px;
+	height: 40px;
+background:url(../../img/return.png) 18px 11px no-repeat;	background-size: 11px 19px;
+	position: absolute;
+	left: 0px;
+}
+.title {
+	text-align: center;
+	line-height: 40px;
+	margin-left: 40px;
+	height: 40px;
+	margin-right:40px;
+}
+.intro{
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-webkit-box-sizing:content-box;
+	padding:10px 8px;
+	position:relative;
+}
+
+.qy_logo{
+	height: 75px;
+	width: 100px;
+}
+.marks{
+	background:url(../../img/marks.png) no-repeat;
+	height:40px; width:100px;
+	position:absolute;
+	top:6px;
+	left:12px;
+}
+.content{
+	padding-left:10px;
+    -webkit-box-flex:1;
+}
+.name{
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-webkit-box-sizing:content-box;
+}
+.ming{color:#31a864;font-size:18px;white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden;}
+.zhic{-webkit-box-flex: 1; white-space: nowrap;text-overflow: ellipsis;overflow:hidden;padding-left:10px; padding-top:8px;}
+.depa	{font-size:14px;
+	color:#a8a8a8;
+	margin-bottom:2px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden;}
+.renz_guanzhu{	
+	display: -webkit-box;
+	-webkit-box-pack: start;
+	-webkit-box-align: center;
+}
+.qy_renzheng{
+	border-radius: 5px;
+	background-color: #fff;
+	border:1px solid #eae9e9;
+	height:26px;
+	width:50px;
+	background-image:url(../../img/renzheng2.png);
+	background-repeat:no-repeat;
+	background-position: 5px 5px;
+	padding-left:24px;
+	line-height:30px;
+	background-size:14px 17px;
+	background-position:5px center;
+}
+.qy_focus{
+	border-radius: 5px;
+	background-color: #fff;
+	border:1px solid #eae9e9;
+	width:auto; padding-right:6px;
+	height:26px;
+	text-align:left;
+	color:#565656;
+	margin-left:6px;
+	display: -webkit-box;
+	-webkit-box-pack: start;
+	-webkit-box-align: center;
+}
+.qy_focus:hover{ }
+
+.qy_focus img{ margin:0px 3px 0 5px;}
+.qy_focus .add_num{
+	font-size:12px;
+	font-style:normal;
+	color:#f88000;
+	}
+.zw{ margin-top:4px;white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden;}
+.summary{padding:10px 8px 2px 8px;
+	border-top:1px solid #e1e1e1;
+}
+.sum_item{
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: start;
+	font-size:14px;margin-bottom:4px;
+}
+.sum_name{ 
+	width:72px;
+	
+}
+.sum_detail{
+	-webkit-box-flex:1;
+}
+.ci_name, .ach_name,.product_name{
+	padding:4px 8px;
+	font-size:16px;
+	color:#31a864;
+	padding-left:14px;
+	margin:0px 8px 4px 8px;
+	background:url(../../img/tback.png) no-repeat center left;
+	}
+.ci_detail{
+	background-color:#f3f3f3;
+	font-size:14px;
+	padding:10px 8px;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	line-height:21px;
+}
+.more-info {
+	background-color:#f3f3f3;
+	float:right;
+	text-align:right;
+	line-height:24px;
+	width:100%;
+	margin-bottom:10px; padding: 0 8px 4px 0;
+	color:rgb(88,157,246);
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+	height:24px;
+}
+
+
+.product_details{
+	padding:0 8px;
+	overflow:hidden;	
+}
+.product_details img{
+	height:100px;
+	width:140px;	
+}
+.product_details ul{ 
+	height:130px;
+	width:1300px;
+	transition: -webkit-transform 0.3s ease-in-out;
+	-webkit-transform: translate3d(0px, 0px, 0px);	
+	}
+.product_details ul li{
+	float:left;
+	  width: 136px;
+	  padding: 0 6px;
+	  color: #333;
+	  line-height: 1.5;
+	}
+.ach_details{
+
+}
+
+ .swiper-container {
+	 width: 100%;
+	 height: 130px;
+	 margin: 0px auto;
+ }
+
+ .swiper-wrapper {
+
+ 	padding:0px 8px;
+ }
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: white;
+	width:140px;
+	display: -webkit-box;
+	-webkit-box-orient:vertical;
+	-webkit-box-pack: start;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+.swiper-slide img{
+
+	height:100px;
+    width:140px;
+}
+/**成果名称**/
+.swiper-slide p{
+
+	font-size:14px;
+	padding:0px 3px;
+	margin-top:5px;
+	width:120px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden;
+}

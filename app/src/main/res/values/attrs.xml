@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="menuItem">
+        <attr name="itemTxt" format="string" />
+        <attr name="itemImgBgNormal" format="reference|color" />
+        <attr name="itemImgBgPressed" format="reference|color" />
+        <attr name="itemSelected" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="drop_down_list_attr">
+        <attr name="isDropDownStyle" format="boolean" />
+        <attr name="isOnBottomStyle" format="boolean" />
+        <attr name="isAutoLoadOnBottom" format="boolean" />
+    </declare-styleable>
+
+    <!-- 制定titlebar 的一类型,首页类型  搜索类型 普通类型 -->
+    <declare-styleable name="title_bar">
+        <attr name="type">
+            <enum name="home" value="1" />
+            <enum name="search" value="2" />
+            <enum name="common" value="3" />
+        </attr>
+        <!-- 用于为title bar 设置 标题栏中的显示内容 -->
+        <attr name="back_btn" format="boolean" />
+        <attr name="right_btn" format="string" />
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp">
+
+    <item android:drawable="@mipmap/qd1_bj" />
+
+    <item
+        android:width="160dp"
+        android:bottom="250dp"
+        android:gravity="center_horizontal">
+
+        <bitmap
+            android:gravity="clip_horizontal"
+            android:src="@mipmap/qd11" />
+    </item>
+    <item
+        android:width="160dp"
+        android:bottom="150dp"
+        android:gravity="center_horizontal">
+
+        <bitmap
+            android:gravity="bottom|center"
+            android:src="@mipmap/qd12" />
+    </item>
+
+    <item
+        android:bottom="100dp"
+        android:gravity="center_horizontal">
+
+        <bitmap
+            android:gravity="center_horizontal|bottom"
+            android:src="@mipmap/qd13" />
+    </item>
+</layer-list>

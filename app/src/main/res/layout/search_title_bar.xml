@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_container"
+    android:layout_width="fill_parent"
+    android:layout_height="46dp"
+    android:background="@color/title_bar_bg_color_1"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:contentDescription="@string/app_name"
+        android:paddingLeft="5dp"
+        android:paddingRight="10dp"
+        android:scaleType="centerInside"
+        android:src="@mipmap/title_back"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/searchPanel"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/search_input_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/search_bar_icon_normal"
+            android:gravity="center_vertical"
+            android:hint="@string/expertSearchHint"
+            android:inputType="none"
+            android:paddingBottom="6dp"
+            android:paddingLeft="6dp"
+            android:paddingTop="6dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <ImageView
+            android:id="@+id/cleanBtn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="4dp"
+            android:contentDescription="@string/search_cancel"
+            android:gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/search_close"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rightBtn"
+        android:layout_width="44dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:id="@+id/rightText"
+            android:layout_width="28dp"
+            android:layout_height="23dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:singleLine="true"
+            android:clickable="false"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:text="@string/search" />
+
+    </LinearLayout>
+
+</LinearLayout>

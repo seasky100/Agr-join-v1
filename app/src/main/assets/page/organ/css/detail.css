@@ -1,0 +1,251 @@
+@charset "utf-8";
+* { margin:0; padding:0;}
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #565656;
+	background: #fff;
+}
+a{ text-decoration:none}
+li{ list-style:none;}
+header {
+	background-color: #31a864;
+	border-bottom: 2px solid #31a864;
+	position: relative;
+	height: 44px;
+	font-size: 18px;
+	color: #fff;
+	
+}
+.return {
+	width: 50px;
+	height: 40px;
+	background: url(../../img/return.png) 18px 11px no-repeat;
+	background-size: 11px 19px;
+	position: absolute;
+	left: 0px;
+}
+.title {
+	text-align: center;
+	line-height: 40px;
+	margin-left: 40px;
+	height: 40px;
+	margin-right:40px;
+}
+.intro{
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: start;
+	-webkit-box-sizing:content-box;
+	padding:10px 8px;
+	position:relative;
+}
+
+.qy_logo{
+	height: 75px;
+	width: 100px;
+}
+.content{
+	padding-left:10px;
+    -webkit-box-flex:1;
+}
+.name{
+	color:#31a864;
+	font-size:18px;
+	margin-bottom:4px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden;
+}
+.qy_focus{
+	border-radius: 5px;
+	background-color: #fff;
+	border:1px solid #eae9e9;
+	width:90px;
+	height:26px;
+	text-align:left;
+	color:#565656;
+	margin-left:6px;
+	display: -webkit-box;
+	-webkit-box-pack: start;
+	-webkit-box-align: center;
+}
+.qy_focus img{ margin:0px 3px 0 5px;}
+.qy_focus .add{
+	font-size:16px;font-style:normal;
+}
+.qy_focus .add_num{
+	font-size:12px;font-style:normal;
+}
+.summary{padding:10px 8px 2px 8px;
+	border-top:1px solid #e1e1e1;
+}
+.sum_item{
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: start;
+	font-size:14px; margin-bottom:4px;
+}
+.sum_name{ 
+	width:72px;
+}
+.sum_detail{
+	-webkit-box-flex:1;text-overflow: ellipsis;
+}
+
+.comp_intro {
+
+    position:relative;
+	clear:both;
+}
+.ci_name, .ach_name,.exp_name{
+	padding:4px 8px;
+	font-size:16px;
+	color:#31a864;
+	padding-left:14px;
+	margin:0px 8px 2px 8px;
+	background:url(../../img/tback.png) no-repeat center left;
+}
+.ci_detail{
+	background-color:#f3f3f3;
+	font-size:14px;
+	padding:10px 8px;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	line-height:21px;
+}
+
+.more-info {
+	background-color:#f3f3f3;
+	float:right;
+	text-align:right;
+	line-height:24px;
+	width:100%;
+	margin-bottom:10px; padding: 0 8px 4px 0;
+	color:rgb(88,157,246);
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+	height:24px;
+}
+
+
+.exp_details img{
+	height:100px;
+	width:133px;
+}
+
+.ach_details img{
+	height:100px;
+	width:140px;
+}
+
+.swipe {
+	overflow: hidden;
+	position: relative;
+}
+.swipe-wrap {
+	overflow: hidden;
+	position: relative;
+}
+.swipe-wrap > div {
+	float:left;
+	width:100%;
+	position: relative;
+}
+.swipe_items { 
+	width:100%; 
+	height:300px; 
+	margin-bottom:10px;
+}
+.swipe_items img{ 
+	width:100%; 
+	height:100%;
+}
+.swipe_items p{ 
+	position:absolute;   
+	left: 0;
+	right: 0;
+	bottom: 0;  display: block;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	background: rgba(0,0,0,.3);
+	color: #fff;
+	line-height: 2.1;
+	padding: 0 10px;
+	font-size: 15px;  white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+/*改动的样式*/
+.renz_guanzhu{	
+	display: -webkit-box;
+	-webkit-box-pack: start;
+	-webkit-box-align: center;
+}
+.qy_renzheng{
+	border-radius: 5px;
+	background-color: #fff;
+	border:1px solid #eae9e9;
+	height:26px;
+	width:50px;
+	background-image:url(../../img/renzheng2.png);
+	background-repeat:no-repeat;
+	background-position: 5px 5px;
+	padding-left:24px;
+	line-height:30px;
+	background-size:14px 17px;
+	background-position:5px center;
+}
+.zw{ margin-bottom:4px; font-size:14px; color:#f88000;}
+
+
+.swiper-container {
+	width: 100%;
+	height: 130px;
+	margin: 5px 0;
+}
+ .swiper-wrapper {
+
+ 	padding:0px 8px;
+ }
+
+.swiper-slide {
+
+	width:133px;
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	/* Center slide text vertically */
+	display: -webkit-box;
+
+	-webkit-box-orient:vertical;
+	-webkit-box-pack: start;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.swiper-slide img{
+
+	height:100px;
+    width:133px;
+}
+.swiper-slide p{
+
+	height:30px;
+	line-height:30px;
+}
+
+/**专家名称**/
+.swiper-slide p{
+
+	font-size:14px;
+	padding:0px 3px;
+	width:120px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>搜索项目列表</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="css/list.css">
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/global.js"></script>
+    <script type="text/javascript" src="../js/button.js"></script>
+    <script type="text/javascript" src="../js/global.js"></script>
+    <script type="text/javascript" src="../js/file-loader.js"></script>
+    <script type="text/javascript" src="../js/loading.js"></script>
+    <script type="text/javascript" src="js/list-item.js"></script>
+    <script type="text/javascript" src="js/search-result.js"></script>
+    <!--
+    <script type="text/javascript" src="js/search-result-test.js"></script>
+    -->
+
+</head>
+<body>
+
+<div class="search">
+    <span class="search-icon"></span>
+    <span id="searchInput" onClick="doSearch();">搜索</span>
+    <span id="searchClean" style="display:none;"></span>
+</div>
+
+<div class="list" id="list"></div>
+
+<div class="error" style="display:none;">
+    <p>很遗憾，找不到您想要的项目。</p>
+</div>
+
+
+<!-- proj 模板-->
+<div id="template" style="display:none;">
+
+    <div class="item" id="">
+        <div class="icon"><img src="" sid="logo"/></div>
+        <div class="content">
+            <div class="top">
+                <p class="name" sid="name"></p>
+
+                <p class="area" sid="area"></p>
+            </div>
+            <div class="bottom f_cue">
+                <p class="trade">
+                    <span>所属行业&nbsp;:&nbsp;</span>
+                    <span class="value" sid="tradeValue"></span>
+                </p>
+
+                <p class="attent">
+                    关注<span class="value" sid="attent"></span>人
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

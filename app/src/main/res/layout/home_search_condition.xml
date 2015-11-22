@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="start"
+    android:background="@color/transparent">
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/home_condition_panel"
+        android:numColumns="auto_fit"
+        android:columnWidth="70dp"
+        android:verticalSpacing="8dp"
+        android:horizontalSpacing="8dp"
+        android:fadeScrollbars="true"
+        android:background="@drawable/panel_bg"
+        android:padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"></GridView>
+</LinearLayout>

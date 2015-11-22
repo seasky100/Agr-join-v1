@@ -1,0 +1,59 @@
+/**
+main-panel
+*/
+.main-panel {
+	position: absolute;
+	top: 15px;
+	left: 20px;
+	right: 20px;
+	bottom: 15px;
+	padding: 15px 15px;
+	background-color: #FAFAFA;
+	border-radius: 5px;
+	box-shadow: 0 0 3px #bbb;
+}
+/**
+profile-panel
+*/
+.profile-panel {
+	display: -webkit-box;
+	-webkit-box-align: center;
+}
+.profile-panel img {
+	display:block;
+	width:50px;
+	height:50px;
+	border-radius: 5px;
+	overflow:hidden;
+}
+.profile-panel .attr {
+	padding:0 10px;
+	-webkit-box-flex:1;
+}
+.profile-panel .attr p {
+	height:25px;
+	line-height:25px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	font-size:14px;
+}
+/**
+code-panel
+*/
+.code-panel {
+	margin: 15px 0;
+	border: 1px solid #666;
+	box-shadow: 1px 1px 3px #ccc;
+}
+img{
+	width: 100%;
+	display: block;
+}
+/**
+cue-panel
+*/
+.cue-panel {
+	text-align:center; 
+	font-size:12px;
+}

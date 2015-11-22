@@ -1,0 +1,64 @@
+.container{
+	float:right;
+	margin: 42px auto;
+	display:-webkit-box;
+	-webkit-box-orient:vertical;
+	-webkit-box-align:end;
+}
+.top{
+	position:relative;
+	right:15px;
+	width:18px;
+	height:9px;
+	background-image:url(../img/top-right-dialog-arrow.png);
+	background-repeat:no-repeat;
+	background-size:18px 9px;
+	background-position:left 2px;
+	-webkit-box-sizing:border-box;
+}
+.group {
+	border-radius: 8px;
+	-webkit-border-image:url(../img/top-right-dialog-panel-bg.png) 6/6px stretch stretch;
+}
+.item {
+	display:-webkit-box;
+	-webkit-box-align:center;
+	padding:10px;
+	/*border-bottom: 1px solid rgba(0,245,0,0.5);*/
+	background:url(../img/mobile_bind_guid.png) no-repeat right center;
+	-webkit-background-origin:content;
+	background-size:8px 11px;
+	color:white;
+}
+.item .title {
+	text-align:left;
+	padding-left:40px;
+	background-size:25px 25px;
+}
+.item .attent_new {
+	margin-left:3px;
+	-webkit-border-image: url(../img/list_newmessage.png) 0 12/0 10px;
+	padding:2px 0;
+	font-size:13px;
+	color:white;
+}
+.item:last-child {
+	border-bottom: 0;
+}
+.icon_1 {
+	margin-right:30px;
+	background:url(../img/proj-filter-ico-1.png) no-repeat left center;
+}
+.icon_2 {
+	margin-right:30px;
+	background:url(../img/proj-filter-ico-2.png) no-repeat left center;
+}
+
+.selected {
+	color:#FFFFFF;
+	background-color:#006699;
+}
+.hr{
+	border-top:1px solid #80ab35;
+	border-bottom:1px solid #a5c65d;
+}

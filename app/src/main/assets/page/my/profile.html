@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>我的资料</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/global.js"></script>
+    <script type="text/javascript" src="../js/button.js"></script>
+    <script type="text/javascript" src="../js/loading.js"></script>
+    <script type="text/javascript" src="js/profile.js"></script>
+    <!--
+    <script type="text/javascript" src="js/profile-test.js"></script>
+    -->
+</head>
+<body>
+<div id="mainDiV">
+    <div class="group">
+
+        <div class="item" id="profile-head" display="button" editable="true">
+            <p class="label">头像</p>
+
+            <p class="value"><img class="head" src="../img/default-head-icon.jpg"/></p>
+
+            <p class="guid"/>
+        </div>
+        <div class="item" id="profile-name" display="button" editable="true">
+            <p class="label">名字</p>
+
+            <p class="value">未填写</p>
+
+            <p class="guid"/>
+        </div>
+        <div class="item" id="profile-account">
+
+
+
+            <p class="label">丰景帐号</p>
+
+            <p class="value" id="account">未登录</p>
+
+            <p class="guid"/>
+        </div>
+        <div class="item" id="profile-professional-title" display="button" style="display:none;"
+             editable="true">
+            <p class="label">专家职称</p>
+
+            <p class="value" id="professional-title">未填写</p>
+
+            <p class="guid"/>
+        </div>
+
+        <div class="item" id="profile-comp-type" display="button"  style="display:none;"
+             editable="true">
+            <p class="label">企业类型</p>
+
+            <p class="value" id="comp-type">未填写</p>
+
+            <p class="guid"/>
+        </div>
+
+
+        <div class="item" id="profile-qrcode" display="button" editable="true">
+            <p class="label">我的二维码</p>
+
+            <p class="value"><img class="code-2" src=""/></p>
+
+            <p class="guid"/>
+        </div>
+
+    </div>
+
+    <div class="group">
+
+        <div class="item" id="profile-area" display="button" editable="true">
+            <p class="label">地区</p>
+
+            <p class="value">未选择</p>
+
+            <p class="guid"/>
+        </div>
+        <div class="item" id="profile-addr" display="button" editable="true">
+            <p class="label">地址</p>
+
+            <p class="value">未填写</p>
+
+            <p class="guid"/>
+        </div>
+        <div class="item" id="profile-linkMan" focusStyle="selected" display="button"
+             editable="true" style="display:none;">
+            <p class="label">联系人</p>
+
+            <p class="value">未填写</p>
+
+            <p class="guid"/>
+        </div>
+        <div class="item" id="profile-tel" focusStyle="selected" display="button" editable="true">
+
+            <p class="label">电话</p>
+
+            <p class="value">未填写</p>
+
+            <p class="guid"/>
+        </div>
+
+    </div>
+    <div class="group">
+        <div class="item" id="profile-infor" focusStyle="selected" display="button"
+             editable="true">
+            <p class="label">经营范围</p>
+
+            <p class="value">未填写</p>
+
+            <p class="guid"/>
+        </div>
+    </div>
+
+    <div class="group">
+        <div class="item" id="logout" focusStyle="selected" display="button">
+            <p class="">退出登录</p>
+        </div>
+    </div>
+</div>
+<div class="dialog" style="display:none;">
+    <div class="dialog-panel">
+        <span class="txt">使用丰景账号登录,获取二维码!</span>
+		<span>
+			<div class="login" display="button">登录</div>
+			<div class="cancel" display="button">取消</div>
+		</span>
+    </div>
+    <div class="main"></div>
+</div>
+</body>
+</html>
+

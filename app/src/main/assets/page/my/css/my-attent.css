@@ -1,0 +1,157 @@
+
+.list {
+	/*min-height: 480px;*/
+	background-color: #fafafa;
+	min-height:100%;
+	
+}
+.item {
+	/*height: 60px;*/
+	padding: 10px 8px;	
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;	
+	/*border-top: 1px solid #F7F7F7;*/
+	border-bottom: 1px solid #bbb;	
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.item:active {
+	background-color: rgba(235, 235, 235, 0.3);
+	/*border-top: 1px solid rgba(170, 207, 93, 0.1);*/
+}s
+.item .icon, .item .icon img {
+	height: 48px;
+	width: 48px;
+	/*width: 64px;*/
+}
+.item .icon {
+
+	/*box-shadow: 1px 1px 3px #ccc;
+	border-radius: 5px;*/
+	overflow: hidden;
+}
+.item .content {
+	padding-left: 8px;
+	-webkit-box-flex: 1;
+}
+.item .content .top {
+	height: 24px;
+	display: -webkit-box;
+}
+.item .content .top {
+	display:-webkit-box;
+	-webkit-box-align: center;
+}
+.item .content .bottom {
+
+	display:-webkit-box;
+    -webkit-box-align: center;
+}
+.item .content .trade {
+	font-size: 12px;
+	font-weight:normal;
+	line-height:24px;
+	-webkit-box-flex:1;
+	margin-left:5 px;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.item .content .time {
+	font-size: 12px;
+	font-weight:normal;
+	line-height:24px;
+	width:100px;
+}
+.item .content .top .remark {
+	margin-left:5px;
+	-webkit-box-flex:1;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display:-webkit-box;
+	-webkit-box-pack:start;
+	font-size:14px;
+	text-align:left;
+	background:red;
+}
+
+.item .content .top .addr {
+	margin-right:5px;
+	display:-webkit-box;
+	-webkit-box-pack:start;
+	font-size:14px;
+	color:#666;
+}
+.item:last-child{
+	margin-bottom:40px;
+}
+/*
+ func
+*/
+
+.func-container{
+	width:100%;
+	display:-webkit-box;
+	-webkit-box-align:center;
+	-webkit-box-pack:center;
+	position:fixed;
+	bottom:0px;
+	z-index:1000;
+	background-image:url(../../img/menu_bar_bg_line.png);
+	background-repeat:repeat;
+	
+}
+.func-container div{
+	-webkit-box-flex:1;
+	padding:10px 0px;
+	text-align:center;
+	
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.func-container p{
+	background-color:#ccc;
+	position:absolute;
+	top:4px;
+	bottom:2px;
+	width:1px;
+}
+.func-container div:active{
+	background-color:rgba(170, 207, 93, 0.3);
+}
+
+
+.bg{
+	background-color:rgba(0,0,0,0.9);
+	border-bottom:2px solid  rgba(0,255,0,0.9);
+}
+
+
+.error p{
+	display:-webkit-box;
+	-webkit-box-align:center;
+	-webkit-box-pack:center;
+	padding:100px 50px 20px 50px;
+	text-align:center;
+	color:#666;
+}
+.findBtn{
+	display: -webkit-box;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	width:100%;
+}
+
+.error span{
+	display: -webkit-box;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	height:35px;
+	padding:0 8px;
+	-webkit-border-image:url(../../img/btn_11.png) 8/3px stretch;
+	color:#FFFFFF;
+}
+
+.error span:active{
+	-webkit-border-image:url(../../img/btn_10.png) 8/3px stretch;
+}

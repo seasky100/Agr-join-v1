@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@mipmap/start_bg"></item>
+    <item android:bottom="60dp">
+
+        <bitmap
+            android:gravity="center"
+            android:src="@mipmap/start_logo" />
+
+    </item>
+    <item android:top="80dp">
+
+        <bitmap
+            android:gravity="center"
+            android:src="@mipmap/start_txt" />
+    </item>
+
+</layer-list>

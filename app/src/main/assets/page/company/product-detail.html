@@ -1,0 +1,73 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>企业详细</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <link rel="stylesheet" type="text/css" href="../css/dialog.css">
+    <link rel="stylesheet" type="text/css" href="../css/call-dialog.css">
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="../css/swiper.css">
+    <link rel="stylesheet" type="text/css" href="css/detail.css">
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery.event.move.js"></script>
+    <script type="text/javascript" src="../js/jquery.event.swipe.js"></script>
+    <script type="text/javascript" src="../js/global.js"></script>
+    <script type="text/javascript" src="../js/file-loader.js"></script>
+    <script type="text/javascript" src="../js/loading.js"></script>
+    <script type="text/javascript" src="../js/dialog.js"></script>
+    <script type="text/javascript" src="js/product-item.js"></script>
+    <script type="text/javascript" src="js/requ-item.js"></script>
+    <script type="text/javascript" src="js/product-detail.js"></script>
+</head>
+
+<body>
+
+<div class="slide_img">
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="img-container">
+        </div>
+        <div class="swiper-pagination swiper-pagination-white"></div>
+    </div>
+</div>
+<div class="intro">
+    <div class="content">
+        <div class="name"><span sid="name"></span><em class="p_standard" sid="p_standard">产品规格:<span
+                sid="unit"></span></em>
+        </div>
+        <div class="price" sid="price">产品价格：<span sid="price"></span></div>
+    </div>
+</div>
+<div class="main">
+
+    <div class="comp_intro">
+        <div class="ci_name">产品成分</div>
+        <div class="ci_detail" sid="materialDesc" style="max-height:none;">
+
+        </div>
+    </div>
+    <div class="comp_intro">
+        <div class="ci_name">产品功能</div>
+        <div class="ci_detail" sid="techDesc" style="max-height:none;">
+
+
+        </div>
+    </div>
+    <div class="comp_intro" style="margin-bottom:10px;">
+        <div class="ci_name">产品介绍</div>
+        <div class="ci_detail" sid="intro" style="max-height:none;">
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="../js/swiper.js"></script>
+
+</body>
+</html>

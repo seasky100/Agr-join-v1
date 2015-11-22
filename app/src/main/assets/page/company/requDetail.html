@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>需求详细</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="../css/call-dialog.css">
+    <link rel="stylesheet" type="text/css" href="css/analysis-detail.css">
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/global.js"></script>
+    <script type="text/javascript" src="../js/button.js"></script>
+    <script type="text/javascript" src="../js/loading.js"></script>
+    <script type="text/javascript" src="../js/dialog.js"></script>
+    <script type="text/javascript" src="js/requ-detail.js"></script>
+    <!--
+    <script type="text/javascript" src="js/analysis-detail-test.js"></script>
+     -->
+</head>
+<body>
+
+<div class="index" sid="index">
+    <div class="level">
+        <span class="label">所属行业：</span><span class=" " sid="tradeNames"></span>
+    </div>
+    <div class="level">
+        <span class="label">对接状态：</span><span class="" sid="join"></span>
+    </div>
+    <div class="level">
+        <span class="label">更新时间：</span><span class="" sid="time"></span>
+    </div>
+</div>
+
+<!-- 需求的详细介绍 -->
+<div class="analysis" sid="infoPanel">
+    <div class="title-bar">
+        <p class="left" id="xmfx">需求介绍</p>
+
+        <p class="right "></p>
+    </div>
+    <p class="top-arrow"></p>
+
+    <div class="container">
+        <div class="content">
+            <p class="" sid="info"></p>
+        </div>
+    </div>
+</div>
+
+
+<div class="func" sid="func">
+    <div class="msg" focusStyle="selected" display="button" id="msg"
+         sid="msg">咨询
+    </div>
+</div>
+</body>
+</html>

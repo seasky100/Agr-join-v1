@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>scroll</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <link rel="stylesheet" type="text/css" href="../css/dialog.css">
+    <link rel="stylesheet" type="text/css" href="css/msg-infor-list.css">
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/global.js"></script>
+    <script type="text/javascript" src="../js/button.js"></script>
+    <script type="text/javascript" src="../js/dialog.js"></script>
+    <script type="text/javascript" src="../js/file-loader.js"></script>
+    <script type="text/javascript" src="../js/tools.js"></script>
+    <script type="text/javascript" src="js/infor-list-item.js"></script>
+    <script type="text/javascript" src="js/infor-list.js"></script>
+
+</head>
+<body>
+
+<div id="list" class="scroll-view" style="background:rgba(205, 205, 205, 1);">
+
+</div>
+
+<div id="template" style="display:none">
+    <div class="note" sid="sItem">
+        <div class="receive-time" sid="reqTime"></div>
+        <div class="pannel">
+            <p class="title" sid="title"></p>
+
+            <p class="article-time" sid="publishTime"></p>
+
+            <div class="pics"><img src="" sid="logo"/></div>
+            <p class="intro" sid="introduction"></p>
+
+            <div class="read-all" id="read-all">阅读全文</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title>详细资料</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/global.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/loading.css"/>
+    <link rel="stylesheet" type="text/css" href="css/user-infor.css"/>
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/global.js"></script>
+    <script type="text/javascript" src="../js/button.js"></script>
+    <script type="text/javascript" src="../js/file-loader.js"></script>
+    <script type="text/javascript" src="../js/loading.js"></script>
+    <script type="text/javascript" src="js/user-infor.js"></script>
+    <!--
+    <script type="text/javascript" src="js/user-infor-test.js"></script>
+    -->
+</head>
+<body>
+<div class="base-info">
+    <img src="" sid="headIcon"/>
+
+    <div class="account">
+        <p sid="name"></p>
+
+        <p id="account" sid="account"></p>
+    </div>
+</div>
+<div class="info">
+    <ul>
+        <li display="button" focusStyle="selected">
+            <p class="title">地区</p>
+
+            <p class="content" sid="area"></p>
+        </li>
+        <li display="button" focusStyle="selected">
+            <p class="title">他的需求</p>
+
+            <p class="content" sid="require"></p>
+        </li>
+        <li display="button" focusStyle="selected">
+            <p class="title">他能提供</p>
+
+            <p class="content" sid="provide"></p>
+        </li>
+        <!--
+        <li focusStyle="selected" display="button">
+            <p class="title">写写记记</p><p class="total">共20篇</p><span class="next"></span>
+        </li>
+        -->
+    </ul>
+</div>
+
+<div class="func-btn" sid="funcBtn" style="display:none;">
+    <div display="button" id="chat">打招呼</div>
+    <div display="button" id="attention">关注</div>
+</div>
+
+<div class="saveDialog" style="display:none;">
+    <div class="dialog">
+        <div class="hintImg"></div>
+        <span class="hintTxt">关注成功</span>
+    </div>
+    <div class="main"></div>
+</div>
+
+</body>
+</html>
+

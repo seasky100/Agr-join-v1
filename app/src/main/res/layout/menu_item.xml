@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="false"
+    android:layout_gravity="center_vertical">
+
+    <LinearLayout
+        android:id="@+id/menu_item_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:clickable="false"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/menu_item_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/menu_item_img"
+            android:scaleType="matrix"
+            android:clickable="false" />
+
+        <TextView
+            android:id="@+id/menu_item_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/tag_txt_normal"
+            android:textSize="12sp"
+            android:clickable="false" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/msg_notice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:contentDescription="@string/menu_item_img"
+        android:scaleType="matrix"
+        android:src="@mipmap/msg_newnotice"
+        android:visibility="invisible"
+        android:clickable="false" />
+
+</FrameLayout>

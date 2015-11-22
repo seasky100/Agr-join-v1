@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>关注的项目</title>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/api-test.js"></script>
+    <script type="text/javascript" src="js/button.js"></script>
+
+    <script>
+	
+	function OnBtnClick(id, e){
+
+		
+	}
+
+	$(function(){
+			   
+		Button.loadAllButton({
+			onClick: OnBtnClick
+		});
+	});						    
+
+	
+
+    </script>
+
+    <style type="text/css">
+        *{
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        html, body {
+        word-break: normal;
+        word-wrap: break-word;
+        background: #EFF3F7;
+        font: 16px/1.5 'XinGothic-SinaWeibo', 'Microsoft Yahei', 'helvetica', 'arial';
+        color: #333;
+        font-weight:600;
+        }
+        .container {
+        position: fixed;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display:-webkit-box;
+        -webkit-box-align:center;
+        -webkit-box-pack: center;
+        }
+        .dialog {
+        width: 120px;
+        height: 100px;
+        color:white;
+        box-shadow: 0px 0px 2px #939393;
+        display:-webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-box-align:center;
+        -webkit-box-pack: start;
+        }
+        .icon{
+        width:90px;
+        height:30px;
+        margin:15px;
+        background-image:url(img/signup_choose.png);
+        background-repeat:no-repeat;
+        background-size:20px 20px;
+        background-position:center center;
+        }
+        .main{
+        background: rgba(0,0,0,0.7);
+        position:relative;
+        width:120px;
+        height:100px;
+        z-index:-2;
+        left:-120px;
+        /* border-radius: 8px;*/
+        }
+
+        .dialog .txt {
+        display: block;
+        color:#FFFFFF;
+        }
+    </style>
+
+</head>
+<body>
+<!-- 关注成功的dialog-->
+<div class="container">
+    <div class="dialog">
+        <div class="icon"></div>
+        <span class="txt">关注成功</span>
+    </div>
+    <div class="main"></div>
+</div>
+
+</body>
+</html>
+
