@@ -24,7 +24,7 @@ Page.setProfile = function(username, name, type) {
 	if(username == null || $.trim(username) == '') {
 		
 		$("#username").text('未登录');
-		$("#name").text('登录后享受更多特权');
+		$("#name").text('登录只需一步');
 	}else {
 		if(name == null || name.trim() == "")
 			name="完善资料";

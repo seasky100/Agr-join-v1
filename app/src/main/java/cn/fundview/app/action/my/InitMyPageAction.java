@@ -224,8 +224,8 @@ public class InitMyPageAction extends ABaseAction {
         } else {
 
             myIconPath = "../img/default-head-icon.jpg";
-            username = "未登录";
-            name = "登录后享受更多特权";
+            username = "";
+            name = "";
         }
 
     }
