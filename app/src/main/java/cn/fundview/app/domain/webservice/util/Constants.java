@@ -6,7 +6,7 @@ public class Constants {
      * 服务器使用的地址
      **/
 //    public static final String SERVER = "http://192.168.1.118:8080/api";
-    public static final String SERVER = "http://m.fundview.cn/api/";
+    public static final String SERVER = "http://115.29.107.164/api/";
 
 
 //    public static final String QR_CODE_IMG_PATH = "http://192.168.1.10:8080/static/";
@@ -88,9 +88,26 @@ public class Constants {
     public static final String GET_HOME_ACHV_LIST_URL = SERVER + "/achv/recommend.action";
 
     /**
+     * 首页企业需求列表
+     **/
+    public static final String GET_HOME_COMPANY_LIST_URL = SERVER + "/company/recommend.action";
+
+    /**
+     * 首页专家需求列表
+     **/
+    public static final String GET_HOME_EXPERT_LIST_URL = SERVER + "/expert/recommend.action";
+
+    /**
+     * 首页产品需求列表
+     **/
+    public static final String GET_HOME_PRODUCT_LIST_URL = SERVER + "/product/recommend.action";
+
+
+    /**
      * 首页技术需求列表
      **/
     public static final String GET_HOME_REQU_LIST_URL = SERVER + "/requ/recommend.action";
+
 
 
     /**
@@ -131,10 +148,15 @@ public class Constants {
     public static final String GET_ORG_LIST_URL = SERVER + "/kyorg/list.action";
 
     /**
+     * 融资项目
+     */
+    public static final String GET_FUND_PROJ_LIST_URL = SERVER + "/fund/list.action";
+    public static final String GET_FUND_PROJ_DETAIL_URL = SERVER + "/fund/detail.action";
+
+    /**
      * 成果/需求的收藏和取消收藏
      * 参数是 favoriteId,favoriteType,beFavoriteId,beFavoriteType
      */
-
     public static final String ADD_FAVORITE_URL = SERVER + "/account/favorite/add.action";
     public static final String CANCEL_FAVORITE_URL = SERVER + "/account/favorite/delete.action";
     public static final String FAVORITE_LIST_URL = SERVER + "/account/favorite/list.action";
@@ -164,5 +186,6 @@ public class Constants {
     public static final int REQU_ITEM_HEIGHT = 83;
     public static final int PRODUCT_ITEM_HEIGHT = 83;
     public static final int ORG_ITEM_HEIGHT = 65;//机构
+    public static final int PROJECT_ITEM_HEIGHT = 87;//融资项目
 
 }

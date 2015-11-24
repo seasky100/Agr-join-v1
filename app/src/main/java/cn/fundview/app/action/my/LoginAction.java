@@ -14,7 +14,7 @@ import cn.fundview.app.domain.model.UserInfor;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.tool.Constants;
-import cn.fundview.app.tool.InstallationId;
+import cn.fundview.app.tool.Installation;
 import cn.fundview.app.tool.PreferencesUtils;
 import cn.fundview.app.tool.StringUtils;
 import cn.fundview.app.tool.json.JSONTools;
@@ -96,7 +96,7 @@ public class LoginAction extends ABaseAction {
                     userInfor.setAccount(json.getString("username"));
                     userInfor.setAuth(json.getBoolean("isAuth"));
                     userInfor.setId(json.getInt("id"));
-                    userInfor.setDeviceId(InstallationId.getDriverId(context));
+                    userInfor.setDeviceId(Installation.getDriverId(context));
                     DaoFactory.getInstance(context).getUserInforDao().saveOrUpdate(userInfor);
                     if (listener != null) {
 

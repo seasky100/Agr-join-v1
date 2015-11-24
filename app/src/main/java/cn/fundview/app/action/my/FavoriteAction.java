@@ -1,24 +1,18 @@
 package cn.fundview.app.action.my;
 
 import android.content.Context;
-import android.content.Intent;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import cn.fundview.app.action.ABaseAction;
-import cn.fundview.app.activity.my.LoginActivity;
 import cn.fundview.app.domain.dao.DaoFactory;
-import cn.fundview.app.domain.model.AttentUser;
-import cn.fundview.app.domain.model.Company;
-import cn.fundview.app.domain.model.Expert;
 import cn.fundview.app.domain.model.Favorite;
-import cn.fundview.app.domain.model.UserInfor;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.tool.Constants;
-import cn.fundview.app.tool.InstallationId;
+import cn.fundview.app.tool.Installation;
 import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.PreferencesUtils;
 import cn.fundview.app.tool.json.JSONTools;
@@ -65,7 +59,7 @@ public class FavoriteAction extends ABaseAction {
     protected void doAsynchHandle() {
 
         Integer accountId = PreferencesUtils.getInt(context, Constants.ACCOUNT_ID);//当前登录用户的id
-        String deviceId = InstallationId.getDriverId(context);//设备id
+        String deviceId = Installation.getDriverId(context);//设备id
 
         Map<String, String> param = new HashMap<>();
         if (this.favoriteStatus == 1) {

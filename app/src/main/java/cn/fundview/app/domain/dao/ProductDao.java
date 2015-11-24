@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.fundview.app.domain.model.Company;
+import cn.fundview.app.domain.model.Expert;
 import cn.fundview.app.domain.model.Product;
 import cn.fundview.app.domain.model.Requ;
 
@@ -87,5 +88,20 @@ public class ProductDao extends BaseDao<Product> {
         return 0;
     }
 
+    /**
+     * 查询推荐产品 根据更新时间排序
+     *
+     * @param size 查询的个数
+     * @return
+     */
+    public List<Product> getRecommendList(int size) {
+
+        try {
+            return dbUtils.findAll(Selector.from(Product.class).where("recommend", "=", 1).orderBy("updateDate", true).offset(0).limit(size));
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

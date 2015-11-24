@@ -114,4 +114,20 @@ public class ExpertDao extends BaseDao<Expert> {
         return true;
     }
 
+    /**
+     * 查询推荐需求 根据更新时间排序
+     *
+     * @param size 查询的个数
+     * @return
+     */
+    public List<Expert> getRecommendList(int size) {
+
+        try {
+            return dbUtils.findAll(Selector.from(Expert.class).where("recommend_num", "=", 1).orderBy("update_date", true).offset(0).limit(size));
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

@@ -1,4 +1,21 @@
-package cn.fundview.app.service;
+package cn.fundview.app.action.global;
+
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Binder;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+import android.util.Log;
+import android.util.Xml;
+import android.widget.Toast;
+
+import org.xmlpull.v1.XmlPullParser;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,36 +30,23 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.xmlpull.v1.XmlPullParser;
-
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.app.Service;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Binder;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.Message;
-import android.util.Log;
-import android.util.Xml;
-import android.widget.Toast;
-
 import cn.fundview.app.tool.Constants;
 import cn.fundview.app.tool.DeviceConfig;
 import cn.fundview.app.tool.Installation;
 
 /**
- * 后台服务,判断应用是否需要更新
+ * 项目名称：Agr-join-v1
+ * 类描述： 更新app
+ * 创建人：lict
+ * 创建时间：2015/11/24 0024 上午 11:43
+ * 修改人：lict
+ * 修改时间：2015/11/24 0024 上午 11:43
+ * 修改备注：
  */
-public class UpdateService extends Service {
+public class UpdateAppAction{
 
-    public IBinder updateAppBinder;
     private Context context;
+    private int versionCode;
     private static final String VERISON_URL = Constants.DOWN_SERVICE;
     private static final String APK_URL = Constants.APK_DOWN_PATH;
 
@@ -80,41 +84,34 @@ public class UpdateService extends Service {
                     file1.delete();
                 }
 
+            }else if (msg.what == 4) {
+
+                // 当前已是最新版本
+                Toast.makeText(context, "当前已是最新版本", Toast.LENGTH_LONG)
+                        .show();
             }
         }
     };
 
-    @Override
-    public IBinder onBind(Intent intent) {
-        // TODO Auto-generated method stub
-        Log.d(Constants.TAG,
-                "------------------UpdateService  onBind------------------------");
+    public UpdateAppAction(Context context) {
 
-        if (updateAppBinder == null) {
-
-            updateAppBinder = new UpdataAppBinder();
-        }
-        return updateAppBinder;
+        this.context = context;
     }
 
-    public class UpdataAppBinder extends Binder {
+    public void execute() {
 
-        public UpdateService getService() {
+        versionCode = Installation.getVersionCode(context);
 
-            return UpdateService.this;
-        }
+        down();       //异步处理
     }
 
-    public void down(Context context1) {
+    private void down() {
 
-        System.out.println("下载...");
-        this.context = context1;
         new Thread(new Runnable() {
 
             @Override
             public void run() {
                 // TODO Auto-generated method stub
-
                 startUpdateApp(context);
             }
         }).start();
@@ -125,8 +122,6 @@ public class UpdateService extends Service {
 
         if (downFile(VERISON_URL, DeviceConfig.getSysPath(context)
                 + Constants.VERSION_PATH)) {
-            System.out.println(DeviceConfig.getSysPath(context) + Constants.VERSION_PATH);
-            System.out.println("下载完成...");
             handleVersionXmlData(context);
         }
     }
@@ -207,7 +202,6 @@ public class UpdateService extends Service {
                         return false;
                     } else {
 
-                        System.out.println("下载完成, app 的大小是 : " + file.length());
                         return true;
                     }
                 } else {
@@ -267,6 +261,9 @@ public class UpdateService extends Service {
 
                             handler.sendEmptyMessage(1);
                         }
+                    }else{
+
+                        handler.sendEmptyMessage(4);        //当前意识最新版本
                     }
                 }
             }
@@ -372,7 +369,7 @@ public class UpdateService extends Service {
 
         new AlertDialog.Builder(context).setTitle("更新提示")
                 .setMessage("最新的\"科企对接应用\"更新了, 快去更新吧")
-                .setPositiveButton("确定", new OnClickListener() {
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -387,7 +384,7 @@ public class UpdateService extends Service {
 
         new AlertDialog.Builder(context).setTitle("安装提示")
                 .setMessage("最新的应用已经下载完成,请安装")
-                .setPositiveButton("确定", new OnClickListener() {
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -438,5 +435,4 @@ public class UpdateService extends Service {
             }
         }).start();
     }
-
 }

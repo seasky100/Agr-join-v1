@@ -17,7 +17,7 @@ import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.tool.Constants;
 import cn.fundview.app.tool.DeviceConfig;
 import cn.fundview.app.tool.FileTools;
-import cn.fundview.app.tool.InstallationId;
+import cn.fundview.app.tool.Installation;
 import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.NetWorkConfig;
 import cn.fundview.app.tool.PreferencesUtils;
@@ -140,7 +140,7 @@ public class InitProfileAction extends ABaseAction {
                         if (userInfor.getType() == UserInfor.PERSON_TYPE) {
                             userInfor.setAddr(userInfor.getAddress());
                         }
-                        userInfor.setDeviceId(InstallationId.getDriverId(context));
+                        userInfor.setDeviceId(Installation.getDriverId(context));
                         userInfor.setAccount(PreferencesUtils.getString(context, Constants.ACCOUNT_KEY));//设置登录账号
                         userInfor.setPassword(PreferencesUtils.getString(context, Constants.PASSWORD_KEY));//设置用户密码
                         userInfor.setType(PreferencesUtils.getInt(context, Constants.ACCOUNT_TYPE_KEY));//设置用户类型
@@ -196,7 +196,7 @@ public class InitProfileAction extends ABaseAction {
                             userInfor.setAddr(userInfor.getAddress());
                         }
 
-                        userInfor.setDeviceId(InstallationId.getDriverId(context));
+                        userInfor.setDeviceId(Installation.getDriverId(context));
                         userInfor.setAccount(PreferencesUtils.getString(context, Constants.ACCOUNT_KEY));//设置登录账号
                         userInfor.setPassword(PreferencesUtils.getString(context, Constants.PASSWORD_KEY));//设置用户密码
                         userInfor.setType(PreferencesUtils.getInt(context, Constants.ACCOUNT_TYPE_KEY));//设置用户类型

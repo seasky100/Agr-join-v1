@@ -28,7 +28,7 @@ ExpertItem.prototype.init = function() {
 
 	if(ExpertItem.template == null) {
 
-		ExpertItem.template = $("#template").html();
+		ExpertItem.template = $("#expert-template").html();
 	}
 	if(this.logo == null) {
 		

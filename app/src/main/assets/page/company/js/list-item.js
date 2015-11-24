@@ -23,13 +23,13 @@ var CompItem = function(compId, logo, compName, trade, expoNo, area, oldLogo, la
      	this.init();
      };
      //行业：关注人
-     CompItem.template = $("#template").html(); // 视图模板
+     CompItem.template = $("#company-template").html(); // 视图模板
 
      CompItem.prototype.init = function() {
 
      	if(CompItem.template == null) {
 
-     		CompItem.template = $("#template").html();
+     		CompItem.template = $("#company-template").html();
      	}
 	this.view = this.container.append(CompItem.template).children().last();
 	this.view.attr("id", this.id);

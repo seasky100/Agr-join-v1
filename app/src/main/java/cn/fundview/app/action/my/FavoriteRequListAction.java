@@ -10,17 +10,15 @@ import java.util.List;
 import java.util.Map;
 
 import cn.fundview.app.action.ABaseAction;
-import cn.fundview.app.domain.dao.AchvDao;
 import cn.fundview.app.domain.dao.DaoFactory;
 import cn.fundview.app.domain.dao.FavoriteDao;
 import cn.fundview.app.domain.dao.RequDao;
-import cn.fundview.app.domain.model.Achv;
 import cn.fundview.app.domain.model.Favorite;
 import cn.fundview.app.domain.model.Requ;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.tool.Constants;
-import cn.fundview.app.tool.InstallationId;
+import cn.fundview.app.tool.Installation;
 import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.PreferencesUtils;
 import cn.fundview.app.tool.json.JSONTools;
@@ -93,7 +91,7 @@ public class FavoriteRequListAction extends ABaseAction {
 
                                         //添加
                                         Favorite favorite1 = new Favorite();
-                                        favorite1.setDeviceId(InstallationId.getDriverId(context));
+                                        favorite1.setDeviceId(Installation.getDriverId(context));
                                         favorite1.setAccountId(PreferencesUtils.getInt(context, Constants.ACCOUNT_ID));
                                         favorite1.setAccountType(PreferencesUtils.getInt(context, Constants.ACCOUNT_TYPE_KEY));
                                         favorite1.setFavoriteDate(item.getFavoriteTime());

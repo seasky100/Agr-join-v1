@@ -30,6 +30,7 @@ import java.util.Map;
 import cn.fundview.R;
 import cn.fundview.app.CaptureActivity;
 import cn.fundview.app.action.home.IndexAction;
+import cn.fundview.app.activity.FundProject.FundProjectListActivity;
 import cn.fundview.app.activity.achv.AchvListActivity;
 import cn.fundview.app.activity.company.CompListActivity;
 import cn.fundview.app.activity.expert.ExpertListActivity;
@@ -256,6 +257,12 @@ public class HomeView extends ABaseWebView {
     @JavascriptInterface
     public void openProductList() {
         Intent intent = new Intent(context, ProductListActivity.class);
+        context.startActivity(intent);
+    }
+
+    @JavascriptInterface
+    public void openFundProjectList() {
+        Intent intent = new Intent(context, FundProjectListActivity.class);
         context.startActivity(intent);
     }
 

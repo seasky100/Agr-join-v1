@@ -1,9 +1,5 @@
 var SDK = window.sdk;
-var FILE = window.file;
-var fileLoader = new FileLoader();
 var Page = function(){};
-
-
 
 Page.showLoading = function(){
 
@@ -15,16 +11,10 @@ Page.hideLoading = function(){
 	Loading.hide();
 };
 //专家名称 + 职称 、单位 + 部门 、行业、地区
-Page.addExpert = function(expertId, logo, expertName, professionalTitle, trade, /*workUnit, dept, */area, updateDate, oldFileName){
-	if(area == null) {
-		
-		area = "";
-	}
+Page.addItem = function(id, logo, name, jd, compName, invest){
 
-	new ExpertItem(expertId, logo, expertName, professionalTitle, trade,/*workUnit, dept,  */area, updateDate,oldFileName, $("#expertPanel"));
+	new FundItem(id, logo, name, jd, compName, invest, $("#panel"));
 };
-
-
 
 Page.hintError = function(visble){
 	
@@ -34,18 +24,6 @@ Page.hintError = function(visble){
 		$(".error").hide();
 };
 
-
-/**
- *调用action 下载完成之后调用代理对象的方法替换默认图片
-*/
-Page.onFinishDownload = function(){
-	
-	// 调用委托类的更新方法
-	fileLoader.downloadingFile.deligate.onFileFinishLoad();
-	
-	// 继续下载文件
-	fileLoader.doTask();
-};
 
 $(function(){
 

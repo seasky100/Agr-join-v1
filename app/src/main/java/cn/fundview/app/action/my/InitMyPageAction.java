@@ -1,6 +1,5 @@
 package cn.fundview.app.action.my;
 
-import android.app.Activity;
 import android.content.Context;
 
 import com.alibaba.fastjson.JSON;
@@ -17,12 +16,11 @@ import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.tool.Constants;
 import cn.fundview.app.tool.DeviceConfig;
 import cn.fundview.app.tool.FileTools;
-import cn.fundview.app.tool.InstallationId;
+import cn.fundview.app.tool.Installation;
 import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.NetWorkConfig;
 import cn.fundview.app.tool.PreferencesUtils;
 import cn.fundview.app.tool.StringUtils;
-import cn.fundview.app.tool.ToastUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
 
@@ -143,7 +141,7 @@ public class InitMyPageAction extends ABaseAction {
                             if (profile.getType() == UserInfor.PERSON_TYPE) {
                                 profile.setAddr(profile.getAddress());
                             }
-                            profile.setDeviceId(InstallationId.getDriverId(context));
+                            profile.setDeviceId(Installation.getDriverId(context));
                             profile.setAccount(PreferencesUtils.getString(context, Constants.ACCOUNT_KEY));//设置登录账号
                             profile.setPassword(PreferencesUtils.getString(context, Constants.PASSWORD_KEY));//设置用户密码
                             profile.setType(PreferencesUtils.getInt(context, Constants.ACCOUNT_TYPE_KEY));//设置用户类型
@@ -197,7 +195,7 @@ public class InitMyPageAction extends ABaseAction {
                                 profile.setAddr(profile.getAddress());
                             }
 
-                            profile.setDeviceId(InstallationId.getDriverId(context));
+                            profile.setDeviceId(Installation.getDriverId(context));
                             profile.setAccount(PreferencesUtils.getString(context, Constants.ACCOUNT_KEY));//设置登录账号
                             profile.setPassword(PreferencesUtils.getString(context, Constants.PASSWORD_KEY));//设置用户密码
                             profile.setType(PreferencesUtils.getInt(context, Constants.ACCOUNT_TYPE_KEY));//设置用户类型
