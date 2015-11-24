@@ -65,7 +65,9 @@ public class DbHelper {
                                 db.execNonQuery("alter table t_product add  comp_name TEXT ");
                                 db.execNonQuery("alter table t_product add  price TEXT ");
                                 db.execNonQuery("alter table t_product add  unit TEXT ");
+                                db.execNonQuery("alter table t_product add  recommend TEXT");
                             }
+
                             Toast.makeText(context,"数据库更新升级完成...",Toast.LENGTH_LONG).show();
                         } catch (DbException e) {
                             ToastUtils.show(context, "数据库更新升级失敗..." + e.getMessage());
