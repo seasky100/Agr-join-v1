@@ -40,8 +40,6 @@ public class DbHelper {
                     public void onUpgrade(DbUtils db, final int oldVersion, final int newVersion) {
 
                         Log.d(Constants.TAG, "数据库升级...");
-
-                        Toast.makeText(context, "当前版本是" + oldVersion,3000).show();
                         //个人中心 添加了企业类型字段
                         try {
 
@@ -74,7 +72,7 @@ public class DbHelper {
                             }
                             Toast.makeText(context,"数据库更新升级完成...",Toast.LENGTH_LONG).show();
                         } catch (DbException e) {
-                            Toast.makeText(context, "数据库更新升级失敗..." + e.getMessage(),3000).show();
+                            Toast.makeText(context, "数据库更新升级失敗..." + e.getMessage(),6000).show();
                             //ToastUtils.show(context, "数据库更新升级失敗..." + e.getMessage());
                             Log.e(Constants.TAG, e.getMessage());
                             e.printStackTrace();
