@@ -18,9 +18,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        debug {
-            debuggable true
-        }
+
     }
     sourceSets.main {
         jniLibs.srcDirs = ['libs']  // <-- Set your folder here!
@@ -46,5 +44,4 @@ dependencies {
     /*
         compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
     */
-    compile files('libs/fundview-dex2jar.jar')
 }
