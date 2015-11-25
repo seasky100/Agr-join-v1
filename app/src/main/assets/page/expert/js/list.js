@@ -21,7 +21,7 @@ Page.addExpert = function(expertId, logo, expertName, professionalTitle, trade, 
 		area = "";
 	}
 
-	new ExpertItem(expertId, logo, expertName, professionalTitle, trade,/*workUnit, dept,  */area, updateDate,oldFileName, $("[sid=expertPanel]"));
+	new ExpertItem(expertId, logo, expertName, professionalTitle, trade,/*workUnit, dept,  */area, updateDate,oldFileName, $("#expertPanel"));
 };
 
 

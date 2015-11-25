@@ -184,7 +184,7 @@ header {
 	margin:6px 0px 0px 0px;
 	background:#fff; 
 	font-size:14px;word-wrap: break-word;
-word-break: normal;
+	word-break: normal;
 }
 .ach_text{ line-height:21px; padding:4px 8px 0 8px; font-size:14px; background:#fff; margin-bottom:6px;word-wrap: break-word;
 word-break: normal;}

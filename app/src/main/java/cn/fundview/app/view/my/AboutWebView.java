@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.webkit.JavascriptInterface;
 
+import cn.fundview.app.action.global.UpdateAppAction;
 import cn.fundview.app.view.ABaseWebView;
 
 public class AboutWebView extends ABaseWebView {
@@ -20,31 +21,14 @@ public class AboutWebView extends ABaseWebView {
 
 
     }
-
-
     /**
-     * 打开新页面
-     **/
+     * 检查更新
+     */
     @JavascriptInterface
-    public void openPage(String page) {
+    public void update() {
 
-        Intent intent = null;
-
-        intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(page));
-
-        context.startActivity(intent);
+        UpdateAppAction action = new UpdateAppAction(context);
+        action.execute();
     }
 
-
-    @Override
-    public void onClickMiddle() {
-
-    }
-
-    @Override
-    public void onClickRight() {
-
-    }
 }

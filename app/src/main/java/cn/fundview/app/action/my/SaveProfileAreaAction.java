@@ -102,8 +102,6 @@ public class SaveProfileAreaAction extends ABaseAction {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
         }
     }
 

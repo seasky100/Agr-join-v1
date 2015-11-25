@@ -3,6 +3,7 @@ package cn.fundview.app.domain.model;
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.NoAutoIncrement;
 import com.lidroid.xutils.db.annotation.Table;
+import com.lidroid.xutils.db.annotation.Transient;
 
 /**
  * Created by Administrator on 2015/10/31 0031.
@@ -39,6 +40,9 @@ public class Product {
 
     @Column(column = "unit")
     private String unit;
+
+    @Column(column = "recommend")
+    private int recommend;
 
     public int getId() {
         return id;
@@ -112,6 +116,14 @@ public class Product {
         this.unit = unit;
     }
 
+    public int getRecommend() {
+        return recommend;
+    }
+
+    public void setRecommend(int recommend) {
+        this.recommend = recommend;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -124,6 +136,7 @@ public class Product {
                 ", compName='" + compName + '\'' +
                 ", price=" + price +
                 ", unit='" + unit + '\'' +
+                ", recommend=" + recommend +
                 '}';
     }
 }

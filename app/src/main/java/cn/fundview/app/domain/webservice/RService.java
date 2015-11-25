@@ -13,11 +13,13 @@ import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -88,7 +90,6 @@ public class RService {
                     return list;
                 }
             }
-
         } catch (Exception e1) {
             e1.printStackTrace();
 //            throw new Exception(e1);
@@ -253,65 +254,6 @@ public class RService {
         }
     }
 
-//    /**
-//     * 根据最后资讯的Id获取列表
-//     **/
-//    public static List<FundviewInfor> getfundviewInforList(Integer lastInforId) {
-//        try {
-//            // 解析json数据
-//            ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-//            byte[] data = new byte[1024];
-//            int len = 0;
-//
-//            FileTools tools = new FileTools();
-//            Map<String, String> textParams = new HashMap<String, String>();
-//            textParams.put("id", String.valueOf(lastInforId));
-//            tools.setTextParams(textParams);
-//            InputStream inputStream = tools
-//                    .doGet(Constants.GET_FUNDVIEW_INFOR_LIST_URL);
-//            while ((len = inputStream.read(data)) != -1) {
-//                outStream.write(data, 0, len);
-//            }
-//            inputStream.close();
-//
-//            // Log.w(TAG, new String(outStream.toByteArray()));
-//            List<FundviewInfor> list = JSONTools.parseListJson(new String(outStream
-//                    .toByteArray()), FundviewInfor.class);
-//            return list;
-//        } catch (Exception e1) {
-//            e1.printStackTrace();
-//            return null;
-//        }
-//    }
-
-    // /** 根据最后资讯的最小Id获取历史列表 **/
-    // public List<FindviewInfor> getFindviewInforHistoryList(String dtime) {
-    // try {
-    // // 解析json数据
-    // ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-    // byte[] data = new byte[1024];
-    // int len = 0;
-    //
-    // FileTools tools = new FileTools();
-    // Map<String, String> textParams = new HashMap<String, String>();
-    // textParams.put("dtime", dtime);
-    // tools.setTextParams(textParams);
-    // InputStream inputStream = tools
-    // .doGet(Constants.FINDVIEW_INFOR_HISTORY_LIST_SERVER_URL);
-    // while ((len = inputStream.read(data)) != -1) {
-    // outStream.write(data, 0, len);
-    // }
-    // inputStream.close();
-    // List<FindviewInfor> list = JSONTools
-    // .parseFindviewInforListJosn(new String(outStream
-    // .toByteArray()));
-    // return list;
-    // } catch (Exception e1) {
-    // e1.printStackTrace();
-    // return null;
-    // }
-    // }
-
     /**
      * 上传用户的头像信息
      **/
@@ -460,67 +402,4 @@ public class RService {
         }
         return null;
     }
-
-    /**
-     * 用户登录
-     **/
-//    public static UserInfor login(String username, String password) {
-//
-//
-//        RequestParams params = new RequestParams();
-//
-//        params.addQueryStringParameter("username", username);
-//        params.addQueryStringParameter("password", password);
-//
-//        HttpUtils http = new HttpUtils();
-//        http.send(HttpRequest.HttpMethod.POST,
-//                Constants.ACCOUNT_LOGIN_URL,
-//                params,
-//                new RequestCallBack<String>() {
-//
-//                    @Override
-//                    public void onStart() {
-//
-//                    }
-//
-//                    @Override
-//                    public void onLoading(long total, long current, boolean isUploading) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onSuccess(ResponseInfo<String> responseInfo) {
-//                        result = responseInfo.result;
-//                    }
-//
-//                    @Override
-//                    public void onFailure(HttpException error, String msg) {
-//
-//                        result = "error";
-//                    }
-//                });
-//
-//        return result;
-//    }
-    public static UserInfor getUserInfor(String uid) {
-
-        return null;
-    }
-
-    /**
-     * 分页查询 关注列表 根据关注时间排序
-     *
-     * @param type     被关注者类型
-     * @param uid      关注者id
-     * @param page     当前页数
-     * @param pageSize 每页显示的条数
-     * @return 关注者列表
-     */
-    public static List<AttentUser> getMyAttentUser(int type, Integer uid, int page, int pageSize) {
-
-        List<AttentUser> list = new ArrayList<>();
-
-        return list;
-    }
-
 }

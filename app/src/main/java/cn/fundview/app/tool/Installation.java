@@ -1,18 +1,34 @@
 package cn.fundview.app.tool;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
+import java.util.Map;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+
+import cn.fundview.app.view.AsyncTaskCompleteListener;
+
 /**
  * 根据手机设备的各种硬件信息得到一个唯一码,作为用户的id
  */
-public class InstallationId {
+public class Installation {
 
     public static final String DRIVER_ID_LABEL = "driverId";
 
@@ -86,6 +102,21 @@ public class InstallationId {
             phone = phone.substring(3);
         }
         return phone;
+    }
+
+    // 获得版本文件code
+    public static Integer getVersionCode(Context context) {
+
+        int versionCode = 0;
+        try {
+            versionCode = context.getPackageManager().getPackageInfo(
+                    "cn.fundview", 0).versionCode;
+
+        } catch (PackageManager.NameNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return versionCode;
     }
 
 }

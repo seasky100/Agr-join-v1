@@ -40,40 +40,75 @@ public class DbHelper {
                     public void onUpgrade(DbUtils db, final int oldVersion, final int newVersion) {
 
                         Log.d(Constants.TAG, "数据库升级...");
-
-
                         //个人中心 添加了企业类型字段
                         try {
-
-                            if(oldVersion <= 1) {
-
-                                //第一次更新
-                                db.execNonQuery("alter table t_user add  comp_type INTEGER ");
-                                db.execNonQuery("alter table t_user add  qr_code_img TEXT ");
-                            }
-
-                            if(oldVersion <= 2) {
-
-                                //第二次更新
-                                db.execNonQuery("create table t_product(id integer primary key, comp_id integer,logo text, local_logo text, name text, updateDate text);");
-                                db.execNonQuery("alter table t_user add  area_ids TEXT ");
-                            }
-
-                            if(oldVersion <= 3) {
-
-                                //第二次更新
-                                db.execNonQuery("alter table t_product add  comp_name TEXT ");
-                                db.execNonQuery("alter table t_product add  price TEXT ");
-                                db.execNonQuery("alter table t_product add  unit TEXT ");
-                                db.execNonQuery("alter table t_product add  recommend TEXT");
-                            }
-
-                            Toast.makeText(context,"数据库更新升级完成...",Toast.LENGTH_LONG).show();
-                        } catch (DbException e) {
-                            ToastUtils.show(context, "数据库更新升级失敗..." + e.getMessage());
-                            Log.e(Constants.TAG, e.getMessage());
-                            e.printStackTrace();
+                            db.execNonQuery("alter table t_user add  comp_type INTEGER ");
+                        } catch (DbException e1) {
+                            e1.printStackTrace();
                         }
+                        try {
+                            db.execNonQuery("alter table t_user add  qr_code_img TEXT ");
+                        } catch (DbException e1) {
+                            e1.printStackTrace();
+                        }
+                        try {
+                            db.execNonQuery("alter table t_user add  area_ids TEXT ");
+                        } catch (DbException e1) {
+                            e1.printStackTrace();
+                        }
+                        try {
+                            db.createTableIfNotExist(Product.class);
+                            db.execNonQuery("alter table t_product add  comp_name TEXT ");
+                        } catch (DbException e1) {
+                            e1.printStackTrace();
+                        }
+                        try {
+                            db.execNonQuery("alter table t_product add  price TEXT ");
+                        } catch (DbException e1) {
+                            e1.printStackTrace();
+                        }
+                        try {
+                            db.execNonQuery("alter table t_product add  unit TEXT ");
+                        } catch (DbException e1) {
+                            e1.printStackTrace();
+                        }
+                        try {
+                            db.execNonQuery("alter table t_product add  recommend integer ");
+                        } catch (DbException e1) {
+                            e1.printStackTrace();
+                        }
+//                            if (oldVersion <= 1) {
+//
+//                                //第一次更新
+//                                db.execNonQuery("alter table t_user add  comp_type INTEGER ");
+//                                db.execNonQuery("alter table t_user add  qr_code_img TEXT ");
+//                            }
+//
+//                            db.createTableIfNotExist(Product.class);
+//                            if (oldVersion <= 2) {
+//
+//                                //第二次更新
+////                                db.execNonQuery("create table t_product(id integer primary key, comp_id integer,logo text, local_logo text, name text, updateDate text);");
+//                                db.execNonQuery("alter table t_user add  area_ids TEXT ");
+//                            }
+//
+//                            if (oldVersion <= 3) {
+//
+//                                //第三次更新
+//                                if (db.tableIsExist(Product.class)) {
+//                                    db.execNonQuery("alter table t_product add  comp_name TEXT ");
+//                                    db.execNonQuery("alter table t_product add  price TEXT ");
+//                                    db.execNonQuery("alter table t_product add  unit TEXT ");
+//                                    db.execNonQuery("alter table t_product add  recommend integer ");
+//                                }
+//                            }
+//                            Toast.makeText(context, "数据库更新升级完成...", Toast.LENGTH_LONG).show();
+//                        } catch (DbException e) {
+//                            Toast.makeText(context, "数据库更新升级失敗..." + e.getMessage(), Toast.LENGTH_LONG).show();
+//                            //ToastUtils.show(context, "数据库更新升级失敗..." + e.getMessage());
+//                            Log.e(Constants.TAG, e.getMessage());
+//                            e.printStackTrace();
+//                        }
 
                     }
                 });

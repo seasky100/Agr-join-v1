@@ -127,7 +127,7 @@ public class RequDao extends BaseDao<Requ> {
     public List<Requ> getRecommendList(int size) {
 
         try {
-            return dbUtils.findAll(Selector.from(Requ.class).where("recommend", "=", 1).orderBy("update_date", true));
+            return dbUtils.findAll(Selector.from(Requ.class).where("recommend", "=", 1).orderBy("update_date", true).offset(0).limit(size));
         } catch (DbException e) {
             e.printStackTrace();
         }

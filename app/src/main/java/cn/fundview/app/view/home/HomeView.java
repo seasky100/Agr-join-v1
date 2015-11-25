@@ -30,8 +30,12 @@ import java.util.Map;
 import cn.fundview.R;
 import cn.fundview.app.CaptureActivity;
 import cn.fundview.app.action.home.IndexAction;
+import cn.fundview.app.activity.FundProject.FundProjectDetailActivity;
+import cn.fundview.app.activity.FundProject.FundProjectListActivity;
 import cn.fundview.app.activity.achv.AchvListActivity;
 import cn.fundview.app.activity.company.CompListActivity;
+import cn.fundview.app.activity.company.CompanyProductDetailActivity;
+import cn.fundview.app.activity.expert.DetailActivity;
 import cn.fundview.app.activity.expert.ExpertListActivity;
 import cn.fundview.app.activity.history.SearchHistoryActivity;
 import cn.fundview.app.activity.org.OrgListActivity;
@@ -196,6 +200,32 @@ public class HomeView extends ABaseWebView {
         context.startActivity(intent);
     }
 
+    /**
+     * 打开企业详细页面
+     **/
+    @JavascriptInterface
+    public void openCompDetail(int compId, String compName, String lastModify) {
+
+        Intent intent = new Intent(context, cn.fundview.app.activity.company.DetailActivity.class);
+        intent.putExtra("compName", compName);
+        intent.putExtra("compId", compId);
+        intent.putExtra("lastModify", lastModify);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 打开专家详细页面
+     **/
+    @JavascriptInterface
+    public void openExpertDetail(int expertId, String expertName, String lastModify) {
+
+        Intent intent = new Intent(context, DetailActivity.class);
+        intent.putExtra("expertName", expertName);
+        intent.putExtra("expertId", expertId);
+        intent.putExtra("lastModify", lastModify);
+        context.startActivity(intent);
+    }
+
     @JavascriptInterface
     public void openAchvDetail(int achvId, String name, String lastModify) {
 
@@ -218,6 +248,36 @@ public class HomeView extends ABaseWebView {
         intent.putExtra("requName", requName);
         intent.putExtra("requId", requId);
         intent.putExtra("lastModify", lastModify);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 打开产品详细
+     * @param productId     产品id
+     * @param productName   产品名称
+     * @param lastModify    更新时间
+     */
+    @JavascriptInterface
+    public void openProductDetail(int productId, String productName, String lastModify) {
+
+        Intent intent = new Intent(context, CompanyProductDetailActivity.class);
+        intent.putExtra("productName", productName);
+        intent.putExtra("productId", productId);
+        intent.putExtra("lastModify", lastModify);
+        context.startActivity(intent);
+    }
+
+
+
+    /**
+     * 加载更多项目
+     **/
+    @JavascriptInterface
+    public void openDetail(int id, String name) {
+
+        Intent intent = new Intent(context, FundProjectDetailActivity.class);
+        intent.putExtra("id", id);
+        intent.putExtra("name", name);
         context.startActivity(intent);
     }
 
@@ -256,6 +316,12 @@ public class HomeView extends ABaseWebView {
     @JavascriptInterface
     public void openProductList() {
         Intent intent = new Intent(context, ProductListActivity.class);
+        context.startActivity(intent);
+    }
+
+    @JavascriptInterface
+    public void openFundProjectList() {
+        Intent intent = new Intent(context, FundProjectListActivity.class);
         context.startActivity(intent);
     }
 

@@ -8,11 +8,8 @@ import android.webkit.JavascriptInterface;
 
 import cn.fundview.app.action.my.ForgetPasswordPhoneCodeAction;
 import cn.fundview.app.action.my.ForgetPasswordResetPasswordAction;
-import cn.fundview.app.action.my.PhoneCodeAction;
-import cn.fundview.app.action.my.RegistAction;
 import cn.fundview.app.activity.my.LoginActivity;
-import cn.fundview.app.decoding.Intents;
-import cn.fundview.app.tool.InstallationId;
+import cn.fundview.app.tool.Installation;
 import cn.fundview.app.tool.PreferencesUtils;
 import cn.fundview.app.tool.ToastUtils;
 import cn.fundview.app.view.ABaseWebView;
@@ -32,7 +29,7 @@ public class ForgetPasswordView extends ABaseWebView implements AsyncTaskComplet
     public void init() {
 
         //默认读取手机号
-        this.loadUrl("javascript:Page.loadData('phone', '" + InstallationId.getPhone(context) + "')");
+        this.loadUrl("javascript:Page.loadData('phone', '" + Installation.getPhone(context) + "')");
     }
 
 

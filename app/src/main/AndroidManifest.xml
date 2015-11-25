@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.fundview" >
+    package="cn.fundview">
 
     <!-- 打电话权限 -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -28,7 +28,6 @@
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
@@ -46,10 +45,10 @@
         android:name=".app.tool.MyApp"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:theme="@style/FDTheme.Basic" >
+        android:theme="@style/FDTheme.Basic">
         <activity
             android:name=".app.activity.StartActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -108,9 +107,9 @@
         <activity
             android:name=".app.activity.org.DetailInfoActivity"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".app.activity.product.ProductListActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".app.activity.product.ProductListActivity"
+            android:screenOrientation="portrait" />
         <!-- 搜索历史 -->
         <activity
             android:name=".app.activity.history.SearchResultActivity"
@@ -132,7 +131,7 @@
         <!-- 我的 activity -->
         <activity
             android:name=".app.activity.my.LoginActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="cn.fundview.app.activity.my.login" />
             </intent-filter>
@@ -143,7 +142,7 @@
         <!-- 我的资料 -->
         <activity
             android:name=".app.activity.my.ProfileActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="cn.fundview.app.activity.my.profile" />
             </intent-filter>
@@ -227,7 +226,7 @@
 
         <service android:name=".app.service.UpdateService" />
 
-        <receiver android:name=".app.service.PackageAddEndReceiver" >
+        <receiver android:name=".app.service.PackageAddEndReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
@@ -246,7 +245,7 @@
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
 
@@ -268,7 +267,7 @@
         <service
             android:name="cn.jpush.android.service.PushService"
             android:enabled="true"
-            android:exported="false" >
+            android:exported="false">
             -
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTER" />
@@ -287,7 +286,7 @@
         <service
             android:name="cn.jpush.android.service.DaemonService"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true">
             -
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.DaemonService" />
@@ -301,8 +300,8 @@
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
             android:enabled="true"
-            android:exported="false" >
-            <intent-filter android:priority="1000" >
+            android:exported="false">
+            <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
 
                 <!-- Required 显示通知栏 -->
@@ -333,7 +332,7 @@
         <receiver
             android:name=".app.receiver.JPushReceiver"
             android:enabled="true"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTRATION" />
 
@@ -391,8 +390,9 @@
         <activity
             android:name=".app.activity.qrcode.KyorgDetailActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".app.activity.my.ForgetPasswordActivity" >
-        </activity>
+        <activity android:name=".app.activity.my.ForgetPasswordActivity"  android:screenOrientation="portrait" />
+        <activity android:name=".app.activity.FundProject.FundProjectListActivity"  android:screenOrientation="portrait" />
+        <activity android:name=".app.activity.FundProject.FundProjectDetailActivity" android:screenOrientation="portrait" />
     </application>
 
 </manifest>

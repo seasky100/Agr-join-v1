@@ -23,7 +23,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.Handler;
@@ -35,6 +34,7 @@ import android.widget.Toast;
 
 import cn.fundview.app.tool.Constants;
 import cn.fundview.app.tool.DeviceConfig;
+import cn.fundview.app.tool.Installation;
 
 /**
  * 后台服务,判断应用是否需要更新
@@ -170,21 +170,6 @@ public class UpdateService extends Service {
         }
     }
 
-    // 获得版本文件code
-    private Integer getVersionCode(Context context) {
-
-        int versionCode = 0;
-        try {
-            versionCode = context.getPackageManager().getPackageInfo(
-                    "cn.fundview", 0).versionCode;
-
-        } catch (NameNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return versionCode;
-    }
-
     private boolean downFile(String urlStr, String filePath) {
 
         boolean result = false;
@@ -270,7 +255,7 @@ public class UpdateService extends Service {
                 if (version != null) {
 
                     int versionCode = Integer.parseInt(version);
-                    if (versionCode > getVersionCode(context)) {
+                    if (versionCode > Installation.getVersionCode(context)) {
 
                         // 需要执行更新
                         if (isHavingFile(DeviceConfig.getSysPath(context) + Constants.APK_PATH)) {
@@ -408,18 +393,12 @@ public class UpdateService extends Service {
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
 
-                        if (installApp(DeviceConfig.getSysPath(context)
-                                + Constants.APK_PATH)) {
-
-                            // 删除下载的apk 文件
-//                            delFile(DeviceConfig.getSysPath(context)
-//                                    + Constants.APK_PATH);
-                        }
+                        installApp(DeviceConfig.getSysPath(context) + Constants.APK_PATH);
                     }
                 }).setNegativeButton("取消", null).show();
     }
 
-    //
+
     private boolean delFile(String filePath) {
 
         File file = new File(filePath);
@@ -450,16 +429,7 @@ public class UpdateService extends Service {
                 if (success) {
 
                     dialog.dismiss();
-                    if (installApp(DeviceConfig.getSysPath(context)
-                            + Constants.APK_PATH)) {
-
-//                        // 删除version.xml
-//                        delFile(DeviceConfig.getSysPath(context)
-//                                + Constants.VERSION_PATH);
-//                        // 删除apk
-//                        delFile(DeviceConfig.getSysPath(context)
-//                                + Constants.APK_PATH);
-                    }
+                    installApp(DeviceConfig.getSysPath(context)  + Constants.APK_PATH);
                 } else {
 
                     dialog.cancel();

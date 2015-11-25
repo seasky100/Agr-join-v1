@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
     <meta charset="utf-8">
@@ -7,39 +7,42 @@
     <meta name="format-detection" content="telephone=yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>搜索项目列表</title>
-
+    <title>项目列表</title>
     <link rel="stylesheet" type="text/css" href="../css/global.css">
     <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="../css/dialog.css">
     <link rel="stylesheet" type="text/css" href="css/list.css">
 
     <script type="text/javascript" src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/global.js"></script>
     <script type="text/javascript" src="../js/button.js"></script>
     <script type="text/javascript" src="../js/global.js"></script>
     <script type="text/javascript" src="../js/file-loader.js"></script>
+    <script type="text/javascript" src="../js/dialog.js"></script>
     <script type="text/javascript" src="../js/loading.js"></script>
     <script type="text/javascript" src="js/list-item.js"></script>
-    <script type="text/javascript" src="../home/js/achv-item.js"></script>
-    <script type="text/javascript" src="js/search-result.js"></script>
-    <!--
-    <script type="text/javascript" src="js/search-result-test.js"></script>
-    -->
-
+    <script type="text/javascript" src="js/list.js"></script>
 </head>
+
 <body>
 
-<!--行业专家列表 start-->
-<div id="search_list" sid="expertPanel">
+<div class="list" id="panel">
 
 </div>
-<!--行业专家列表 end-->
 
-<div class="error" style="display:none;">
-    <p>很遗憾，找不到您想要的项目。</p>
+<div class="switch" display="button" id="switch" style="display:none;">更多项目...</div>
+<div id="fund-template" style="display:none;">
+
+    <div class="item">
+        <div class="item_img"><img src="" sid="logo"></div>
+        <div class="content">
+            <div class="ming" sid="name">name</div>
+            <div class="trade" >所属阶段：<span sid="jd">水产品冷冻加工</span></div>
+            <div class="price_owner">
+                <p class="owner" sid="ownerName">正阳食品有限公司</p>
+                <p class="price" sid="invest">￥1230</p>
+            </div>
+        </div>
+    </div>
 </div>
-
-
 </body>
 </html>
-

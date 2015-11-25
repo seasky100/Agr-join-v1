@@ -2,17 +2,12 @@ package cn.fundview.app.view.my;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.util.AttributeSet;
 import android.webkit.JavascriptInterface;
-import android.widget.Toast;
 
-import cn.fundview.app.action.my.LoginAction;
 import cn.fundview.app.action.my.PhoneCodeAction;
 import cn.fundview.app.action.my.RegistAction;
-import cn.fundview.app.activity.MainActivity;
-import cn.fundview.app.domain.webservice.util.Constants;
-import cn.fundview.app.tool.InstallationId;
+import cn.fundview.app.tool.Installation;
 import cn.fundview.app.tool.PreferencesUtils;
 import cn.fundview.app.tool.ToastUtils;
 import cn.fundview.app.view.ABaseWebView;
@@ -32,7 +27,7 @@ public class RegistView extends ABaseWebView implements AsyncTaskCompleteListene
     public void init() {
 
         //默认读取手机号
-        this.loadUrl("javascript:Page.loadData('phone', '" + InstallationId.getPhone(context) + "')");
+        this.loadUrl("javascript:Page.loadData('phone', '" + Installation.getPhone(context) + "')");
     }
 
 

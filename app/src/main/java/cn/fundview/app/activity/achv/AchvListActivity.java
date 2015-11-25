@@ -14,8 +14,6 @@ import cn.fundview.app.activity.ABaseActivity;
  */
 public class AchvListActivity extends ABaseActivity {
 
-    private View oldView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

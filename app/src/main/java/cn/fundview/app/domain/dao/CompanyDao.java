@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.fundview.app.domain.model.Company;
+import cn.fundview.app.domain.model.Requ;
 
 public class CompanyDao extends BaseDao<Company> {
 
@@ -103,5 +104,21 @@ public class CompanyDao extends BaseDao<Company> {
             }
         }
         return true;
+    }
+
+    /**
+     * 查询推荐需求 根据更新时间排序
+     *
+     * @param size 查询的个数
+     * @return
+     */
+    public List<Company> getRecommendList(int size) {
+
+        try {
+            return dbUtils.findAll(Selector.from(Company.class).where("recommend_num", "=", 1).orderBy("update_date", true).offset(0).limit(size));
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

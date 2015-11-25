@@ -146,7 +146,7 @@ public abstract class ABaseWebView extends WebView implements TitleBarListener {
 
         if (this.pageLoaded) {
             this.loadUrl("javascript:Global.onPageActive();");
-            this.invalidate();
+            //this.invalidate();
         }
     }
 

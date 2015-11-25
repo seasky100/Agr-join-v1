@@ -11,7 +11,7 @@ public class Constants {
     /**
      * 数据库版本
      */
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 5;
 
     public static final String DOWN_SERVICE = "http://m.fundview.cn/app/version.xml";
     public static final String APK_DOWN_PATH = "http://m.fundview.cn/app/fundview.apk";

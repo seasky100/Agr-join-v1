@@ -1,0 +1,131 @@
+@charset "utf-8";
+* { margin:0; padding:0;}
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #565656;
+	background: #fff;
+}
+header {
+	background-color: #31a864;
+	border-bottom: 2px solid #31a864;
+	position: relative;
+	height: 44px;
+	font-size: 18px;
+	color: #fff;
+	
+}
+.return {
+	width: 50px;
+	height: 40px;
+	background:url(../../img/return.png) 18px 11px no-repeat;
+	background-size: 11px 19px;
+	position: absolute;
+	left: 0px;
+	line-height: 44px;
+}
+.title {
+	text-align: center;
+	line-height: 44px;
+	margin-left: 40px;
+	height: 40px;
+	margin-right:40px;
+}
+.list{
+	width:100%;
+}
+.list .item{
+	padding: 10px 8px;
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-webkit-box-sizing:content-box;
+	border-bottom:1px solid #e1e1e1;
+}
+.list .item .item_img, .item .item_img img {
+	height: 52px;
+	width: 70px;
+}
+.item .content{
+    -webkit-box-flex:1;
+	padding-left:10px;
+}
+.item .content .name{
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-webkit-box-sizing:content-box;
+	margin-bottom:2px;
+}
+.price_owner{
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-webkit-box-sizing:content-box;
+}
+.ming{color:#31a864;font-size:14px;white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden; }
+.zhic{-webkit-box-flex: 1; padding-left:10px; padding-top:8px;}
+.depa{	font-size:14px;
+	color:#565656;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden;}
+.item .content .trade{
+	font-size:12px;
+	color:#565656;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden;
+	margin:6px 0;
+}
+.price{ font-family:arial; font-size:14px; color:#ff8000; font-weight:bold;white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden; }
+.price_cankao{ font-family: "微软雅黑"; font-size:10px; font-weight:normal; color:#565656; font-style:normal;}
+.owner{	font-size:12px;
+	color:#a8a8a8;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden;-webkit-box-flex: 1; }
+.item .content .site_num{
+	display: -webkit-box;
+	text-overflow: ellipsis;
+	overflow:hidden;
+}
+.item .content .site{
+	overflow: hidden;
+	-webkit-box-flex: 1;
+	height:14px;
+	line-height:14px;
+	color:#a8a8a8;
+	font-size:12px;
+	background:url(../../img/loca.png) no-repeat left center;
+	padding-left:16px;
+}
+.item .content .zh_num{
+	overflow: hidden;
+	width:130px;
+	white-space: nowrap;
+	height:24px;
+	line-height:24px;
+	color:#ff8b00;
+}
+.switch {
+	box-shadow: 0px 0px 2px rgba(248, 130, 4, 0.6);
+	border-radius: 5px;
+	background-color: #fef9f2;
+	line-height: 28px;
+	text-align: center;
+	margin: 8px 5px;
+	padding: 3px;
+	font-size: 14px;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	display:none;
+}
+.switch:active {
+	background-color: rgba(248, 130, 4, 0.6);
+}
