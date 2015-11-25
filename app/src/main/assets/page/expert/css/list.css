@@ -53,16 +53,24 @@ header {
 	padding-left:10px;
 }
 .item .content .name{
-	display: -webkit-box;
-	-webkit-box-pack: center;
-	-webkit-box-align: center;
-	-webkit-box-sizing:content-box;
-	margin-bottom:2px;
-}
-.ming{color:#31a864;font-size:16px;white-space: nowrap;
+ 	display: -webkit-box;
+ 	-webkit-box-pack: center;
+ 	-webkit-box-align: center;
+ 	-webkit-box-sizing:content-box;
+ 	margin-bottom:2px;
+ }
+.ming{
+	color:#31a864;
+	font-size:16px;
+	white-space: nowrap;
 	text-overflow: ellipsis;
-	overflow:hidden;}
-	.zhic{-webkit-box-flex: 1; padding-left:10px; padding-top:8px;}
+	overflow:hidden;
+}
+.zhic{
+	-webkit-box-flex: 1;
+	padding-left:10px;
+	padding-top:8px;
+}
 .depa{	font-size:14px;
 	color:#565656;
 	white-space: nowrap;
