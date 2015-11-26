@@ -86,13 +86,23 @@ public class MenuBar extends LinearLayout implements NewFundviewInforObserver {
 
         if (count > 0) {
 
-            msgItem.showMsgNotice();
+            myItem.showMsgNotice();
         } else {
 
             msgItem.hideMsgNotice();
         }
     }
 
+    public void versionUpdate(boolean flag) {
+
+        if (flag) {
+
+            myItem.showMsgNotice();
+        } else {
+
+            myItem.hideMsgNotice();
+        }
+    }
     private void setCuur(int flag) {
 
         switch (flag) {

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.util.AttributeSet;
 import android.webkit.JavascriptInterface;
 
+import cn.fundview.app.action.global.CheckVersionAction;
 import cn.fundview.app.action.my.InitMyPageAction;
 import cn.fundview.app.action.my.LoginAction;
 import cn.fundview.app.activity.MainActivity;
@@ -20,6 +21,7 @@ import cn.fundview.app.tool.PreferencesUtils;
 import cn.fundview.app.tool.StringUtils;
 import cn.fundview.app.view.ABaseWebView;
 import cn.fundview.app.view.AsyncTaskCompleteListener;
+import cn.fundview.app.view.MenuBar;
 
 public class MyView extends ABaseWebView implements AsyncTaskCompleteListener {
 
@@ -42,7 +44,9 @@ public class MyView extends ABaseWebView implements AsyncTaskCompleteListener {
         super.active();
         InitMyPageAction action = new InitMyPageAction(context, this);
         action.execute();
+
     }
+
 
     /**
      * 打开新页面
@@ -208,6 +212,18 @@ public class MyView extends ABaseWebView implements AsyncTaskCompleteListener {
 
                 Intent intent = new Intent(context, LoginActivity.class);
                 context.startActivity(intent);
+            }
+        }
+
+        if (requestCode == 4) {
+
+            //检查版本更新,提示有新的版本
+            if(responseCode == 2) {
+
+                this.loadUrl("javascript:Page.setNewVersion(1);");
+            }else{
+
+                this.loadUrl("javascript:Page.setNewVersion(0);");
             }
         }
     }

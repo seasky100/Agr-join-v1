@@ -9,8 +9,9 @@ android {
         applicationId "cn.fundview"
         minSdkVersion 11
         targetSdkVersion 23
-        versionCode 3
-        versionName "1.03"
+        versionCode 4
+        versionName "1.04"
+        multiDexEnabled true
     }
     buildTypes {
 
