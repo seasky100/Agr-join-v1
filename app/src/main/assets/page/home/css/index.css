@@ -35,6 +35,10 @@ body {
 .rq_tit{ height:34px; background-color:#eee; line-height:34px; padding:0 8px;}
 .rq_tit1{ height:34px; background:url(../../img/rewardre.png) no-repeat left center;line-height:34px; padding-left:22px; font-size:16px; background-size: 17px 21px;}
 .rq_tit2{ height:34px; background:url(../../img/hotrequ.png) no-repeat 1px center;line-height:34px; padding-left:22px; font-size:16px; background-size: 15px 21px;}
+.rq_tit3{ height:34px; background:url(../../img/qiye.png) no-repeat 1px center;line-height:34px; padding-left:22px; font-size:16px; background-size: 15px 21px;}
+.rq_tit4{ height:34px; background:url(../../img/zhuanjia.png) no-repeat 1px center;line-height:34px; padding-left:22px; font-size:16px; background-size: 15px 21px;}
+.rq_tit5{ height:34px; background:url(../../img/chanpin.png) no-repeat 1px center;line-height:34px; padding-left:22px; font-size:16px; background-size: 15px 21px;}
+.rq_tit6{ height:34px; background:url(../../img/rongzi.png) no-repeat 1px center;line-height:34px; padding-left:22px; font-size:16px; background-size: 15px 21px;}
 
 .list{
 	width:100%;
