@@ -45,11 +45,10 @@ Page.initBasic = function(id, name, auth, logo, theUnit, department, professiona
 	$("[sid=name]").text(isEmpty(name,"暂未填写"));
 	
 	$("[sid=area]").text(isEmpty(area,"暂未填写"));
-	if(department!='' && department !=null){
-		$("[sid=dept]").text(isEmpty(department,"暂未填写"));
-	}else{
-		$("[sid=dept]").text(isEmpty(theUnit,"暂未填写"));
-	}
+	$("[sid=dept]").text(isEmpty(department,"暂未填写"));
+
+	$("[sid=unit]").text(isEmpty(theUnit,"暂未填写"));
+
 	$("[sid=professional-title]").text(isEmpty(professionalTitle,"暂未填写"));
 
     if(isAttented == 1) {
