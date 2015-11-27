@@ -7,9 +7,15 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.webkit.JavascriptInterface;
 
+import cn.fundview.app.action.achv.AchvListAction;
+import cn.fundview.app.action.company.CompanyListAction;
+import cn.fundview.app.action.expert.ExpertListAction;
 import cn.fundview.app.action.my.FavoriteAchvListAction;
 import cn.fundview.app.action.my.FavoriteAction;
 import cn.fundview.app.action.my.FavoriteRequListAction;
+import cn.fundview.app.action.org.OrgListAction;
+import cn.fundview.app.action.product.ProductListAction;
+import cn.fundview.app.action.requ.RequListAction;
 import cn.fundview.app.activity.achv.DetailActivity;
 import cn.fundview.app.domain.model.Favorite;
 import cn.fundview.app.domain.webservice.util.Constants;
@@ -52,8 +58,8 @@ public class FavoritesView extends ABaseWebView {
 
             FavoriteRequListAction action = new FavoriteRequListAction(context, this);
             action.execute(page, pageSize, false);
-
         }
+        page ++;
     }
 
 
@@ -111,6 +117,33 @@ public class FavoritesView extends ABaseWebView {
 
     @Override
     public void onClickRight() {
+
+    }
+
+
+    /**
+     * 加载更多项目
+     **/
+    @JavascriptInterface
+    public void nextPage() {
+
+        int pageSize = 0;
+        switch (favoritesType) {
+
+            case Favorite.FAVORITE_ACHV_TYPE:
+                pageSize = DensityUtil.px2dip(context, this.getHeight()) / Constants.ACHV_ITEM_HEIGHT + 1;
+                FavoriteAchvListAction favoriteAchvListAction = new FavoriteAchvListAction(context, this);
+                favoriteAchvListAction.execute(page, pageSize, false);
+                this.page = page + 1;
+                break;
+            case Favorite.FAVORITE_REQU_TYPE:
+                pageSize = DensityUtil.px2dip(context, this.getHeight()) / Constants.REQU_ITEM_HEIGHT + 1;
+                FavoriteRequListAction favoriteRequListAction = new FavoriteRequListAction(context, this);
+                favoriteRequListAction.execute(page, pageSize, false);
+                this.page = page + 1;
+                break;
+
+        }
 
     }
 }

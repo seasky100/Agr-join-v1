@@ -71,7 +71,7 @@ body {
 }
 .list .item .content .trade{
 	font-size:14px;
-	color:#a8a8a8;
+	color:#565656;
 	margin-bottom:6px;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -160,6 +160,7 @@ body {
  	padding-left:10px;
  	padding-top:8px;
  	font-size:14px;
+ 	color:#a8a8a8;
  }
  .depa{	font-size:14px;
 	color:#565656;

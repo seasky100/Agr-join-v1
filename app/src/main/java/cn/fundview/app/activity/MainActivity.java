@@ -11,6 +11,7 @@ import android.os.IBinder;
 import android.view.KeyEvent;
 
 import cn.fundview.R;
+import cn.fundview.app.action.global.CheckVersionAction;
 import cn.fundview.app.action.my.LoginAction;
 import cn.fundview.app.activity.my.MyAttentActivity;
 import cn.fundview.app.activity.my.ProfileActivity;
@@ -27,6 +28,7 @@ import cn.fundview.app.view.AsyncTaskCompleteListener;
 import cn.fundview.app.view.MenuBar;
 import cn.fundview.app.view.MenuBar.MenuBarListener;
 import cn.fundview.app.view.msg.MsgListView;
+import cn.fundview.app.view.my.MyView;
 import cn.jpush.android.api.JPushInterface;
 
 import com.lidroid.xutils.ViewUtils;
@@ -92,6 +94,10 @@ public class MainActivity extends ABaseActivity implements MenuBarListener, Asyn
 
         // 激活震动器
 //		Shaker.getInstance().enable();
+
+        //检查版本更新
+        CheckVersionAction checkVersionAction = new CheckVersionAction(this,this);
+        checkVersionAction.execute();
     }
 
     @Override
@@ -201,6 +207,10 @@ public class MainActivity extends ABaseActivity implements MenuBarListener, Asyn
 
         //清空新消息观察者
 //		NewFundviewInforObserverMrg.getInstance().clearObserver();
+
+        //检查版本更新
+        CheckVersionAction checkVersionAction = new CheckVersionAction(this,(MyView)activeView);
+        checkVersionAction.execute();
     }
 
     @Override
@@ -295,6 +305,17 @@ public class MainActivity extends ABaseActivity implements MenuBarListener, Asyn
     @Override
     public void complete(int requestCode, int responseCode, Object msg) {
 
+        if (requestCode == 4) {
+
+            //检查版本更新,提示有新的版本
+            if(responseCode == 2) {
+
+                menuBar.versionUpdate(true);
+            }else{
+
+                menuBar.versionUpdate(false);
+            }
+        }
     }
 
 
@@ -320,5 +341,11 @@ public class MainActivity extends ABaseActivity implements MenuBarListener, Asyn
         super.onDestroy();
         updateService = null;
         unbindService(conn);
+    }
+
+    //获取menuBae
+    public MenuBar getMenuBar() {
+
+        return menuBar;
     }
 }

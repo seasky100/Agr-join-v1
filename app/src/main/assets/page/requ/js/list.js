@@ -54,7 +54,7 @@ $(function() {
 function onBtnClick(id, e) {
 
 	if(id == "switch") {
-
+		
 		SDK.nextPage();
 	}
 }

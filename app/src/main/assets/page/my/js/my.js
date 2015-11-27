@@ -19,6 +19,12 @@ Page.setMyIcon = function(icon) {
 		$("#myIcon").attr("src", "../img/default-head-icon.jpg");
 };
 
+Page.setNewVersion = function(flag) {
+	if (flag = 1)
+		$("#about .new").show();
+	else
+		$("#about .new").hide();
+};
 Page.setProfile = function(username, name, type) {
 	
 	if(username == null || $.trim(username) == '') {

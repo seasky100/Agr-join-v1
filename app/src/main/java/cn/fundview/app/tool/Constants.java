@@ -13,8 +13,8 @@ public class Constants {
      */
     public static final int DATABASE_VERSION = 5;
 
-    public static final String DOWN_SERVICE = "http://m.fundview.cn/app/version.xml";
-    public static final String APK_DOWN_PATH = "http://m.fundview.cn/app/fundview.apk";
+    public static final String DOWN_SERVICE = "http://192.168.1.10:8080/app/app/version.xml";
+    public static final String APK_DOWN_PATH = "http://192.168.1.10:8080/app/app/fundview.apk";
 //    public static final String APK_DOWN_PATH = "http://192.168.0.101/fundview.apk";
 //    public static final String DOWN_SERVICE = "http://192.168.0.101/version.xml";
 
