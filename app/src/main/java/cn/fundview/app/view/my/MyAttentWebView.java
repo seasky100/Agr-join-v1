@@ -67,7 +67,7 @@ public class MyAttentWebView extends ABaseWebView {
             intent.putExtra("lastModify", lastModify);
             intent.putExtra("pageSize", DensityUtil.px2dip(context, this.getHeight()) / cn.fundview.app.domain.webservice.util.Constants.COMPANY_ITEM_HEIGHT + 1);
             intent.putExtra("page", page);
-            ((Activity) context).startActivityForResult(intent, 2);
+            ((Activity) context).startActivityForResult(intent, 1);
         } else {
 
             Intent intent = new Intent(context, cn.fundview.app.activity.expert.DetailActivity.class);
