@@ -121,7 +121,7 @@ public class JPushReceiver extends BroadcastReceiver {
                 fundviewInfor.setId(extraJson.getIntValue(Constants.FUNDVIEW_INFOR_KEY));//咨询的id
                 fundviewInfor.setRead(0);
                 fundviewInfor.setTitle(message);//使用推送过来的消息作为标题
-                fundviewInfor.setDeliveryDate(new Date().getTime());
+                fundviewInfor.setPublishDate(new Date().getTime());
                 fundviewInforDao.save(fundviewInfor);
 
                 //新资讯的发送通知

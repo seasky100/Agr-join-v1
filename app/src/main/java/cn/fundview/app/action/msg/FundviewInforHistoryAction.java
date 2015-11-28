@@ -4,28 +4,20 @@ import android.content.Context;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.fundview.app.action.ABaseAction;
-import cn.fundview.app.domain.dao.AchvDao;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import cn.fundview.app.domain.dao.DaoFactory;
 import cn.fundview.app.domain.dao.FundviewInforDao;
-import cn.fundview.app.domain.model.Achv;
-import cn.fundview.app.domain.model.Company;
 import cn.fundview.app.domain.model.FundviewInfor;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.domain.webservice.util.Constants;
 import cn.fundview.app.model.ResultBean;
-import cn.fundview.app.model.ResultListBean;
 import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.NetWorkConfig;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class FundviewInforHistoryAction extends cn.fundview.app.action.ABaseAction {
 
@@ -92,6 +84,7 @@ public class FundviewInforHistoryAction extends cn.fundview.app.action.ABaseActi
 
                                         //添加资讯
                                         item.setRead(1);//设置历史已读
+                                        item.setPublishDate(item.getUpdateDate());
                                         fundviewInforDao.save(item);
                                     } else if (localItem.getUpdateDate() != item.getUpdateDate()) {
 
@@ -102,8 +95,10 @@ public class FundviewInforHistoryAction extends cn.fundview.app.action.ABaseActi
                                             item.setLogoLocalPath(localItem.getLogo());
                                         }
 
+                                        item.setPublishDate(localItem.getPublishDate()); //显示用
                                         fundviewInforDao.update(localItem);
                                     }
+                                    item.setPublishDate(localItem.getPublishDate()); //显示用
                                 }
                             }
                         } else {

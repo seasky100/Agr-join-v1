@@ -1,16 +1,25 @@
+html{
+	height:100%; width:100%;}
+body{
+	height:100%; width:100%;
+	background-image:url(../../img/about_bg.jpg);
+	background-repeat:repeat-x;
+	background-size:100% 100%;
+	background-color:#fff;
+
+}
 .list {
-	background-color: #FAFAFA;
+	padding:20px 8px 12px 8px;
 /*	position:absolute;*/
 }
 .item {
 	position:relative;
 	padding:8px 8px;
-
-	border-top: 1px solid #F7F7F7;
-	border-bottom: 1px solid #bbb;
-	
+	border: 1px solid #d5d5d5;
 	display:-webkit-box;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	border-radius:5px;
+	background:#fff;box-shadow: 0px 2px 2px #ebebeb;
 }
 .item:active {
 	background-color: rgba(235, 235, 235, 0.3);
@@ -52,11 +61,12 @@
 	-webkit-box-flex:1;
 }
 .item .content .top{
-
-	display:-webkit-box;
+	margin-top:7px;
+ 	display:-webkit-box;
 	-webkit-box-align: center;
-	height:24px;
-	line-height:24px;
+	height:20px;
+	line-height:20px;
+	font-weight:bold;
 }
 
 .item .content .bottom {
@@ -68,9 +78,9 @@ height:24px;
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow:ellipsis;
+	font-size:16px;
 }
 .item .content .msg {
-	padding-top: 4px;
 	font-size:12px;
 	white-space:nowrap;
 	overflow:hidden;

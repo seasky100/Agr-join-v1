@@ -1,18 +1,21 @@
-html,body{
-    height:100%;
-    background: rgba(205, 205, 205, 1);
+
+html{
+	height:100%; width:100%;}
+body{
+	height:100%; width:100%;
+	background-color: rgba(205, 205, 205, 1);
+	background-repeat:repeat-x;
+	background-size:100% 100%;
 }
 #list{
-
     min-height:100%;
     display: -webkit-box;
     -webkit-box-pack: end;
     -webkit-box-align: center;
     -webkit-box-orient: vertical;
-    background-color: rgba(205, 205, 205, 1);
 }
 .note {
-
+    margin-bottom:10px;
     padding: 10px 10px;
     display: -webkit-box;
     -webkit-box-pack: center;

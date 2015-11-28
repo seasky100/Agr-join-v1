@@ -36,7 +36,7 @@ Page.initBasic = function(id, name, auth, logo, theUnit, department, professiona
 
 		$("[sid=logo]").attr("src",expertDefaultLogo);
 	}
-	if(auth == 1) {
+	if(auth == "true") {
 		$("[sid=auth]").show();
 	}else {
 		$("[sid=auth]").hide();
