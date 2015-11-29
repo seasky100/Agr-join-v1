@@ -41,13 +41,18 @@ Page.initPage = function(tel,editable){
 
 Page.showHintDialog = function(flag){
 
-	if(flag){
+	if(flag == 2){
 	
 		$(".hintTxt").text("保存成功");
 		$(".hintImg").removeClass("fail").addClass("success");
 		$(".saveDialog").show();
-	}else{
+	}else if(flag == 1){
 	
+		$(".hintTxt").text("手机号码被占用");
+		$(".hintImg").removeClass("success").addClass("fail");
+		$(".saveDialog").show();
+	}else if(flag == 0) {
+
 		$(".hintTxt").text("保存失败");
 		$(".hintImg").removeClass("success").addClass("fail");
 		$(".saveDialog").show();

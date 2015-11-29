@@ -28,7 +28,7 @@ public class SaveProfileTelAction extends ABaseAction {
     /**
      * 处理结果
      ***/
-    private boolean result;
+    private int result;
 
     public SaveProfileTelAction(Context context, ABaseWebView webView) {
         super(context, webView);
@@ -55,7 +55,7 @@ public class SaveProfileTelAction extends ABaseAction {
             param.put("attName", UserInfor.SERVER_PHONE);
             param.put("attValue", tel);
             String jsonReturn = RService.doPostSync(param, cn.fundview.app.domain.webservice.util.Constants.UPDATE_USERINFOR_ATTR_URL);
-
+            result = 0;
             try {
                 ResultBean resultBean = JSONTools.parseResult(jsonReturn);
 
@@ -64,9 +64,15 @@ public class SaveProfileTelAction extends ABaseAction {
                     UserInfor userInfor = new UserInfor();
                     userInfor.setTel(tel);
                     userInfor.setId(uid);
-                    result = DaoFactory.getInstance(context).getUserInforDao().saveOrUpdate(userInfor);
+                    DaoFactory.getInstance(context).getUserInforDao().saveOrUpdate(userInfor);
                 }
-            } catch (Exception e) {
+
+                if (resultBean != null) {
+
+                    result = resultBean.getStatus();
+                }
+
+                } catch (Exception e) {
                 e.printStackTrace();
             }
         }
