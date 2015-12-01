@@ -6,8 +6,8 @@
     <item android:drawable="@mipmap/qd1_bj" />
 
     <item
-        android:width="160dp"
-        android:bottom="250dp"
+        android:width="480dp"
+        android:bottom="300dp"
         android:gravity="center_horizontal">
 
         <bitmap
@@ -15,8 +15,8 @@
             android:src="@mipmap/qd11" />
     </item>
     <item
-        android:width="160dp"
-        android:bottom="150dp"
+        android:width="480dp"
+        android:bottom="270dp"
         android:gravity="center_horizontal">
 
         <bitmap
@@ -25,11 +25,12 @@
     </item>
 
     <item
-        android:bottom="100dp"
+        android:bottom="150dp"
+        android:width="480dp"
         android:gravity="center_horizontal">
 
         <bitmap
-            android:gravity="center_horizontal|bottom"
-            android:src="@mipmap/qd13" />
+            android:gravity="center|bottom"
+            android:src="@mipmap/ydy3" />
     </item>
 </layer-list>
