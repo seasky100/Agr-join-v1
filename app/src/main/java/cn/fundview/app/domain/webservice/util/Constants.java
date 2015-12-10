@@ -5,7 +5,7 @@ public class Constants {
     /**
      * 服务器使用的地址
      **/
-//    public static final String SERVER = "http://192.168.1.118:8080/api";
+//    public static final String SERVER = "http://192.168.1.10:8080/app/api";
     public static final String SERVER = "http://m.fundview.cn/api/";
 
 
@@ -169,6 +169,12 @@ public class Constants {
 
     public static final String GET_AREA_LIST = SERVER + "/util/queryAreaByParentId.action";
 
+
+    /**
+     * 安装/卸载统计url
+     */
+    public static final String INSTALL_COUNT_URL = SERVER + "/install/install.action";
+    public static final String UN_INSTALL_COUNT_URL = SERVER + "/install/uninstall.action";
     /************
      * 请求成功/失败返回值
      ******************/

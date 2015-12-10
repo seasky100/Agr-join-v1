@@ -51,8 +51,7 @@ public class RService {
 
     public static final String TAG = "fundview";
 
-    private RService() {
-    }
+    private RService() {}
 
     private static List<Achv> achvs;
     private static List<Expert> experts;
@@ -96,7 +95,6 @@ public class RService {
         }
         return null;
     }
-
 
     /**
      * 成果搜索 根据关键字
@@ -363,7 +361,6 @@ public class RService {
                 });
     }
 
-
     /**
      * 同步请求 必须在异步块儿中执行
      * 用户登录使用
@@ -401,5 +398,35 @@ public class RService {
             LogUtils.e(e.getMessage(), e);
         }
         return null;
+    }
+
+    /**
+     * 发送异步异步请求
+     * @param url
+     */
+    public static void doAsync(String url) {
+
+        HttpUtils http = new HttpUtils();
+        http.send(HttpRequest.HttpMethod.POST,url,
+        new RequestCallBack(){
+            @Override
+            public void onLoading(long total, long current, boolean isUploading) {
+//                testTextView.setText(current + / + total);
+            }
+
+            @Override
+            public void onSuccess(ResponseInfo responseInfo) {
+//                textView.setText(responseInfo.result);
+            }
+
+            @Override
+            public void onStart() {
+            }
+
+            @Override
+            public void onFailure(HttpException error, String msg) {
+            }
+        });
+
     }
 }

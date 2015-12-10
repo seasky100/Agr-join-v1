@@ -1,4 +1,4 @@
-package cn.fundview.app.service;
+package cn.fundview.app.receiver;
 
 import java.util.ArrayList;
 import java.util.List;

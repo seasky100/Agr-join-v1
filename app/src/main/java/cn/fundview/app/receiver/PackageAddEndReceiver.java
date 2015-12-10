@@ -1,15 +1,19 @@
-package cn.fundview.app.service;
+package cn.fundview.app.receiver;
 
 import java.io.File;
+import java.sql.SQLOutput;
 
+import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.tool.Constants;
 import cn.fundview.app.tool.DeviceConfig;
+import cn.fundview.app.tool.Installation;
 import cn.fundview.app.tool.PreferencesUtils;
 import cn.fundview.app.tool.ToastUtils;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SyncStatusObserver;
 import android.widget.Toast;
 
 public class PackageAddEndReceiver extends BroadcastReceiver {
@@ -18,7 +22,7 @@ public class PackageAddEndReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // TODO Auto-generated method stub
 
-
+        System.out.println("packageAndEndReceiver");
         if (intent.getAction().equals(Intent.ACTION_PACKAGE_ADDED)) {
             String packageName = intent.getData().getSchemeSpecificPart();
             Toast.makeText(context, "安装成功", Toast.LENGTH_LONG).show();
@@ -28,6 +32,7 @@ public class PackageAddEndReceiver extends BroadcastReceiver {
             Toast.makeText(context, "卸载成功", Toast.LENGTH_LONG).show();
             //删除第一次使用的引导标识
             PreferencesUtils.putInt(context, Constants.FIRST_OPEN_TAG, 0);
+            RService.doAsync(cn.fundview.app.domain.webservice.util.Constants.UN_INSTALL_COUNT_URL+"?deviceId="+ Installation.getDriverId(context));
         }
         if (intent.getAction().equals(Intent.ACTION_PACKAGE_REPLACED)) {
             String packageName = intent.getData().getSchemeSpecificPart();

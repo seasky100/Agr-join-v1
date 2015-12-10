@@ -67,6 +67,12 @@ public class Constants {
      */
     public static final String FIRST_OPEN_TAG = "first_open_tag";
 
+    /**
+     * 第一次安装标示
+     */
+    public static final String FIRST_INSTALL_TAG = "first_install_tag";
+
+
     public static final String GUIDE_FRAGMENT_IMG_ID = "drawableId";
 
     // 专家json文件保存路径

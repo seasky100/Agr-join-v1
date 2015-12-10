@@ -14,8 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.fundview.R;
+import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.tool.Constants;
+import cn.fundview.app.tool.Installation;
 import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.ToastUtils;
 import cn.fundview.app.tool.adapter.GuideViewAdapter;
 import cn.jpush.android.api.JPushInterface;
 
@@ -39,6 +42,16 @@ public class StartActivity extends FragmentActivity {
         drawables.add(R.drawable.guide_3);
         handler = new Handler();
 //if (PreferencesUtils.getInt(this, Constants.FIRST_OPEN_TAG, 0) == 1) {
+
+        //判断是否是第一次安装
+        if(PreferencesUtils.getBoolean(this, Constants.FIRST_INSTALL_TAG, true)) {
+
+            //发送网络请求,统计安装
+            RService.doAsync(cn.fundview.app.domain.webservice.util.Constants.INSTALL_COUNT_URL + "?deviceId=" + Installation.getDriverId(this) + "&type=1");
+            PreferencesUtils.putBoolean(this, Constants.FIRST_INSTALL_TAG, false);
+//            ToastUtils.show(this, "应用第一次安装完成");
+        }
+
         if (PreferencesUtils.getInt(this, Constants.FIRST_OPEN_TAG, 0) > 0) {
 
             setContentView(R.layout.activity_appstart);

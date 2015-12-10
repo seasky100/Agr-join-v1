@@ -119,6 +119,8 @@ public class LoadFundviewInforAction {
                                                     //第一次加载设置发布时间
                                                     if (localItem.getPublishDate() == 0)
                                                         item.setPublishDate(item.getUpdateDate());
+                                                    else
+                                                        item.setPublishDate(localItem.getPublishDate());
 
                                                     fundviewInforDao.update(item);
                                                 }
