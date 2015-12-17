@@ -1,21 +1,16 @@
 package cn.fundview.app.action.achv;
 
-import java.util.ArrayList;
-import java.util.Date;
+import android.content.Context;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import android.content.Context;
-import android.view.inputmethod.InputMethodSubtype;
-
 import cn.fundview.app.action.ABaseAction;
 import cn.fundview.app.domain.dao.AchvDao;
 import cn.fundview.app.domain.dao.DaoFactory;
-import cn.fundview.app.domain.dao.ExpertDao;
 import cn.fundview.app.domain.model.Achv;
-import cn.fundview.app.domain.model.Expert;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultListBean;
 import cn.fundview.app.tool.JsMethod;
@@ -23,8 +18,6 @@ import cn.fundview.app.tool.NetWorkConfig;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
 import cn.fundview.app.view.achv.AchvListView;
-import cn.fundview.app.view.expert.ExpertListView;
-import cn.fundview.app.view.product.ProductListView;
 
 public class AchvListAction extends ABaseAction {
 
@@ -54,7 +47,7 @@ public class AchvListAction extends ABaseAction {
         this.condition = condition;
         this.showWaitDialog();
 
-        handle(true);
+        handle(true); 
     }
 
     /**
