@@ -10,29 +10,29 @@ var Page = function() {
 Page.init = function(id, logo, name, auth, attentNum, isAttented, expoNo, trade, tel, area, regTime, regCapital, regType, addr) {
 
 	// 显示logo
-	var driver = FILE.getSysPath();
-	local = driver + compLogoPath;// logo的本地存储路径
-	var fileName = "";
-	if (logo != null && logo.trim() != "") {
-
-		fileName = logo.split("/").pop();// logo 的文件名
-	}
-	var src = local + fileName;
-	if (logo != null && logo.trim() != "") {
-
-		if (FILE.isFileExist(src) == true) {
-
-			$("[sid=logo]").attr("src", src);
-		} else {
-
-			$("[sid=logo]").attr("src", compDefaultLogo);
-			SDK.loadLogo(logo);
-		}
-	}else {
-
-		$("[sid=logo]").attr("src", compDefaultLogo);
-	}
-
+//	var driver = FILE.getSysPath();
+//	local = driver + compLogoPath;// logo的本地存储路径
+//	var fileName = "";
+//	if (logo != null && logo.trim() != "") {
+//
+//		fileName = logo.split("/").pop();// logo 的文件名
+//	}
+//	var src = local + fileName;
+//	if (logo != null && logo.trim() != "") {
+//
+//		if (FILE.isFileExist(src) == true) {
+//
+//			$("[sid=logo]").attr("src", src);
+//		} else {
+//
+//			$("[sid=logo]").attr("src", compDefaultLogo);
+//			SDK.loadLogo(logo);
+//		}
+//	}else {
+//
+//		$("[sid=logo]").attr("src", compDefaultLogo);
+//	}
+	$("[sid=logo]").attr("src", logo);
 	$("[sid=name]").text(isEmpty(name, "暂未填写"));
 
 	if(auth == "true") {

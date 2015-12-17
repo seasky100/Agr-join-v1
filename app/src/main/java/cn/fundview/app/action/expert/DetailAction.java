@@ -192,11 +192,13 @@ public class DetailAction extends ABaseAction {
                                         localItem.setPrice(item.getPrice());
                                         localItem.setOwnerName(item.getOwnerName());
                                         localItem.setTradeName(item.getTradeName());
-                                        if (!localItem.getLogo().equals(item.getLogo())) {
+                                        localItem.setLogo(item.getLogo());
 
-                                            localItem.setOldLocalPath(localItem.getLogo());//删除老图片的时候用
-                                            localItem.setLogo(item.getLogo());
-                                        }
+//                                        if (!localItem.getLogo().equals(item.getLogo())) {
+//
+//                                            localItem.setOldLocalPath(localItem.getLogo());//删除老图片的时候用
+//                                            localItem.setLogo(item.getLogo());
+//                                        }
                                         localItem.setUpdataDate(item.getUpdataDate());
                                         achvDao.update(localItem);
                                     }

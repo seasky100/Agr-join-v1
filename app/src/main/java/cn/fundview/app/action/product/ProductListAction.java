@@ -10,18 +10,14 @@ import java.util.Set;
 import cn.fundview.app.action.ABaseAction;
 import cn.fundview.app.domain.dao.DaoFactory;
 import cn.fundview.app.domain.dao.ProductDao;
-import cn.fundview.app.domain.dao.RequDao;
 import cn.fundview.app.domain.model.Product;
-import cn.fundview.app.domain.model.Requ;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultListBean;
 import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.NetWorkConfig;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
-import cn.fundview.app.view.history.SearchResultView;
 import cn.fundview.app.view.product.ProductListView;
-import cn.fundview.app.view.requ.RequListView;
 
 /**
  * 产品列表 action
@@ -109,13 +105,13 @@ public class ProductListAction extends ABaseAction {
                                     localItem.setCompName(item.getCompName());//企业名称
                                     localItem.setPrice(item.getPrice());//产品价格
                                     localItem.setUnit(item.getUnit());//产品规格
-
-                                    if(!localItem.getLogo().equals(item.getLogo())) {
-
-                                        //图片修改的时候
-                                        localItem.setLocaLogo(localItem.getLogo());//删除老图片的时候用
-                                        localItem.setLogo(item.getLogo());
-                                    }
+                                    localItem.setLogo(item.getLogo());
+//                                    if(!localItem.getLogo().equals(item.getLogo())) {
+//
+//                                        //图片修改的时候
+//                                        localItem.setLocaLogo(localItem.getLogo());//删除老图片的时候用
+//                                        localItem.setLogo(item.getLogo());
+//                                    }
 
                                     localItem.setUpdateDate(item.getUpdateDate());
 

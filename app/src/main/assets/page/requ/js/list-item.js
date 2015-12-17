@@ -13,12 +13,12 @@ var RequItem = function(requId, logo, name, hj, price, oldLogo, ownerName, lastM
 	this.ownerName = ownerName;//拥有者名称
 	this.lastModify = lastModify;// 最后修改时间
 
-	this.driver = FILE.getSysPath();
-	this.local = this.driver + requLogoPath;// logo的本地存储路径
-	if(this.logo != null && this.logo.trim() != "")
-		this.fileName = this.logo.split("/").pop();// logo 的文件名
-	else
-		this.fileName = "null";
+//	this.driver = FILE.getSysPath();
+//	this.local = this.driver + requLogoPath;// logo的本地存储路径
+//	if(this.logo != null && this.logo.trim() != "")
+//		this.fileName = this.logo.split("/").pop();// logo 的文件名
+//	else
+//		this.fileName = "null";
 	// 定义视图和父容器
 	this.view = null;
 	this.container = container;
@@ -39,23 +39,25 @@ RequItem.prototype.init = function() {
 	this.view.attr("id", this.id);
 	this.view.attr("lastModify", this.lastModify);
 
-	var src = this.local + this.fileName;
+//	var src = this.local + this.fileName;
+//
+//	if (this.logo != null && this.logo.trim() != "") {
+//		if (FILE.isFileExist(src) == true) {
+//
+//			this.view.find("[sid=logo]").attr("src", src);
+//		} else {
+//
+//			this.view.find("[sid=logo]").attr("src", requDefaultLogo);
+//			this.loadIcon();
+//		}
+//		this.view.attr("logo", this.logo);
+//	} else {
+//
+//		this.view.find("[sid=logo]").attr("src", requDefaultLogo);
+//	}
+//
 
-	if (this.logo != null && this.logo.trim() != "") {
-		if (FILE.isFileExist(src) == true) {
-
-			this.view.find("[sid=logo]").attr("src", src);
-		} else {
-
-			this.view.find("[sid=logo]").attr("src", requDefaultLogo);
-			this.loadIcon();
-		}
-		this.view.attr("logo", this.logo);
-	} else {
-
-		this.view.find("[sid=logo]").attr("src", requDefaultLogo);
-	}
-	
+	this.view.find("[sid=logo]").attr("src", this.logo);
 	this.name = isEmpty(this.name, "暂未填写");
 	this.view.find("[sid=name]").text(this.name);
 	
@@ -77,8 +79,15 @@ RequItem.prototype.init = function() {
 	Button.create(this.view, {
 		onClick : this.onItemClick
 	});
-};
 
+	//图片加载失败监听
+    this.view.find("[sid=logo]").bind("error", this.view, this.loadDefaultIcon);
+};
+RequItem.prototype.loadDefaultIcon = function(e) {
+
+	var view = e.data;
+	view.find("[sid=logo]").attr("src", requDefaultLogo);
+};
 RequItem.prototype.onItemClick = function(id, e) {
 	SDK.openRequDetail(parseInt(id), e.view.find("[sid=name]").text(), e.view
 			.attr("lastModify"));

@@ -1,19 +1,15 @@
 package cn.fundview.app.action.expert;
 
-import java.util.ArrayList;
-import java.util.Date;
+import android.content.Context;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import android.content.Context;
-
 import cn.fundview.app.action.ABaseAction;
-import cn.fundview.app.domain.dao.CompanyDao;
 import cn.fundview.app.domain.dao.DaoFactory;
 import cn.fundview.app.domain.dao.ExpertDao;
-import cn.fundview.app.domain.model.Company;
 import cn.fundview.app.domain.model.Expert;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultListBean;
@@ -21,7 +17,6 @@ import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.NetWorkConfig;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
-import cn.fundview.app.view.company.CompanyListView;
 import cn.fundview.app.view.expert.ExpertListView;
 
 public class ExpertListAction extends ABaseAction {
@@ -104,19 +99,19 @@ public class ExpertListAction extends ABaseAction {
                                     localItem.setAreaName(item.getAreaName());
                                     localItem.setName(item.getName());
                                     localItem.setTradeName(item.getTradeName());
-
-                                    if (localItem.getLogo() != item.getLogo()) {
-
-                                        //专家logo发生了变化
-                                        localItem.setLogoLocalPath(localItem.getLogo());//删除老图片的时候用
-                                        localItem.setLogo(item.getLogo());
-                                    }
+                                    localItem.setLogo(item.getLogo());
+//                                    if (localItem.getLogo() != item.getLogo()) {
+//
+//                                        //专家logo发生了变化
+//                                        localItem.setLogoLocalPath(localItem.getLogo());//删除老图片的时候用
+//                                        localItem.setLogo(item.getLogo());
+//                                    }
 
                                     localItem.setProfessionalTitle(item.getProfessionalTitle());
                                     localItem.setUpdateDate(item.getUpdateDate());
                                     expertDao.update(localItem);
 
-                                    item.setLogoLocalPath(localItem.getLogoLocalPath());
+//                                    item.setLogoLocalPath(localItem.getLogoLocalPath());
                                 }
                             }
                         }
@@ -167,14 +162,14 @@ public class ExpertListAction extends ABaseAction {
             // 循环加载项目
             for (Expert item : results) {
 
-                String oldLogoName = item.getLogoLocalPath();
-                if (oldLogoName != null && oldLogoName.trim() != "") {
-
-                    oldLogoName = oldLogoName.substring(oldLogoName.lastIndexOf("/") + 1);
-                }
+//                String oldLogoName = item.getLogoLocalPath();
+//                if (oldLogoName != null && oldLogoName.trim() != "") {
+//
+//                    oldLogoName = oldLogoName.substring(oldLogoName.lastIndexOf("/") + 1);
+//                }
                 //expertId, logo, expertName, professionalTitle, trade, /*workUnit, dept, */area, updateDate, oldFileName
                 String js = JsMethod.createJs("javascript:Page.addExpert(${id}, ${logo}, ${name}, ${professionalTitle}, ${trade}, ${area}, ${time},${oldFileName});",
-                        item.getId(), item.getLogo(), item.getName(), item.getProfessionalTitle(), item.getTradeName(), item.getAreaName(), item.getUpdateDate(), oldLogoName);
+                        item.getId(), item.getLogo(), item.getName(), item.getProfessionalTitle(), item.getTradeName(), item.getAreaName(), item.getUpdateDate(), "");
 
                 webView.loadUrl(js);
             }

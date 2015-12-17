@@ -14,28 +14,30 @@ function call(tel){
 Page.initBasic = function(id, name, auth, logo, theUnit, department, professionalTitle, trade, tel, addr, area, attentNum, isAttented){
 	
 	// 显示logo 不需要异步加载
-	var driver = FILE.getSysPath();
-	local = driver + expertlogoPath;// logo的本地存储路径
-	var fileName="";
-	if(logo != null && logo.trim() != ""){
-		
-		fileName = logo.split("/").pop();// logo 的文件名
-	}
-	var src = local + fileName;
-	if (logo != null && logo.trim() != "") {
-		if (FILE.isFileExist(src) == true) {
-			
-			$("[sid=logo]").attr("src",src);
-		} else {
+	$("[sid=logo]").attr("src",logo);
 
-			$("[sid=logo]").attr("src",expertDefaultLogo);
-			//异步加载
-			SDK.loadheadIcon(logo);
-		}
-	}else {
-
-		$("[sid=logo]").attr("src",expertDefaultLogo);
-	}
+//	var driver = FILE.getSysPath();
+//	local = driver + expertlogoPath;// logo的本地存储路径
+//	var fileName="";
+//	if(logo != null && logo.trim() != ""){
+//
+//		fileName = logo.split("/").pop();// logo 的文件名
+//	}
+//	var src = local + fileName;
+//	if (logo != null && logo.trim() != "") {
+//		if (FILE.isFileExist(src) == true) {
+//
+//			$("[sid=logo]").attr("src",src);
+//		} else {
+//
+//			$("[sid=logo]").attr("src",expertDefaultLogo);
+//			//异步加载
+//			SDK.loadheadIcon(logo);
+//		}
+//	}else {
+//
+//		$("[sid=logo]").attr("src",expertDefaultLogo);
+//	}
 	if(auth == "true") {
 		$("[sid=auth]").show();
 	}else {

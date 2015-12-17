@@ -2,18 +2,14 @@ package cn.fundview.app.action.requ;
 
 import android.content.Context;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import cn.fundview.app.action.ABaseAction;
-import cn.fundview.app.domain.dao.AchvDao;
 import cn.fundview.app.domain.dao.DaoFactory;
 import cn.fundview.app.domain.dao.RequDao;
-import cn.fundview.app.domain.model.Achv;
 import cn.fundview.app.domain.model.Requ;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultListBean;
@@ -21,7 +17,6 @@ import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.NetWorkConfig;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
-import cn.fundview.app.view.org.OrgListView;
 import cn.fundview.app.view.requ.RequListView;
 
 public class RequListAction extends ABaseAction {
@@ -106,13 +101,13 @@ public class RequListAction extends ABaseAction {
                                     localItem.setFinPlan(item.getFinPlan());//需求的拟投入
                                     localItem.setOwnerName(item.getOwnerName());//需求的拥有者姓名(企业名)
                                     localItem.setTradeName(item.getTradeName());//需求所属行业
-                                    localItem.setLogoLocalPath(localItem.getLogo());//删除老图片的时候用
+//                                    localItem.setLogoLocalPath(localItem.getLogo());//删除老图片的时候用
                                     localItem.setLogo(item.getLogo());
                                     localItem.setOtherHj(item.getOtherHj());
                                     localItem.setHj(item.getHj());
                                     localItem.setUpdateTime(item.getUpdateTime());
 
-                                    item.setLogoLocalPath(localItem.getLogo());//为显示图片使用
+//                                    item.setLogoLocalPath(localItem.getLogo());//为显示图片使用
 
                                     requDao.update(localItem);
                                 }

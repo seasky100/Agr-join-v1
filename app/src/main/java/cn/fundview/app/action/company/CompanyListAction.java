@@ -17,10 +17,9 @@ import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.NetWorkConfig;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
-import cn.fundview.app.view.achv.AchvListView;
 import cn.fundview.app.view.company.CompanyListView;
 
-public class CompanyListAction extends ABaseAction {
+public class  CompanyListAction extends ABaseAction {
 
     /**
      * 参数
@@ -103,7 +102,7 @@ public class CompanyListAction extends ABaseAction {
                                     localItem.setAreaName(item.getAreaName());
                                     localItem.setName(item.getName());
                                     localItem.setTradeName(item.getTradeName());
-                                    localItem.setLocalLogo(localItem.getLogo());//删除老图片的时候用
+//                                    localItem.setLocalLogo(localItem.getLogo());//删除老图片的时候用
                                     localItem.setLogo(item.getLogo());
                                     localItem.setUpdateDate(item.getUpdateDate());
                                     companyDao.update(localItem);
@@ -157,15 +156,15 @@ public class CompanyListAction extends ABaseAction {
             // 循环加载项目
             for (Company item : results) {
 
-                String oldLogoName = item.getLocalLogo();
-                if (oldLogoName != null && oldLogoName.trim() != "") {
-
-                    oldLogoName = oldLogoName.substring(oldLogoName.lastIndexOf("/") + 1);
-                }
+//                String oldLogoName = item.getLocalLogo();
+//                if (oldLogoName != null && oldLogoName.trim() != "") {
+//
+//                    oldLogoName = oldLogoName.substring(oldLogoName.lastIndexOf("/") + 1);
+//                }
 
                 //compId, logo, compName, trade, area, updateDate, oldLogo, expoNo
                 String js = JsMethod.createJs("javascript:Page.addCompany(${id}, ${logo}, ${name}, ${trade}, ${area}, ${time}, ${oldFileName},${expoNo});",
-                        item.getId(), item.getLogo(), item.getName(), item.getTradeName(), item.getAreaName(), item.getUpdateDate(), oldLogoName, item.getExpoNo());
+                        item.getId(), item.getLogo(), item.getName(), item.getTradeName(), item.getAreaName(), item.getUpdateDate(), "", item.getExpoNo());
 
                 System.out.println(js);
                 webView.loadUrl(js);

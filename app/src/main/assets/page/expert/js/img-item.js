@@ -6,15 +6,15 @@ var ImgItem = function(id, name, lastModify, src, container){
 	this.name = name;
 	this.lastModify = lastModify;
 	this.src = src;
-	this.driver = FILE.getSysPath();
-	this.local = this.driver + achvLogoPath;//成果图片的本地存储路径
-	if(this.src != null && this.src.trim() != "") {
-
-		this.fileName = this.src.split("/").pop();//logo 的文件名
-	}else {
-
-		this.fileName="null";
-	}
+//	this.driver = FILE.getSysPath();
+//	this.local = this.driver + achvLogoPath;//成果图片的本地存储路径
+//	if(this.src != null && this.src.trim() != "") {
+//
+//		this.fileName = this.src.split("/").pop();//logo 的文件名
+//	}else {
+//
+//		this.fileName="null";
+//	}
 
 	// 定义视图和父容器
 	this.view = null;
@@ -29,19 +29,19 @@ ImgItem.template = null; // 视图模板
 ImgItem.prototype.init = function(){
 
 	if(ImgItem.template == null)
-		ImgItem.template = "<div class='swiper-slide'><img  sid='achvlogo' src=''/><p sid='name'></p></div>";
+		ImgItem.template = "<div class='swiper-slide'><img  sid='achvlogo' src='' onerror='this.src=achvDefaultLogo;' /><p sid='name'></p></div>";
 
 	this.view = this.container.append(ImgItem.template).children().last();
-	
-	var  path = this.local+this.fileName;
-	if(FILE.isFileExist(path) == true){
-		
-		this.view.find('[sid=achvlogo]').attr("src", path);
-	}else{
-		
-		this.view.find('[sid=achvlogo]').attr("src",achvDefaultLogo);
-		this.loadIcon();
-	}
+	this.view.find('[sid=achvlogo]').attr("src", this.src);
+//	var  path = this.local+this.fileName;
+//	if(FILE.isFileExist(path) == true){
+//
+//		this.view.find('[sid=achvlogo]').attr("src", path);
+//	}else{
+//
+//		this.view.find('[sid=achvlogo]').attr("src",achvDefaultLogo);
+//		this.loadIcon();
+//	}
 
 	this.view.find('[sid=name]').text(this.name);
 	this.view.attr("lastModify",this.lastModify);

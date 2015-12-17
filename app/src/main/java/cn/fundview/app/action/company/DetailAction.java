@@ -1,11 +1,9 @@
 package cn.fundview.app.action.company;
 
-import android.app.Activity;
 import android.content.Context;
 
 import com.alibaba.fastjson.JSON;
 
-import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
@@ -14,11 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 import cn.fundview.app.action.ABaseAction;
-import cn.fundview.app.domain.dao.AchvDao;
 import cn.fundview.app.domain.dao.DaoFactory;
 import cn.fundview.app.domain.dao.ProductDao;
 import cn.fundview.app.domain.dao.RequDao;
-import cn.fundview.app.domain.model.Achv;
 import cn.fundview.app.domain.model.Product;
 import cn.fundview.app.domain.model.Requ;
 import cn.fundview.app.domain.webservice.RService;
@@ -29,10 +25,8 @@ import cn.fundview.app.tool.FileTools;
 import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.NetWorkConfig;
 import cn.fundview.app.tool.PreferencesUtils;
-import cn.fundview.app.tool.StringUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
-import cn.fundview.app.view.MenuItem;
 
 /**
  * @author dell 企业详细信息action
@@ -196,11 +190,12 @@ public class DetailAction extends ABaseAction {
                                         localItem.setFinPlan(item.getFinPlan());
                                         localItem.setOwnerName(item.getOwnerName());
                                         localItem.setTradeName(item.getTradeName());
-                                        if (!localItem.getLogo().equals(item.getLogo())) {
-
-                                            localItem.setLogoLocalPath(localItem.getLogo());//删除老图片的时候用
-                                            localItem.setLogo(item.getLogo());
-                                        }
+                                        localItem.setLogo(item.getLogo());
+//                                        if (!localItem.getLogo().equals(item.getLogo())) {
+//
+//                                            localItem.setLogoLocalPath(localItem.getLogo());//删除老图片的时候用
+//                                            localItem.setLogo(item.getLogo());
+//                                        }
                                         localItem.setHj(item.getHj());
                                         localItem.setOtherHj(item.getOtherHj());
                                         localItem.setUpdateTime(item.getUpdateTime());
@@ -248,14 +243,15 @@ public class DetailAction extends ABaseAction {
 
                                         //更新产品信息
                                         localItem.setName(item.getName());
-                                        if (!localItem.getLogo().equals(item.getLogo())) {
-
-                                            localItem.setLocaLogo(localItem.getLogo());//删除老图片的时候用
-                                            localItem.setLogo(item.getLogo());
-                                        }
+                                        localItem.setLogo(item.getLogo());
+//                                        if (!localItem.getLogo().equals(item.getLogo())) {
+//
+//                                            localItem.setLocaLogo(localItem.getLogo());//删除老图片的时候用
+//                                            localItem.setLogo(item.getLogo());
+//                                        }
                                         localItem.setUpdateDate(item.getUpdateDate());
                                         productDao.update(localItem);
-                                        item.setLocaLogo(localItem.getLocaLogo());
+//                                        item.setLocaLogo(localItem.getLocaLogo());
                                     }
                                 }
                             }
@@ -343,13 +339,13 @@ public class DetailAction extends ABaseAction {
 
                 for (Product item : products) {
 
-                    String oldLogoName = item.getLocaLogo();
-                    if (oldLogoName != null && oldLogoName.trim() != "") {
-
-                        oldLogoName = oldLogoName.substring(oldLogoName.lastIndexOf("/") + 1);
-                    }
+//                    String oldLogoName = item.getLocaLogo();
+//                    if (oldLogoName != null && oldLogoName.trim() != "") {
+//
+//                        oldLogoName = oldLogoName.substring(oldLogoName.lastIndexOf("/") + 1);
+//                    }
                     js = JsMethod.createJs("javascript:Page.addImg(${id}, ${name}, ${lastModify}, ${path}, ${localImg});",
-                            item.getId(), item.getName(), item.getUpdateDate(), item.getLogo(), oldLogoName);
+                            item.getId(), item.getName(), item.getUpdateDate(), item.getLogo(), "");
                     webView.loadUrl(js);
                 }
 

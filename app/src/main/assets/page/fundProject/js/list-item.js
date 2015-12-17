@@ -34,6 +34,7 @@ FundItem.prototype.init = function() {
 		this.view.find("[sid=logo]").attr("src", compDefaultLogo);
 	}
 
+
 	this.name = isEmpty(this.name, "暂未填写");
 	this.view.find("[sid=name]").text(this.name);
 
@@ -49,8 +50,16 @@ FundItem.prototype.init = function() {
 	Button.create(this.view, {
 		onClick : this.onItemClick
 	});
+
+	//图片加载失败监听
+    this.view.find("[sid=logo]").bind("error", this.view, this.loadDefaultIcon);
 };
 
+FundItem.prototype.loadDefaultIcon = function(e) {
+
+	var view = e.data;
+	view.find("[sid=logo]").attr("src", compDefaultLogo);
+};
 FundItem.prototype.onItemClick = function(id, e) {
 	
 	SDK.openDetail(parseInt(id), e.view.find("[sid=name]").text());

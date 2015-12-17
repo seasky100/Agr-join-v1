@@ -11,8 +11,8 @@ var ExpertItem = function(expertId, logo, expertName, professionalTitle, trade, 
 	this.area = area;// 专家所属的地区
 	this.lastModify = updateDate;// 最后修改时间
 	this.oldFileName = oldFileName;
-	this.driver = FILE.getSysPath();
-	this.local = this.driver + expertlogoPath;// logo的本地存储路径
+//	this.driver = FILE.getSysPath();
+//	this.local = this.driver + expertlogoPath;// logo的本地存储路径
 	
 	
 	// 定义视图和父容器
@@ -35,30 +35,30 @@ ExpertItem.prototype.init = function() {
 		this.logo = "";
 	}
 
-	if(this.logo == null || this.logo.trim() == "")
-		this.fileName="null";
-	else
-		this.fileName = this.logo.split("/").pop();// logo 的文件名
+//	if(this.logo == null || this.logo.trim() == "")
+//		this.fileName="null";
+//	else
+//		this.fileName = this.logo.split("/").pop();// logo 的文件名
 	this.view = this.container.append(ExpertItem.template).children().last();
 	this.view.attr("id", this.id);
 	this.view.attr("lastModify", this.lastModify+"");
 
-	var src = this.local + this.fileName;
-
-	if (this.logo != null && this.logo.trim() != "") {
-		if (FILE.isFileExist(src) == true) {
-
-			this.view.find("[sid=logo]").attr("src", src);
-		} else {
-
-			this.view.find("[sid=logo]").attr("src", expertDefaultLogo);
-			this.loadIcon();
-		}
-		this.view.attr("logo", this.logo);
-	} else {
-
-		this.view.find("[sid=logo]").attr("src", expertDefaultLogo);
-	}
+//	var src = this.local + this.fileName;
+	this.view.find("[sid=logo]").attr("src", this.logo);
+//	if (this.logo != null && this.logo.trim() != "") {
+//		if (FILE.isFileExist(src) == true) {
+//
+//			this.view.find("[sid=logo]").attr("src", src);
+//		} else {
+//
+//			this.view.find("[sid=logo]").attr("src", expertDefaultLogo);
+//			this.loadIcon();
+//		}
+//		this.view.attr("logo", this.logo);
+//	} else {
+//
+//		this.view.find("[sid=logo]").attr("src", expertDefaultLogo);
+//	}
 	this.name = isEmpty(this.name, "暂未填写");
 	this.view.find("[sid=name]").text(this.name);
 	if(this.professionalTitle != null)
@@ -74,8 +74,15 @@ ExpertItem.prototype.init = function() {
 	Button.create(this.view, {
 		onClick : this.onItemClick
 	});
-};
 
+	//图片加载失败监听
+    this.view.find("[sid=logo]").bind("error", this.view, this.loadDefaultIcon);
+};
+ExpertItem.prototype.loadDefaultIcon = function(e) {
+
+	var view = e.data;
+	view.find("[sid=logo]").attr("src", expertDefaultLogo);
+};
 ExpertItem.prototype.onItemClick = function(id, e) {
 	
 	SDK.openExpertDetail(parseInt(id), e.view.find("[sid=name]").text(), e.view.attr("lastModify"));

@@ -47,7 +47,7 @@ public class AchvListAction extends ABaseAction {
         this.condition = condition;
         this.showWaitDialog();
 
-        handle(true); 
+        handle(true);
     }
 
     /**
@@ -101,11 +101,11 @@ public class AchvListAction extends ABaseAction {
                                     localItem.setPrice(item.getPrice());
                                     localItem.setOwnerName(item.getOwnerName());
                                     localItem.setTradeName(item.getTradeName());
-                                    localItem.setOldLocalPath(localItem.getLogo());//删除老图片的时候用
+//                                    localItem.setOldLocalPath(localItem.getLogo());//删除老图片的时候用
                                     localItem.setLogo(item.getLogo());
                                     localItem.setUpdataDate(item.getUpdataDate());
 
-                                    item.setOldLocalPath(localItem.getLogo());//为显示图片使用
+//                                    item.setOldLocalPath(localItem.getLogo());//为显示图片使用
 
                                     achvDao.update(localItem);
                                 }

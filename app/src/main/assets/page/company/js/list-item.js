@@ -10,10 +10,10 @@ var CompItem = function(compId, logo, compName, trade, expoNo, area, oldLogo, la
 	this.oldLogo = oldLogo;//logo 老图片
 	this.lastModify = lastModify;// 最后修改时间
 
-	this.driver = FILE.getSysPath();
-	this.local = this.driver + compLogoPath;// logo的本地存储路径
-	if(this.logo != null && this.logo.trim() != "")
-		this.fileName = this.logo.split("/").pop();// logo 的文件名
+//	this.driver = FILE.getSysPath();
+//	this.local = this.driver + compLogoPath;// logo的本地存储路径
+//	if(this.logo != null && this.logo.trim() != "")
+//		this.fileName = this.logo.split("/").pop();// logo 的文件名
 
      	// 定义视图和父容器
      	this.view = null;
@@ -36,21 +36,21 @@ var CompItem = function(compId, logo, compName, trade, expoNo, area, oldLogo, la
 	this.view.attr("lastModify", this.lastModify);
 
 	var src = this.local + this.fileName;
-
-	if (this.logo != null && this.logo.trim() != "") {
-		if (FILE.isFileExist(src) == true) {
-
-			this.view.find("[sid=logo]").attr("src", src);
-		} else {
-
-			this.view.find("[sid=logo]").attr("src", compDefaultLogo);
-			this.loadIcon();
-		}
-		this.view.attr("logo", this.logo);
-	} else {
-
-		this.view.find("[sid=logo]").attr("src", compDefaultLogo);
-	}
+	this.view.find("[sid=logo]").attr("src", this.logo);
+//	if (this.logo != null && this.logo.trim() != "") {
+//		if (FILE.isFileExist(src) == true) {
+//
+//			this.view.find("[sid=logo]").attr("src", src);
+//		} else {
+//
+//			this.view.find("[sid=logo]").attr("src", compDefaultLogo);
+//			this.loadIcon();
+//		}
+//		this.view.attr("logo", this.logo);
+//	} else {
+//
+//		this.view.find("[sid=logo]").attr("src", compDefaultLogo);
+//	}
 	
 	this.name = isEmpty(this.name,"暂未填写");
 	this.view.find("[sid=name]").text(this.name);
@@ -74,8 +74,14 @@ var CompItem = function(compId, logo, compName, trade, expoNo, area, oldLogo, la
 	Button.create(this.view, {
 		onClick : this.onItemClick
 	});
+	//图片加载失败监听
+    this.view.find("[sid=logo]").bind("error", this.view, this.loadDefaultIcon);
 };
+CompItem.prototype.loadDefaultIcon = function(e) {
 
+	var view = e.data;
+	view.find("[sid=logo]").attr("src", compDefaultLogo);
+};
 CompItem.prototype.onItemClick = function(id, e) {
 	SDK.openCompDetail(parseInt(id), e.view.find("[sid=name]").text(), e.view
 			.attr("lastModify"));

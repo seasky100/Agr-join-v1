@@ -13,7 +13,7 @@ Page.initBasic = function(name, jd, logo, compname, compId, price, projField, su
 
 	}else {
 
-		$("[sid=logo]").attr("src",expertDefaultLogo);
+		$("[sid=logo]").attr("src",compDefaultLogo);
 	}
 
 
