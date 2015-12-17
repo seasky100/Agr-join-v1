@@ -192,7 +192,7 @@
 
         <!--
         网络变化监听器
-        <receiver android:name="cn.fundview.app.service.NetWorkBroadCastReceiver" >
+        <receiver android:name="cn.fundview.app.receiver.NetWorkBroadCastReceiver" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" >
                 </action>
@@ -226,12 +226,11 @@
 
         <service android:name=".app.service.UpdateService" />
 
-        <receiver android:name=".app.service.PackageAddEndReceiver">
+        <receiver android:name=".app.receiver.PackageAddEndReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
-
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
