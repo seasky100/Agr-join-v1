@@ -1,22 +1,14 @@
 package cn.fundview.app.action.msg;
 
+import android.content.Context;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import android.content.Context;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import cn.fundview.app.action.ABaseAction;
-import cn.fundview.app.domain.dao.DaoFactory;
-import cn.fundview.app.domain.model.Favorite;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.domain.webservice.util.Constants;
 import cn.fundview.app.model.ResultBean;
@@ -112,6 +104,7 @@ public class FundviewInforDetailAction extends ABaseAction {
 
             js = JsMethod.createJsWithJsonItems("javascript:Page.initPage(${id}, ${title}, ${updateDate}, ${content}, ${imgUrl});", detail);
             webView.loadUrl(js);
+            System.out.println(js);
         }
 
         this.closeWaitDialog();

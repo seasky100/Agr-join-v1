@@ -10,22 +10,14 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import cn.fundview.app.action.ABaseAction;
 import cn.fundview.app.domain.dao.DaoFactory;
 import cn.fundview.app.domain.dao.FundviewInforDao;
 import cn.fundview.app.domain.model.FundviewInfor;
-import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.domain.webservice.util.Constants;
 import cn.fundview.app.model.ResultBean;
-import cn.fundview.app.tool.JsMethod;
-import cn.fundview.app.tool.NetWorkConfig;
 import cn.fundview.app.tool.json.JSONTools;
-import cn.fundview.app.view.ABaseWebView;
 
 /**
  * 丰景资讯 异步加载action  根据id进行查询
@@ -106,7 +98,7 @@ public class LoadFundviewInforAction {
                                                     //添加资讯
                                                     item.setPublishDate(item.getUpdateDate());
                                                     fundviewInforDao.save(item);
-                                                } else if (localItem.getUpdateDate() != item.getUpdateDate()) {
+                                                } else {
 
                                                     //更新资讯
                                                     if (localItem.getLogo() != null && !localItem.getLogo().equals(item.getLogo())) {

@@ -4,8 +4,6 @@ import android.content.Context;
 
 import com.alibaba.fastjson.JSON;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,17 +88,17 @@ public class InitFundviewInforListAction extends ABaseAction {
                                             item.setRead(1);//设置历史已读
                                             item.setPublishDate(item.getUpdateDate());
                                             fundviewInforDao.save(item);
-                                        } else if (localItem.getUpdateDate() != item.getUpdateDate()) {
+                                        } else {
 
                                             //更新资讯
-                                            if (!localItem.getLogo().equals(item.getLogo())) {
+                                            if (!item.getLogo().equals(localItem.getLogo())) {
 
                                                 //资讯图片有更新
                                                 item.setLogoLocalPath(localItem.getLogo());
                                             }
 
                                             item.setPublishDate(localItem.getPublishDate()); //显示用
-                                            fundviewInforDao.update(localItem);
+                                            fundviewInforDao.update(item);
                                         }
                                         item.setPublishDate(localItem.getPublishDate()); //显示用
                                     }
@@ -140,6 +138,7 @@ public class InitFundviewInforListAction extends ABaseAction {
                         "javascript:Page.addInfor" + "(${id}, ${title}, ${logo}, ${introduction}, ${deliverTime}, ${publishTime}, ${updateDate});", infor.getId(),
                         infor.getTitle(), infor.getLogo(), infor.getIntroduction(), infor.getPublishDate(), infor.getPublishDate(), infor.getUpdateDate());
 
+                System.out.println(js);
                 webView.loadUrl(js);
             }
 
