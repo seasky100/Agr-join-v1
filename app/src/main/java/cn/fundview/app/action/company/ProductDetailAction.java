@@ -2,11 +2,8 @@ package cn.fundview.app.action.company;
 
 import android.content.Context;
 
-import com.alibaba.fastjson.JSON;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -17,8 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 import cn.fundview.app.action.ABaseAction;
-import cn.fundview.app.domain.dao.DaoFactory;
-import cn.fundview.app.domain.model.Favorite;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.domain.webservice.util.Constants;
 import cn.fundview.app.model.ResultBean;
@@ -184,7 +179,7 @@ public class ProductDetailAction extends ABaseAction {
         if (detail != null) {
 
             js = JsMethod.createJsWithJsonItems(
-                    "javascript:Page.init(${id}, ${name}, ${unit}, ${price}, ${materialDesc}, ${techDesc}, ${intro});", detail);
+                    "javascript:Page.init(${id}, ${name}, ${compName},${compId}, ${unit}, ${price}, ${materialDesc}, ${techDesc}, ${intro});", detail);
             webView.loadUrl(js);
         }
         this.closeWaitDialog();

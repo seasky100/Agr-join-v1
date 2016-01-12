@@ -1,17 +1,11 @@
 package cn.fundview.app.action.global;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.util.Xml;
-import android.widget.Toast;
 
 import org.xmlpull.v1.XmlPullParser;
 
@@ -60,8 +54,11 @@ public class CheckVersionAction {
 
             if (msg.what == 1) {
 
-                // 显示下载文件
+                // 提示版本更新
                 listener.complete(4,2,null);    //
+            }else {
+
+                listener.complete(4,1,null);    //
             }
         }
     };

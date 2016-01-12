@@ -5,8 +5,8 @@ public class Constants {
     /**
      * 服务器使用的地址
      **/
-//    public static final String SERVER = "http://192.168.1.10:8080/app/api";
-    public static final String SERVER = "http://m.fundview.cn/api/";
+    public static final String SERVER = "http://192.168.1.133:8080/api";
+//    public static final String SERVER = "http://m.fundview.cn/api/";
 
 
 //    public static final String QR_CODE_IMG_PATH = "http://192.168.1.10:8080/static/";

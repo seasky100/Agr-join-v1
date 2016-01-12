@@ -1,5 +1,4 @@
 
-
 var SDK = window.sdk;
 var FILE = window.file;
 var fileLoader = new FileLoader();
@@ -35,7 +34,7 @@ Page.initImg = function(imgSize,height) {
 }
 
 // 项目初始
-Page.init = function(id, name, unit, price, materialDesc, techDesc, intro) {
+Page.init = function(id, name,compName, compId, unit, price, materialDesc, techDesc, intro) {
 
 	$("[sid=name]").text(isEmpty(name,"暂未填写"));
 	$("[sid=unit]").text(isEmpty(unit,"暂未填写"));
@@ -43,7 +42,11 @@ Page.init = function(id, name, unit, price, materialDesc, techDesc, intro) {
 	$("[sid=materialDesc]").text(isEmpty(materialDesc,"暂未填写"));
 	$("[sid=intro]").text(isEmpty(intro,"暂未填写"));
 	$("[sid=techDesc]").text(isEmpty(techDesc,"暂未填写"));
-
+	$("#ownerName").text(isEmpty(compName,"暂未填写"));
+	$("#ownerName").attr("ownerId",compId);//拥有者标识
+	Button.loadAllButton({
+		onClick: OnBtnClick
+	});
 }
 
 
@@ -99,4 +102,15 @@ function isEmpty(source, defaultStr) {
 
 	}
 	return source;
+}
+
+function OnBtnClick(id,e) {
+	if(id == "owner") {
+
+
+		//点击成果页面的拥有者
+		var ownerId = $("#ownerName").attr("ownerId");
+		//SDK.findOwner(parseInt(ownerId),parseInt(type),$("#" + id).text());
+		SDK.findOwner(parseInt(ownerId),$("#ownerName").text());
+	}
 }

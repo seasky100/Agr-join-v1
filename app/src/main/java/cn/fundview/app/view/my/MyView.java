@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.util.AttributeSet;
 import android.webkit.JavascriptInterface;
 
-import cn.fundview.app.action.global.CheckVersionAction;
 import cn.fundview.app.action.my.InitMyPageAction;
 import cn.fundview.app.action.my.LoginAction;
 import cn.fundview.app.activity.MainActivity;
@@ -21,7 +20,6 @@ import cn.fundview.app.tool.PreferencesUtils;
 import cn.fundview.app.tool.StringUtils;
 import cn.fundview.app.view.ABaseWebView;
 import cn.fundview.app.view.AsyncTaskCompleteListener;
-import cn.fundview.app.view.MenuBar;
 
 public class MyView extends ABaseWebView implements AsyncTaskCompleteListener {
 

@@ -289,3 +289,12 @@ header {
 	text-overflow: ellipsis;
 	overflow:hidden;
 }
+
+.zr_way{
+	font-size:14px;
+	color:#333;
+	margin:0px 0 0px 0;
+	background:#fff;
+	padding:10px 8px;
+	border-top:1px solid #e8e8e8;
+}

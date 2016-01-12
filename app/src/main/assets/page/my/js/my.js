@@ -20,7 +20,7 @@ Page.setMyIcon = function(icon) {
 };
 
 Page.setNewVersion = function(flag) {
-	if (flag = 1)
+	if (flag == 1)
 		$("#about .new").show();
 	else
 		$("#about .new").hide();

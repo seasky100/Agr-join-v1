@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.view.KeyEvent;
 
+import com.lidroid.xutils.ViewUtils;
+
 import cn.fundview.R;
 import cn.fundview.app.action.global.CheckVersionAction;
 import cn.fundview.app.action.my.LoginAction;
@@ -30,10 +32,6 @@ import cn.fundview.app.view.MenuBar.MenuBarListener;
 import cn.fundview.app.view.msg.MsgListView;
 import cn.fundview.app.view.my.MyView;
 import cn.jpush.android.api.JPushInterface;
-
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ContentView;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 public class MainActivity extends ABaseActivity implements MenuBarListener, AsyncTaskCompleteListener {
 
@@ -118,6 +116,8 @@ public class MainActivity extends ABaseActivity implements MenuBarListener, Asyn
 
         activeView.hide();
         showFlagPage(flag);
+        CheckVersionAction checkVersionAction = new CheckVersionAction(this,this);
+        checkVersionAction.execute();
     }
 
     @Override
