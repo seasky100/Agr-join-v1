@@ -10,7 +10,7 @@ import cn.fundview.app.domain.dao.DaoFactory;
 import cn.fundview.app.domain.model.UserInfor;
 import cn.fundview.app.tool.Constants;
 import cn.fundview.app.tool.JsMethod;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.view.ABaseWebView;
 
 public class ProfileInforView extends ABaseWebView {

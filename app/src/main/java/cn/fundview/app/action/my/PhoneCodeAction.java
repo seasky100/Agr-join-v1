@@ -2,27 +2,13 @@ package cn.fundview.app.action.my;
 
 import android.content.Context;
 
-import com.alibaba.fastjson.JSON;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import cn.fundview.app.action.ABaseAction;
-import cn.fundview.app.domain.dao.AttentUserDao;
-import cn.fundview.app.domain.dao.CompanyDao;
-import cn.fundview.app.domain.dao.DaoFactory;
-import cn.fundview.app.domain.dao.ExpertDao;
-import cn.fundview.app.domain.model.AttentUser;
-import cn.fundview.app.domain.model.Company;
-import cn.fundview.app.domain.model.Expert;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultBean;
-import cn.fundview.app.tool.Constants;
-import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.NetWorkConfig;
-import cn.fundview.app.tool.PreferencesUtils;
 import cn.fundview.app.tool.ToastUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;

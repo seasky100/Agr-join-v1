@@ -8,9 +8,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,7 +29,7 @@ import cn.fundview.app.activity.my.ProfileQrcodeActivity;
 import cn.fundview.app.activity.my.ProfileTelActivity;
 import cn.fundview.app.tool.Constants;
 import cn.fundview.app.tool.PopUpWindow;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.tool.adapter.ListViewAdapter;
 import cn.fundview.app.view.ABaseWebView;
 
@@ -69,10 +67,25 @@ public class ProfileWebView extends ABaseWebView {
         map5.put("name", "其他企业");
         map5.put("key", "5");
 
+        Map<String, String> map7 = new HashMap<>();
+        map7.put("name", "批发市场");
+        map7.put("key", "7");
+
+        Map<String, String> map6 = new HashMap<>();
+        map6.put("name", "农村中介组织");
+        map6.put("key", "6");
+
+        Map<String, String> map8 = new HashMap<>();
+        map8.put("name", "家庭农场");
+        map8.put("key", "8");
+
         dataSource.add(map1);
         dataSource.add(map2);
         dataSource.add(map3);
         dataSource.add(map4);
+        dataSource.add(map7);
+        dataSource.add(map6);
+        dataSource.add(map8);
         dataSource.add(map5);
         this.loadUrl("file:///android_asset/page/my/profile.html");
     }
@@ -139,16 +152,13 @@ public class ProfileWebView extends ABaseWebView {
         ((Activity) context).runOnUiThread(new Runnable() {
             @Override
             public void run() {
-
-
                 View popupView = ((Activity) context).getLayoutInflater().inflate(R.layout.home_search_condition, null);
 //            final String[] dataSource = new String[]{"专 家", "成 果", "企 业", "需 求","机 构"};
-                selectedIndex = compType - 1;
                 adapter = new ListViewAdapter(context, dataSource);
                 GridView gridview = (GridView) popupView.findViewById(R.id.home_condition_panel);
                 gridview.setSelector(getResources().getDrawable(R.drawable.search_condition_item));
                 gridview.setFocusable(true);
-                adapter.setSelectedIndex(selectedIndex);
+                adapter.setSelectedIndex(compType);
                 gridview.setAdapter(adapter);
                 popupWindow = new PopUpWindow(context, popupView, searchTitleBarView);
 
@@ -158,13 +168,11 @@ public class ProfileWebView extends ABaseWebView {
                     public void onItemClick(AdapterView<?> parent, View view1, int position, long id) {
                         // TODO Auto-generated method stub
                         String value = dataSource.get(position).get("name");
-                        int type = Integer.parseInt(dataSource.get(position).get("key"));
-
-                        selectedIndex = position;
+                        int key = Integer.parseInt(dataSource.get(position).get("key"));
                         popupWindow.dismiss();
 
                         SaveProfileCompTypeAction action = new SaveProfileCompTypeAction(context, ProfileWebView.this);
-                        action.execute(position + 1, "Page.setCompType", PreferencesUtils.getInt(context, Constants.ACCOUNT_ID));
+                        action.execute(key, "Page.setCompType", PreferencesUtils.getInt(context, Constants.ACCOUNT_ID));
                     }
                 });
 

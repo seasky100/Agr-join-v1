@@ -15,8 +15,8 @@ public class Constants {
 
     public static final String DOWN_SERVICE = "http://m.fundview.cn/app/version.xml";
     public static final String APK_DOWN_PATH = "http://m.fundview.cn/app/fundview.apk";
-//    public static final String APK_DOWN_PATH = "http://192.168.0.101/fundview.apk";
-//    public static final String DOWN_SERVICE = "http://192.168.0.101/version.xml";
+//    public static final String APK_DOWN_PATH = "http://192.168.1.108:8080/app/fundview.apk";
+//    public static final String DOWN_SERVICE = "http://192.168.1.108:8080/app/version.xml";
 
     /************************************
      * 本地存储登录用户名和密码的key
@@ -92,4 +92,6 @@ public class Constants {
     public static final int EXPERT_SEARCH_TYPE = 2;
     public static final int REQU_SEARCH_TYPE = 3;
     public static final int ACHV_SEARCH_TYPE = 4;
+    //新的版本号 表示
+    public static final String NEW_VERSION = "new_version";  // 1 有新的版本号
 }

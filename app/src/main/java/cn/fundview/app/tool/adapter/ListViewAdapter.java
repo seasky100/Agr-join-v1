@@ -2,7 +2,6 @@ package cn.fundview.app.tool.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -58,7 +57,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         mTitle.setText(dataSource.get(position).get("name"));
         int key = Integer.parseInt(dataSource.get(position).get("key"));
-        if (selectedIndex == position) {
+        if (selectedIndex == key) {
 
             mTitle.setTextColor(context.getResources().getColor(R.color.title_bar_bg_color_1));
             convertView.setBackgroundResource(R.drawable.green_border);

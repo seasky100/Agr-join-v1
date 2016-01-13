@@ -1,39 +1,28 @@
 package cn.fundview.app.action.my;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.media.Ringtone;
 
 import com.alibaba.fastjson.JSON;
-import com.lidroid.xutils.view.annotation.event.OnNothingSelected;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import cn.fundview.app.action.ABaseAction;
-import cn.fundview.app.activity.my.LoginActivity;
-import cn.fundview.app.activity.my.MyAttentActivity;
 import cn.fundview.app.domain.dao.AttentUserDao;
 import cn.fundview.app.domain.dao.CompanyDao;
 import cn.fundview.app.domain.dao.DaoFactory;
 import cn.fundview.app.domain.dao.ExpertDao;
-import cn.fundview.app.domain.dao.UserInforDao;
 import cn.fundview.app.domain.model.AttentUser;
 import cn.fundview.app.domain.model.Company;
 import cn.fundview.app.domain.model.Expert;
-import cn.fundview.app.domain.model.Org;
-import cn.fundview.app.domain.model.UserInfor;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.tool.Constants;
-import cn.fundview.app.tool.FileTools;
 import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.NetWorkConfig;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
 

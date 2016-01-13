@@ -1,9 +1,6 @@
 package cn.fundview.app.action.achv;
 
-import android.app.Activity;
 import android.content.Context;
-
-import com.alibaba.fastjson.JSON;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,7 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import cn.fundview.app.action.ABaseAction;
 import cn.fundview.app.domain.dao.DaoFactory;
@@ -26,9 +22,8 @@ import cn.fundview.app.domain.webservice.util.Constants;
 import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.tool.DensityUtil;
 import cn.fundview.app.tool.DeviceConfig;
-import cn.fundview.app.tool.FileTools;
+import cn.fundview.app.tool.file.FileTools;
 import cn.fundview.app.tool.JsMethod;
-import cn.fundview.app.tool.PreferencesUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
 

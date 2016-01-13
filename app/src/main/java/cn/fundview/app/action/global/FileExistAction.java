@@ -3,7 +3,7 @@ package cn.fundview.app.action.global;
 import android.content.Context;
 
 import cn.fundview.app.action.ABaseAction;
-import cn.fundview.app.tool.FileTools;
+import cn.fundview.app.tool.file.FileTools;
 import cn.fundview.app.view.ABaseWebView;
 
 public class FileExistAction extends ABaseAction {

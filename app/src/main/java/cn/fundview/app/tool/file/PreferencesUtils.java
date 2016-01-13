@@ -1,4 +1,4 @@
-package cn.fundview.app.tool;
+package cn.fundview.app.tool.file;
 
 import android.content.Context;
 import android.content.SharedPreferences;

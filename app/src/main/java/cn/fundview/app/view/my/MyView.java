@@ -16,7 +16,7 @@ import cn.fundview.app.activity.my.LoginActivity;
 import cn.fundview.app.activity.my.MyAttentActivity;
 import cn.fundview.app.activity.my.ProfileActivity;
 import cn.fundview.app.tool.Constants;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.tool.StringUtils;
 import cn.fundview.app.view.ABaseWebView;
 import cn.fundview.app.view.AsyncTaskCompleteListener;
@@ -42,7 +42,6 @@ public class MyView extends ABaseWebView implements AsyncTaskCompleteListener {
         super.active();
         InitMyPageAction action = new InitMyPageAction(context, this);
         action.execute();
-
     }
 
 
@@ -210,18 +209,6 @@ public class MyView extends ABaseWebView implements AsyncTaskCompleteListener {
 
                 Intent intent = new Intent(context, LoginActivity.class);
                 context.startActivity(intent);
-            }
-        }
-
-        if (requestCode == 4) {
-
-            //检查版本更新,提示有新的版本
-            if(responseCode == 2) {
-
-                this.loadUrl("javascript:Page.setNewVersion(1);");
-            }else{
-
-                this.loadUrl("javascript:Page.setNewVersion(0);");
             }
         }
     }

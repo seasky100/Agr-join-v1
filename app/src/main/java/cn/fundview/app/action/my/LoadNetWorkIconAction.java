@@ -5,7 +5,7 @@ import android.content.Context;
 import android.webkit.WebView;
 
 import cn.fundview.app.tool.DeviceConfig;
-import cn.fundview.app.tool.FileTools;
+import cn.fundview.app.tool.file.FileTools;
 
 public class LoadNetWorkIconAction {
 

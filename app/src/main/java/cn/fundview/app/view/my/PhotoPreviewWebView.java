@@ -6,16 +6,16 @@ import android.content.Intent;
 import android.util.AttributeSet;
 import android.webkit.JavascriptInterface;
 
-import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
+
+import java.io.File;
 
 import cn.fundview.app.action.my.LoadMyIconAction;
 import cn.fundview.app.action.my.SaveIconAction;
 import cn.fundview.app.activity.my.ProfileIconActivity;
 import cn.fundview.app.view.ABaseWebView;
-import cn.fundview.app.view.UploadListener;
 
-public class PhotoPreviewWebView extends ABaseWebView implements UploadListener {
+public class PhotoPreviewWebView extends ABaseWebView {
 
     private String fileSavePath;
     private String fileName;
@@ -55,19 +55,8 @@ public class PhotoPreviewWebView extends ABaseWebView implements UploadListener 
         this.fileName = fileName;
     }
 
-
     @Override
-    public void onStart() {
-
-    }
-
-    @Override
-    public void onLoading(long total, long current, boolean isUploading) {
-
-    }
-
-    @Override
-    public void onSuccess(ResponseInfo<String> responseInfo) {
+    public void onSuccess(ResponseInfo<File> responseInfo) {
 
         loadUrl("javascript:Page.hideLoading()");
         Intent intent = new Intent(context, ProfileIconActivity.class);
@@ -76,10 +65,5 @@ public class PhotoPreviewWebView extends ABaseWebView implements UploadListener 
         ((Activity) context).setResult(Activity.RESULT_OK,
                 intent);
         ((Activity) context).finish();
-    }
-
-    @Override
-    public void onFailure(HttpException error, String msg) {
-
     }
 }

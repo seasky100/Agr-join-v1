@@ -2,7 +2,6 @@ package cn.fundview.app.tool.json;
 
 import com.alibaba.fastjson.JSON;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,11 +12,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import cn.fundview.app.domain.model.UserInfor;
 import cn.fundview.app.domain.webservice.util.Constants;
 import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.model.ResultListBean;
-import cn.fundview.app.tool.FileTools;
+import cn.fundview.app.tool.file.FileTools;
 
 public class JSONTools {
 

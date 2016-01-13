@@ -15,7 +15,7 @@ import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.domain.webservice.util.Constants;
 import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.tool.DeviceConfig;
-import cn.fundview.app.tool.FileTools;
+import cn.fundview.app.tool.file.FileTools;
 import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;

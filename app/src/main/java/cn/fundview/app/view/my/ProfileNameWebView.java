@@ -7,9 +7,8 @@ import android.webkit.JavascriptInterface;
 
 import cn.fundview.app.action.my.LoadProfileAction;
 import cn.fundview.app.action.my.SaveProfileNameAction;
-import cn.fundview.app.domain.model.UserInfor;
 import cn.fundview.app.tool.Constants;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.view.ABaseWebView;
 
 public class ProfileNameWebView extends ABaseWebView {

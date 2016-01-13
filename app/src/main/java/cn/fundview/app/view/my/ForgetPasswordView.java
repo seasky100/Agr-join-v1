@@ -10,7 +10,7 @@ import cn.fundview.app.action.my.ForgetPasswordPhoneCodeAction;
 import cn.fundview.app.action.my.ForgetPasswordResetPasswordAction;
 import cn.fundview.app.activity.my.LoginActivity;
 import cn.fundview.app.tool.Installation;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.tool.ToastUtils;
 import cn.fundview.app.view.ABaseWebView;
 import cn.fundview.app.view.AsyncTaskCompleteListener;

@@ -1,7 +1,6 @@
-package cn.fundview.app.tool;
+package cn.fundview.app.tool.file;
 
 import android.util.Log;
-import android.webkit.WebView;
 
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -26,8 +25,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import cn.fundview.app.view.ABaseWebView;
-import cn.fundview.app.view.AsyncTaskCompleteListener;
+import cn.fundview.app.tool.Constants;
+import cn.fundview.app.tool.StringUtils;
 
 /**
  * POST和GET提交工具类
@@ -157,9 +156,9 @@ public class FileTools {
         return null;
     }
 
-    public InputStream  doGet(String url) throws Exception {
+    public InputStream doGet(String url) throws Exception {
 
-        if(url ==  null || url.trim().equals(""))
+        if (url == null || url.trim().equals(""))
             return null;
 
         StringBuffer sb = new StringBuffer();
@@ -296,41 +295,39 @@ public class FileTools {
      * @param path   存放目录
      * @return void
      */
-    public static void downFile(final String urlStr, final String path, final AsyncTaskCompleteListener listener) {
+    public static void downFile(final String urlStr, final String path, final DownLoadListener downLoadListener) {
+
 
         if (!StringUtils.isBlank(urlStr)) {
-
-            String localPath = path + urlStr.substring(urlStr.lastIndexOf("/") + 1);
             HttpUtils http = new HttpUtils();
             http.configRequestThreadPoolSize(3);
-            boolean flag;
             RequestCallBack<File> requestCallBack = new RequestCallBack<File>() {
 
                 @Override
                 public void onStart() {
-                    System.out.println("正在连接...");
+
+                    downLoadListener.onStart();
                 }
 
                 @Override
                 public void onLoading(long total, long current, boolean isUploading) {
-                    System.out.println(current + "/" + total);
+
+                    downLoadListener.onLoading(total, current, isUploading);
                 }
 
                 @Override
                 public void onSuccess(ResponseInfo<File> responseInfo) {
 
-                    File result = responseInfo.result;
-                    listener.complete(0, 0, urlStr);
-
+                    downLoadListener.onSuccess(responseInfo);
                 }
 
                 @Override
                 public void onFailure(HttpException error, String msg) {
-                    System.out.println(msg);
+                    downLoadListener.onFailure(error, msg);
                 }
             };
 
-            http.download(urlStr, localPath, true, true, requestCallBack);
+            http.download(urlStr, path, true, true, requestCallBack);
         }
 
     }
@@ -394,7 +391,7 @@ public class FileTools {
                 if (output != null)
                     output.close();
 
-                if(input != null) {
+                if (input != null) {
 
                     input.close();
                 }
@@ -580,5 +577,19 @@ public class FileTools {
             }
         }
         return "";
+    }
+
+    public static boolean isHavingFile(String filePath) {
+
+        File temp = new File(filePath);
+        if (temp.exists()) {
+
+            Log.d(Constants.TAG, "文件存在");
+            return true;
+        } else {
+
+            Log.d(Constants.TAG, "文件不存在");
+            return false;
+        }
     }
 }

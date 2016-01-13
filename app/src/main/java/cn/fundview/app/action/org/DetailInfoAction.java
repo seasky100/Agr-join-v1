@@ -8,7 +8,6 @@ import java.util.Map;
 import cn.fundview.app.action.ABaseAction;
 import cn.fundview.app.tool.DeviceConfig;
 import cn.fundview.app.tool.JsMethod;
-import cn.fundview.app.tool.PreferencesUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
 

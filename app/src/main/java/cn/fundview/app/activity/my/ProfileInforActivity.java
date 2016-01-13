@@ -7,7 +7,7 @@ import cn.fundview.R;
 import cn.fundview.app.activity.ABaseActivity;
 import cn.fundview.app.domain.model.UserInfor;
 import cn.fundview.app.tool.Constants;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.view.OptionMenuListener;
 
 /**

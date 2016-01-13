@@ -6,13 +6,11 @@ import android.content.Intent;
 import android.util.AttributeSet;
 import android.webkit.JavascriptInterface;
 
-import cn.fundview.app.action.company.CompanyListAction;
 import cn.fundview.app.action.my.AttentListAction;
 import cn.fundview.app.activity.company.DetailActivity;
-import cn.fundview.app.domain.model.Favorite;
 import cn.fundview.app.tool.Constants;
 import cn.fundview.app.tool.DensityUtil;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.view.ABaseWebView;
 
 /**

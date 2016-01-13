@@ -24,16 +24,14 @@ import cn.fundview.app.service.UpdateService;
 import cn.fundview.app.service.UpdateService.UpdataAppBinder;
 import cn.fundview.app.tool.AppUtils;
 import cn.fundview.app.tool.Constants;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.view.ABaseWebView;
-import cn.fundview.app.view.AsyncTaskCompleteListener;
 import cn.fundview.app.view.MenuBar;
 import cn.fundview.app.view.MenuBar.MenuBarListener;
 import cn.fundview.app.view.msg.MsgListView;
-import cn.fundview.app.view.my.MyView;
 import cn.jpush.android.api.JPushInterface;
 
-public class MainActivity extends ABaseActivity implements MenuBarListener, AsyncTaskCompleteListener {
+public class MainActivity extends ABaseActivity implements MenuBarListener {
 
     public static final int REQUEST_CODE_MY = 1212;// 从我的页面进行登录的请求码
     public static final int REQUEST_CODE_EXPERT = 1213;// 从关注的专家进行登录的请求码
@@ -71,7 +69,6 @@ public class MainActivity extends ABaseActivity implements MenuBarListener, Asyn
         String username = PreferencesUtils.getString(this, Constants.ACCOUNT_KEY);
         String password = PreferencesUtils.getString(this, Constants.PASSWORD_KEY);
         LoginAction loginAction = new LoginAction(this, activeView);
-        loginAction.regListener(this);
         loginAction.execute(username, password, REQUEST_CODE_AUTO);
     }
 
@@ -94,8 +91,16 @@ public class MainActivity extends ABaseActivity implements MenuBarListener, Asyn
 //		Shaker.getInstance().enable();
 
         //检查版本更新
-        CheckVersionAction checkVersionAction = new CheckVersionAction(this,this);
+        CheckVersionAction checkVersionAction = new CheckVersionAction(this);
         checkVersionAction.execute();
+        if(PreferencesUtils.getInt(this, Constants.NEW_VERSION) == 1) {
+
+            //有新的版本
+            menuBar.versionUpdate(true);
+        }else {
+
+            menuBar.versionUpdate(false);
+        }
     }
 
     @Override
@@ -116,8 +121,14 @@ public class MainActivity extends ABaseActivity implements MenuBarListener, Asyn
 
         activeView.hide();
         showFlagPage(flag);
-        CheckVersionAction checkVersionAction = new CheckVersionAction(this,this);
-        checkVersionAction.execute();
+        if(PreferencesUtils.getInt(this, Constants.NEW_VERSION) == 1) {
+
+            //有新的版本
+            menuBar.versionUpdate(true);
+        }else {
+
+            menuBar.versionUpdate(false);
+        }
     }
 
     @Override
@@ -166,7 +177,6 @@ public class MainActivity extends ABaseActivity implements MenuBarListener, Asyn
 //		NewFundviewInforObserverMrg.getInstance().removeMsgObserver();
     }
 
-
     private void showMsgPage() {
 
 //		Shaker.getInstance().stop();
@@ -207,10 +217,6 @@ public class MainActivity extends ABaseActivity implements MenuBarListener, Asyn
 
         //清空新消息观察者
 //		NewFundviewInforObserverMrg.getInstance().clearObserver();
-
-        //检查版本更新
-        CheckVersionAction checkVersionAction = new CheckVersionAction(this,(MyView)activeView);
-        checkVersionAction.execute();
     }
 
     @Override
@@ -302,23 +308,6 @@ public class MainActivity extends ABaseActivity implements MenuBarListener, Asyn
                 }).setNegativeButton("否", null).show();
     }
 
-    @Override
-    public void complete(int requestCode, int responseCode, Object msg) {
-
-        if (requestCode == 4) {
-
-            //检查版本更新,提示有新的版本
-            if(responseCode == 2) {
-
-                menuBar.versionUpdate(true);
-            }else{
-
-                menuBar.versionUpdate(false);
-            }
-        }
-    }
-
-
     private class AppUpdateConn implements ServiceConnection {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
@@ -334,7 +323,6 @@ public class MainActivity extends ABaseActivity implements MenuBarListener, Asyn
 
         }
     }
-
 
     @Override
     protected void onDestroy() {

@@ -13,36 +13,25 @@ import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import cn.fundview.app.domain.model.Achv;
-import cn.fundview.app.domain.model.AttentUser;
 import cn.fundview.app.domain.model.Company;
 import cn.fundview.app.domain.model.Expert;
-import cn.fundview.app.domain.model.FundviewInfor;
 import cn.fundview.app.domain.model.Org;
 import cn.fundview.app.domain.model.Requ;
-import cn.fundview.app.domain.model.UserInfor;
 import cn.fundview.app.domain.webservice.util.Constants;
-import cn.fundview.app.tool.FileTools;
-import cn.fundview.app.tool.StringUtils;
+import cn.fundview.app.tool.file.DownLoadListener;
+import cn.fundview.app.tool.file.FileTools;
 import cn.fundview.app.tool.json.JSONTools;
-import cn.fundview.app.view.UploadListener;
 
 /**
  * 单例
@@ -309,7 +298,13 @@ public class RService {
         }
     }
 
-    public static void updateProfileIcon(int accountId, String filePath, final UploadListener listener) {
+    /**
+     * 上传用户logo
+     * @param accountId
+     * @param filePath
+     * @param listener 用户上传进度监听器
+     */
+    public static void updateProfileIcon(int accountId, String filePath, final DownLoadListener listener) {
 
         // 设置请求参数的编码
         RequestParams params = new RequestParams(); // 默认编码UTF-8
@@ -331,7 +326,7 @@ public class RService {
         http.send(HttpRequest.HttpMethod.POST,
                 Constants.PROFILE_ICON_SAVE_SERVER_URL + "?accountId=" + accountId,
                 params,
-                new RequestCallBack<String>() {
+                new RequestCallBack<File>() {
 
                     @Override
                     public void onStart() {
@@ -346,7 +341,7 @@ public class RService {
                     }
 
                     @Override
-                    public void onSuccess(ResponseInfo<String> responseInfo) {
+                    public void onSuccess(ResponseInfo<File> responseInfo) {
 //                        resultText.setText("reply: " + responseInfo.result);
                         listener.onSuccess(responseInfo);
                     }

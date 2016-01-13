@@ -15,11 +15,11 @@ import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.tool.Constants;
 import cn.fundview.app.tool.DeviceConfig;
-import cn.fundview.app.tool.FileTools;
+import cn.fundview.app.tool.file.FileTools;
 import cn.fundview.app.tool.Installation;
 import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.NetWorkConfig;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.tool.StringUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
@@ -240,6 +240,15 @@ public class InitMyPageAction extends ABaseAction {
         String profileJs = JsMethod.createJs(
                 "javascript:Page.setProfile(${username},${name},${type});", username, name, PreferencesUtils.getInt(context, Constants.ACCOUNT_TYPE_KEY));
         webView.loadUrl(profileJs);
-//
+
+        //提醒版本更新
+        if(PreferencesUtils.getInt(context, Constants.NEW_VERSION) == 1) {
+
+            //有新的版本
+            webView.loadUrl("javascript:Page.setNewVersion(1);");
+        }else {
+
+            webView.loadUrl("javascript:Page.setNewVersion(0);");
+        }
     }
 }

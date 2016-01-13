@@ -8,7 +8,7 @@ import android.webkit.JavascriptInterface;
 import cn.fundview.app.action.my.PhoneCodeAction;
 import cn.fundview.app.action.my.RegistAction;
 import cn.fundview.app.tool.Installation;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.tool.ToastUtils;
 import cn.fundview.app.view.ABaseWebView;
 import cn.fundview.app.view.AsyncTaskCompleteListener;

@@ -2,22 +2,13 @@ package cn.fundview.app.action.company;
 
 import android.content.Context;
 
-import com.alibaba.fastjson.annotation.JSONCreator;
-
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.InputStream;
-import java.util.HashMap;
 import java.util.Map;
 
 import cn.fundview.app.action.ABaseAction;
-import cn.fundview.app.domain.webservice.RService;
-import cn.fundview.app.domain.webservice.util.Constants;
-import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.tool.DeviceConfig;
-import cn.fundview.app.tool.FileTools;
 import cn.fundview.app.tool.JsMethod;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
 

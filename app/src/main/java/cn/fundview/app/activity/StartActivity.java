@@ -10,16 +10,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.fundview.R;
-import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.tool.Constants;
-import cn.fundview.app.tool.Installation;
-import cn.fundview.app.tool.PreferencesUtils;
-import cn.fundview.app.tool.ToastUtils;
+import cn.fundview.app.tool.DeviceConfig;
 import cn.fundview.app.tool.adapter.GuideViewAdapter;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.jpush.android.api.JPushInterface;
 
 /**
@@ -47,9 +46,16 @@ public class StartActivity extends FragmentActivity {
         if(PreferencesUtils.getBoolean(this, Constants.FIRST_INSTALL_TAG, true)) {
 
             //发送网络请求,统计安装
-            RService.doAsync(cn.fundview.app.domain.webservice.util.Constants.INSTALL_COUNT_URL + "?deviceId=" + Installation.getDriverId(this) + "&type=1");
+//            RService.doAsync(cn.fundview.app.domain.webservice.util.Constants.INSTALL_COUNT_URL + "?deviceId=" + Installation.getDriverId(this) + "&type=1");
             PreferencesUtils.putBoolean(this, Constants.FIRST_INSTALL_TAG, false);
 //            ToastUtils.show(this, "应用第一次安装完成");
+
+            //删除apk
+            File file1 = new File(DeviceConfig.getSysPath(this) + Constants.APK_PATH);
+            if (file1.exists()) {
+
+                file1.delete();
+            }
         }
 
         if (PreferencesUtils.getInt(this, Constants.FIRST_OPEN_TAG, 0) > 0) {

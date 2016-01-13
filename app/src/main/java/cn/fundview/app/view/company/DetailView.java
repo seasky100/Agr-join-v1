@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.webkit.JavascriptInterface;
 
+import com.lidroid.xutils.http.ResponseInfo;
+
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
 import cn.fundview.app.action.company.DetailAction;
 import cn.fundview.app.action.global.CallAction;
@@ -17,13 +17,10 @@ import cn.fundview.app.action.my.AttentUserAction;
 import cn.fundview.app.activity.company.CompanyProductDetailActivity;
 import cn.fundview.app.activity.company.DetailInfoActivity;
 import cn.fundview.app.tool.DeviceConfig;
-import cn.fundview.app.tool.FileTools;
-import cn.fundview.app.tool.PreferencesUtils;
-import cn.fundview.app.tool.json.JSONTools;
+import cn.fundview.app.tool.file.FileTools;
 import cn.fundview.app.view.ABaseWebView;
-import cn.fundview.app.view.AsyncTaskCompleteListener;
 
-public class DetailView extends ABaseWebView implements AsyncTaskCompleteListener {
+public class DetailView extends ABaseWebView {
 
     private Integer compId;// 企业的帐号id
 
@@ -79,16 +76,15 @@ public class DetailView extends ABaseWebView implements AsyncTaskCompleteListene
     @JavascriptInterface
     public void loadLogo(String logo) {
 
-        FileTools.downFile(logo, DeviceConfig.getSysPath(context) + "/fundView/data/images/comp/logo/", this);
+        FileTools.downFile(logo, DeviceConfig.getSysPath(context) + "/fundView/data/images/comp/logo/" + logo.substring(logo.lastIndexOf("/") + 1), this);
     }
 
     @Override
-    public void complete(int requestCode, int responseCode, Object msg) {
+    public void onSuccess(ResponseInfo<File> responseInfo) {
 
-        String logo = (String) msg;
+        String logo = responseInfo.result.getPath();
         this.loadUrl("javascript:Page.loadhead('" + logo + "');");
     }
-
 
     /**
      * 打开需求详细

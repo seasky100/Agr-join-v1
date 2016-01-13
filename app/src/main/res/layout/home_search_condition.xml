@@ -14,7 +14,7 @@
         android:columnWidth="70dp"
         android:verticalSpacing="8dp"
         android:horizontalSpacing="8dp"
-        android:fadeScrollbars="true"
+        android:fadeScrollbars="false"
         android:background="@drawable/panel_bg"
         android:padding="10dp"
         android:layout_marginLeft="10dp"

@@ -1,25 +1,22 @@
 package cn.fundview.app.action.my;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import cn.fundview.app.action.ABaseAction;
-import cn.fundview.app.activity.my.ProfileIconActivity;
 import cn.fundview.app.domain.dao.DaoFactory;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.tool.Constants;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.view.ABaseWebView;
 import cn.fundview.app.view.my.PhotoPreviewWebView;
 

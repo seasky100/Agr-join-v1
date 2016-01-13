@@ -1,12 +1,8 @@
 package cn.fundview.app.action.achv;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import java.io.File;
-import java.lang.reflect.Type;
-import java.util.HashMap;
 import java.util.Map;
 
 import cn.fundview.app.action.ABaseAction;
@@ -14,11 +10,6 @@ import cn.fundview.app.activity.expert.DetailActivity;
 import cn.fundview.app.domain.dao.DaoFactory;
 import cn.fundview.app.domain.model.Company;
 import cn.fundview.app.domain.model.Expert;
-import cn.fundview.app.domain.webservice.util.Constants;
-import cn.fundview.app.tool.DeviceConfig;
-import cn.fundview.app.tool.FileTools;
-import cn.fundview.app.tool.JsMethod;
-import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
 
 /**

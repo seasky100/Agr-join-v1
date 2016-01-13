@@ -2,24 +2,14 @@ package cn.fundview.app.view.home;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -41,7 +31,6 @@ import cn.fundview.app.activity.history.SearchHistoryActivity;
 import cn.fundview.app.activity.org.OrgListActivity;
 import cn.fundview.app.activity.product.ProductListActivity;
 import cn.fundview.app.activity.requ.RequListActivity;
-import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.PopUpWindow;
 import cn.fundview.app.tool.adapter.ListViewAdapter;
 import cn.fundview.app.view.ABaseWebView;
@@ -59,7 +48,7 @@ import cn.fundview.app.view.ABaseWebView;
 public class HomeView extends ABaseWebView {
 
     private PopUpWindow popupWindow;
-    private int selectedIndex = 0;//当前选中的下标索引
+    private int selectedIndex = 2;//当前选中的下标索引
     private ListViewAdapter adapter;
 
     final List<Map<String, String>> dataSource = new ArrayList<>();  //搜索条件 数据源
@@ -159,10 +148,10 @@ public class HomeView extends ABaseWebView {
                 public void onItemClick(AdapterView<?> parent, View view1, int position, long id) {
                     // TODO Auto-generated method stub
                     String value = dataSource.get(position).get("name");
-                    int type = Integer.parseInt(dataSource.get(position).get("key"));
+                    int key = Integer.parseInt(dataSource.get(position).get("key"));
                     anchorTextView.setText(value);
 //                    anchorTextView.setText(value);
-                    switch (type) {
+                    switch (key) {
 
                         case 0:
                             editText.setHint("专家搜索");
@@ -180,9 +169,8 @@ public class HomeView extends ABaseWebView {
                             editText.setHint("产品搜索");
                             break;
                     }
-
-                    selectedIndex = position;
-                    getTitleBarView().setType(type);
+                    selectedIndex = key;
+                    getTitleBarView().setType(key);
                     popupWindow.dismiss();
                 }
             });
@@ -196,7 +184,7 @@ public class HomeView extends ABaseWebView {
 
         Intent intent = new Intent(context, SearchHistoryActivity.class);
 
-        intent.putExtra("type", Integer.parseInt(dataSource.get(selectedIndex).get("key")));
+        intent.putExtra("type",selectedIndex);
         context.startActivity(intent);
     }
 

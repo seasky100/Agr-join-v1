@@ -7,20 +7,23 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.webkit.JavascriptInterface;
 
+import com.lidroid.xutils.http.ResponseInfo;
+
+import java.io.File;
+
 import cn.fundview.app.action.global.CallAction;
 import cn.fundview.app.action.org.DetailAction;
 import cn.fundview.app.activity.achv.DetailActivity;
 import cn.fundview.app.activity.history.SearchHistoryActivity;
 import cn.fundview.app.activity.org.DetailInfoActivity;
 import cn.fundview.app.tool.DeviceConfig;
-import cn.fundview.app.tool.FileTools;
+import cn.fundview.app.tool.file.FileTools;
 import cn.fundview.app.view.ABaseWebView;
-import cn.fundview.app.view.AsyncTaskCompleteListener;
 
 /**
  * 参展机构详细view
  */
-public class DetailView extends ABaseWebView implements AsyncTaskCompleteListener {
+public class DetailView extends ABaseWebView {
 
     private Integer orgId;// 机构帐号id
 
@@ -72,13 +75,13 @@ public class DetailView extends ABaseWebView implements AsyncTaskCompleteListene
     @JavascriptInterface
     public void loadLogo(String logo) {
 
-        FileTools.downFile(logo, DeviceConfig.getSysPath(context) + "/fundView/data/images/org/logo/", this);
+        FileTools.downFile(logo, DeviceConfig.getSysPath(context) + "/fundView/data/images/org/logo/" + logo.substring(logo.lastIndexOf("/") + 1), this);
     }
 
     @Override
-    public void complete(int requestCode, int responseCode, Object msg) {
+    public void onSuccess(ResponseInfo<File> responseInfo) {
 
-        String logo = (String) msg;
+        String logo = responseInfo.result.getPath();
         this.loadUrl("javascript:Page.loadhead('" + logo + "');");
     }
 

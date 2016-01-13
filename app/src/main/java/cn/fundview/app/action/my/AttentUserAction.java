@@ -11,14 +11,11 @@ import cn.fundview.app.action.ABaseAction;
 import cn.fundview.app.activity.my.LoginActivity;
 import cn.fundview.app.domain.dao.DaoFactory;
 import cn.fundview.app.domain.model.AttentUser;
-import cn.fundview.app.domain.model.Company;
-import cn.fundview.app.domain.model.Expert;
-import cn.fundview.app.domain.model.UserInfor;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.tool.Constants;
 import cn.fundview.app.tool.JsMethod;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
 

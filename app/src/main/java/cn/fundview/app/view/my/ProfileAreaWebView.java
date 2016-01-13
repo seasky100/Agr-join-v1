@@ -9,7 +9,7 @@ import android.webkit.JavascriptInterface;
 import cn.fundview.app.action.global.GetAreaListAction;
 import cn.fundview.app.action.my.SaveProfileAreaAction;
 import cn.fundview.app.tool.Constants;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.view.ABaseWebView;
 
 public class ProfileAreaWebView extends ABaseWebView {

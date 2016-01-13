@@ -1,26 +1,13 @@
 package cn.fundview.app.domain.dao;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.util.Log;
-import android.widget.Toast;
 
 import cn.fundview.app.domain.model.Product;
-import cn.fundview.app.domain.model.UserInfor;
 import cn.fundview.app.tool.Constants;
-import cn.fundview.app.tool.PreferencesUtils;
-import cn.fundview.app.tool.ToastUtils;
 
 import com.lidroid.xutils.DbUtils;
-import com.lidroid.xutils.db.annotation.Column;
-import com.lidroid.xutils.db.table.ColumnUtils;
-import com.lidroid.xutils.db.table.TableUtils;
 import com.lidroid.xutils.exception.DbException;
-
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 数据库操作工具类  使用的是dbUtils,单例

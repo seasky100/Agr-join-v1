@@ -6,9 +6,8 @@ import android.webkit.WebView;
 
 import cn.fundview.app.domain.dao.DaoFactory;
 import cn.fundview.app.domain.model.UserInfor;
-import cn.fundview.app.tool.Constants;
 import cn.fundview.app.tool.DeviceConfig;
-import cn.fundview.app.tool.FileTools;
+import cn.fundview.app.tool.file.FileTools;
 import cn.fundview.app.tool.JsMethod;
 import cn.fundview.app.tool.StringUtils;
 

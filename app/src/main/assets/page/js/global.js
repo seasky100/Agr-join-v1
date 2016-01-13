@@ -24,7 +24,7 @@ var fundviewDefaultLogo = "../img/banner2.jpg";
 var fundviewInforDefaultLogo = "../img/zx_moren.jpg";
 
 
-var compTypes=["加工企业", "农资企业", "生产企业", "流通企业", "其他企业"];
+var compTypes=["加工企业", "农资企业", "生产企业", "流通企业", "其他企业","农村中介组织", "批发市场", "家庭农场"];
 
 var  MyDialog = function(){};
 

@@ -7,32 +7,22 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Binder;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
-import android.util.Xml;
 import android.widget.Toast;
 
-import org.xmlpull.v1.XmlPullParser;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.ResponseInfo;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 import cn.fundview.app.tool.Constants;
 import cn.fundview.app.tool.DeviceConfig;
 import cn.fundview.app.tool.Installation;
+import cn.fundview.app.tool.file.DownLoadListener;
+import cn.fundview.app.tool.file.FileTools;
+import cn.fundview.app.tool.file.VersionUtil;
 
 /**
  * 项目名称：Agr-join-v1
@@ -60,23 +50,22 @@ public class UpdateAppAction{
 
             if (msg.what == 1) {
 
-                // 显示下载文件
-                showUpdatePage(context);
-            } else if (msg.what == 2) {
+                // 有新版本
+                if(FileTools.isHavingFile(DeviceConfig.getSysPath(context) + Constants.APK_PATH)) {
 
-                // 显示安装
-                showInstallApp(context);
+                    // 显示安装
+                    showInstallApp(context);
+                }else {
+                    showUpdatePage(context);
+                }
+
             } else if (msg.what == 3) {
 
                 // 显示更新失败
                 Toast.makeText(context, "更新失败,请检查你的网络连接", Toast.LENGTH_LONG)
                         .show();
                 // 删除apk文件
-                File file = new File(DeviceConfig.getSysPath(context) + Constants.VERSION_PATH);
-                if (file.exists()) {
-
-                    file.delete();
-                }
+                deleteFile();
 
                 File file1 = new File(DeviceConfig.getSysPath(context) + Constants.APK_PATH);
                 if (file1.exists()) {
@@ -89,6 +78,15 @@ public class UpdateAppAction{
                 // 当前已是最新版本
                 Toast.makeText(context, "当前已是最新版本", Toast.LENGTH_LONG)
                         .show();
+
+                // 删除apk文件
+                File file = new File(DeviceConfig.getSysPath(context) + Constants.VERSION_PATH);
+                if (file.exists()) {
+
+                    file.delete();
+                }
+
+                deleteFile();
             }
         }
     };
@@ -112,18 +110,40 @@ public class UpdateAppAction{
             @Override
             public void run() {
                 // TODO Auto-generated method stub
-                startUpdateApp(context);
+                startUpdateApp();
             }
         }).start();
     }
 
-    private void startUpdateApp(Context context) {
+    private void startUpdateApp() {
 
+        deleteFile();
+        FileTools.downFile(VERISON_URL, DeviceConfig.getSysPath(context) + Constants.VERSION_PATH, new DownLoadListener() {
+            @Override
+            public void onStart() {
 
-        if (downFile(VERISON_URL, DeviceConfig.getSysPath(context)
-                + Constants.VERSION_PATH)) {
-            handleVersionXmlData(context);
-        }
+            }
+
+            @Override
+            public void onLoading(long total, long current, boolean isUploading) {
+
+            }
+
+            @Override
+            public void onSuccess(ResponseInfo<File> responseInfo) {
+
+                handler.sendEmptyMessage(VersionUtil.handleVersionXmlData(context, responseInfo.result));
+                deleteFile();
+            }
+
+            @Override
+            public void onFailure(HttpException error, String msg) {
+                System.out.println(msg);
+
+                //文件下载失败的时候 首先是清空本地,然后重新下载
+                deleteFile();
+            }
+        });
     }
 
     private boolean isHavingFile(String filePath) {
@@ -165,205 +185,6 @@ public class UpdateAppAction{
         }
     }
 
-    private boolean downFile(String urlStr, String filePath) {
-
-        boolean result = false;
-        InputStream inputStream = null;
-
-        try {
-            URL url = new URL(urlStr);
-            System.out.println("download Url = " + urlStr);
-            HttpURLConnection connection = (HttpURLConnection) url
-                    .openConnection();
-            connection.setRequestMethod("GET");
-            connection.connect();
-            inputStream = connection.getInputStream();
-            System.out
-                    .println("responseCode = " + connection.getResponseCode());
-            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK
-                    && connection.getResponseCode() != HttpURLConnection.HTTP_PARTIAL) {
-
-                if (inputStream != null) {
-
-                    inputStream.close();
-                    connection.disconnect();
-                }
-                return false;
-            } else {
-
-                if (inputStream != null) {
-
-                    System.out.println("连接成功,获得输入流,大小是 : "
-                            + inputStream.available());
-                    File file = write2FileFromInput(filePath, inputStream);
-
-                    if (file == null) {
-
-                        return false;
-                    } else {
-
-                        return true;
-                    }
-                } else {
-
-                    return false;
-                }
-            }
-
-        } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            result = false;
-
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            result = false;
-        } finally {
-
-            if (inputStream != null) {
-
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }
-        return result;
-    }
-
-    // 处理version.xml 文件中的数据
-    private void handleVersionXmlData(Context context) {
-
-        File file = new File(DeviceConfig.getSysPath(context)
-                + Constants.VERSION_PATH);
-        InputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(file);
-            Map<String, String> versionData = parseVersionXml(inputStream);
-            if (versionData != null) {
-
-                String version = versionData.get("version");
-                if (version != null) {
-
-                    int versionCode = Integer.parseInt(version);
-                    if (versionCode > Installation.getVersionCode(context)) {
-
-                        // 需要执行更新
-                        if (isHavingFile(DeviceConfig.getSysPath(context) + Constants.APK_PATH)) {
-
-                            // 如果apk 文件存在的直接安装
-                            // 直接安装
-                            handler.sendEmptyMessage(2);
-                        } else {
-
-                            handler.sendEmptyMessage(1);
-                        }
-                    }else{
-
-                        handler.sendEmptyMessage(4);        //当前意识最新版本
-                    }
-                }
-            }
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } finally {
-
-            if (inputStream != null) {
-
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    private Map<String, String> parseVersionXml(InputStream inputStream)
-            throws Exception {
-
-        Map<String, String> map = null;
-        XmlPullParser parser = Xml.newPullParser();
-        parser.setInput(inputStream, "utf-8");
-        int event = parser.getEventType();
-        while (event != XmlPullParser.END_DOCUMENT) {
-
-            switch (event) {
-                case XmlPullParser.START_DOCUMENT:
-
-                    break;
-                case XmlPullParser.START_TAG:
-                    if ("data".equals(parser.getName())) {
-                        map = new HashMap<>();
-                    } else if ("version".equals(parser.getName())) {
-
-                        String version = parser.nextText();
-                        map.put("version", version);
-                    } else if ("down".equals(parser.getName())) {
-
-                        String downPath = parser.nextText();
-                        map.put("downPath", downPath);
-                    }
-                    break;
-            }
-            event = parser.next();
-        }
-
-        inputStream.close();
-        return map;
-    }
-
-    private File write2FileFromInput(String filePath, InputStream inputStream) {
-
-        File file = null;
-        OutputStream outputStream = null;
-        try {
-            if (inputStream != null) {
-
-                file = new File(filePath);
-                if (!file.getParentFile().exists()) {
-
-                    file.getParentFile().mkdirs();
-                }
-
-                outputStream = new FileOutputStream(file);
-                byte[] bs = new byte[1024 * 4];
-                int length = 0;
-                while ((length = inputStream.read(bs)) != -1) {
-
-                    System.out.println("length = " + length);
-                    outputStream.write(bs, 0, length);
-                }
-                outputStream.flush();
-            }
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            Log.e(Constants.TAG, e.getMessage());
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            Log.e(Constants.TAG, e.getMessage());
-        } finally {
-
-            if (outputStream != null) {
-
-                try {
-                    outputStream.close();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }
-        return file;
-    }
-
     // 显示下载
     private void showUpdatePage(final Context context) {
 
@@ -394,45 +215,52 @@ public class UpdateAppAction{
                     }
                 }).setNegativeButton("取消", null).show();
     }
-
-
-    private boolean delFile(String filePath) {
-
-        File file = new File(filePath);
-        if (file.exists()) {
-
-            file.delete();
-            return true;
-        }
-        return false;
-    }
-
     private void updateApp(final Context context) {
 
-        final ProgressDialog dialog = new ProgressDialog(context);
-        dialog.setTitle("正在下载");
-        dialog.setMessage("请稍后...");
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.setCancelable(false);
-        dialog.show();
-        new Thread(new Runnable() {
+        FileTools.downFile(APK_URL, DeviceConfig.getSysPath(context) + Constants.APK_PATH, new DownLoadListener() {
+
+            private ProgressDialog dialog;
 
             @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                // 下载apk
-                boolean success = downFile(APK_URL,
-                        DeviceConfig.getSysPath(context) + Constants.APK_PATH);
-                if (success) {
+            public void onStart() {
 
-                    dialog.dismiss();
-                    installApp(DeviceConfig.getSysPath(context)  + Constants.APK_PATH);
-                } else {
-
-                    dialog.cancel();
-                    handler.sendEmptyMessage(3);// 显示更新失败
-                }
+                Log.d("测试线程", Thread.currentThread().getName());
+                dialog = new ProgressDialog(context);
+                dialog.setTitle("正在下载");
+                dialog.setMessage("请稍后...");
+                dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                dialog.setCancelable(false);
+                dialog.show();
             }
-        }).start();
+
+            @Override
+            public void onLoading(long total, long current, boolean isUploading) {
+
+            }
+
+            @Override
+            public void onSuccess(ResponseInfo<File> responseInfo) {
+
+                dialog.dismiss();
+                installApp(DeviceConfig.getSysPath(context) + Constants.APK_PATH);
+            }
+
+            @Override
+            public void onFailure(HttpException error, String msg) {
+
+                dialog.cancel();
+                handler.sendEmptyMessage(3);// 显示更新失败
+            }
+        });;
+    }
+
+    private void deleteFile() {
+
+        //删除version.xml
+        File file1 = new File(DeviceConfig.getSysPath(context) + Constants.VERSION_PATH );
+        if (file1.exists()) {
+
+            file1.delete();
+        }
     }
 }

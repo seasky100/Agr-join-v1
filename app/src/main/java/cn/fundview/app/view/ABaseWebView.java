@@ -1,7 +1,5 @@
 package cn.fundview.app.view;
 
-import java.lang.reflect.Method;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -21,13 +19,19 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.ResponseInfo;
+
+import java.io.File;
+import java.lang.reflect.Method;
+
 import cn.fundview.app.action.global.FileExistAction;
 import cn.fundview.app.action.global.FileLoadAction;
 import cn.fundview.app.action.global.GetSysPathAction;
 import cn.fundview.app.activity.my.LoginActivity;
 import cn.fundview.app.tool.Constants;
-import cn.fundview.app.tool.PreferencesUtils;
-import cn.fundview.app.view.common.pullrefresh.IPullToRefresh;
+import cn.fundview.app.tool.file.DownLoadListener;
+import cn.fundview.app.tool.file.PreferencesUtils;
 
 /**
  * 浏览器组件
@@ -36,7 +40,7 @@ import cn.fundview.app.view.common.pullrefresh.IPullToRefresh;
  *         IPullToRefresh<T> 添加滑动加载事件
  */
 @SuppressLint({"SetJavaScriptEnabled", "ClickableViewAccessibility"})
-public abstract class ABaseWebView extends WebView implements TitleBarListener {
+public abstract class ABaseWebView extends WebView implements TitleBarListener, DownLoadListener {
 
     protected Context context;
     protected SearchTitleBar searchTitleBarView;
@@ -352,4 +356,21 @@ public abstract class ABaseWebView extends WebView implements TitleBarListener {
         }
 
     };
+
+    /*** 下载 回调接口***/
+    public void onStart() {
+
+
+    }
+
+    public void onLoading(long total, long current, boolean isUploading) {
+
+
+    }
+
+    public void onSuccess(ResponseInfo<File> responseInfo) {
+
+    }
+
+    public void onFailure(HttpException error, String msg){}
 }

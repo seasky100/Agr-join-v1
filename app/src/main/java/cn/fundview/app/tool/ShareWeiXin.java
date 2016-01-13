@@ -10,6 +10,8 @@ import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import com.tencent.mm.sdk.openapi.WXMediaMessage;
 import com.tencent.mm.sdk.openapi.WXWebpageObject;
 
+import cn.fundview.app.tool.file.FileTools;
+
 public class ShareWeiXin {
 
     private static final String APP_ID = "wx08a93267d1140996";

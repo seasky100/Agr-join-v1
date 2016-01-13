@@ -9,7 +9,7 @@ import java.util.Map;
 import cn.fundview.app.action.ABaseAction;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultBean;
-import cn.fundview.app.tool.PreferencesUtils;
+import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.tool.StringUtils;
 import cn.fundview.app.tool.ToastUtils;
 import cn.fundview.app.tool.json.JSONTools;
