@@ -13,4 +13,10 @@
     <item type="id" name="search_book_contents_failed" />
     <item type="id" name="search_book_contents_succeeded" />
     <item type="id" name="webviewId" />
+
+    <item type="id" name="receive_time"/><!--咨询接收时间-->
+    <item type="id" name="publish_time"/><!-- 咨询的发布时间 -->
+    <item type="id" name="title"/>
+    <item type="id" name="logo"/>
+    <item type="id" name="summary"/>
 </resources>

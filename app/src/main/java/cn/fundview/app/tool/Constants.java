@@ -2,6 +2,7 @@ package cn.fundview.app.tool;
 
 public class Constants {
 
+    public static final boolean DEBUG = true;//标示运行模式 true
     public static final String TAG = "cn.fundview";
     /**
      * 数据库名字

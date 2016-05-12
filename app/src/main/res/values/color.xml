@@ -191,8 +191,7 @@
     <color name="skyblue">#87ceeb</color>
     <!-- 天蓝色 -->
     <color name="gray1">#808080</color>
-    <!-- 灰色 -->
-    <color name="grey">#808080</color>
+
     <!-- 灰色 -->
     <color name="olive">#808000</color>
     <!-- 橄榄色 -->
@@ -351,4 +350,9 @@
     <color name="guide_1">#2c97ea</color>
     <color name="guide_2">#ffb070</color>
     <color name="guide_3">#37b059</color>
+
+    <color name="receive_time_color">#bb000000</color>
+    <color name="publish_time_color">#666666</color>
+    <color name="summary_color">#555</color>
+    <color name="fundivew_info_bg">#ffcdcdcd</color>
 </resources>
