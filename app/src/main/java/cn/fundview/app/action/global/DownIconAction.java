@@ -43,7 +43,7 @@ public class DownIconAction extends ABaseAction {
 
         FileTools tools = new FileTools();
         try {
-            result = tools.saveDownFile(localSave, fileName, tools.doGet(downPath));
+            result = FileTools.saveDownFile(localSave, fileName, tools.doGet(downPath));
         } catch (Exception e) {
             e.printStackTrace();
         }

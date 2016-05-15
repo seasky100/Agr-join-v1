@@ -8,7 +8,7 @@ import java.util.Map;
 import cn.fundview.app.action.ABaseAction;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultBean;
-import cn.fundview.app.tool.NetWorkConfig;
+import cn.fundview.app.tool.NetWorkUtils;
 import cn.fundview.app.tool.ToastUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
@@ -49,7 +49,7 @@ public class PhoneCodeAction extends ABaseAction {
      **/
     protected void doAsynchHandle() {
 
-        if (NetWorkConfig.checkNetwork(context)) {
+        if (NetWorkUtils.checkNetwork(context)) {
 
             //网络连接正常
             Map<String, String> param = new HashMap<>();

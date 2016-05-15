@@ -88,4 +88,7 @@
     <string name="picture_save_fail">保存图片失败</string>
     <string name="picture_next_album">下一组：</string>
     <string name="picture_previous_album">上一组：</string>
+
+
+    <string name="fundview_info">丰景资讯</string>
 </resources>

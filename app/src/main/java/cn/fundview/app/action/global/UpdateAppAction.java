@@ -251,7 +251,7 @@ public class UpdateAppAction{
                 dialog.cancel();
                 handler.sendEmptyMessage(3);// 显示更新失败
             }
-        });;
+        });
     }
 
     private void deleteFile() {

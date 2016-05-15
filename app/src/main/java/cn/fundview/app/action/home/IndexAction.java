@@ -31,7 +31,7 @@ import cn.fundview.app.model.FundProject;
 import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.model.ResultListBean;
 import cn.fundview.app.tool.JsMethod;
-import cn.fundview.app.tool.NetWorkConfig;
+import cn.fundview.app.tool.NetWorkUtils;
 import cn.fundview.app.tool.StringUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
@@ -78,7 +78,7 @@ public class IndexAction extends ABaseAction {
         //推荐企业
         CompanyDao companyDao = DaoFactory.getInstance(context).getCompDao();
         // 检查网络
-        if (NetWorkConfig.checkNetwork(context)) {
+        if (NetWorkUtils.checkNetwork(context)) {
 
             // 首先从网上下载相应的json信息  uid 用户id
             Map<String, String> param = new HashMap<>();
@@ -143,7 +143,7 @@ public class IndexAction extends ABaseAction {
 
         ExpertDao expertDao = DaoFactory.getInstance(context).getExpertDao();
         // 检查网络
-        if (NetWorkConfig.checkNetwork(context)) {
+        if (NetWorkUtils.checkNetwork(context)) {
 
             // 首先从网上下载相应的json信息  uid 用户id
             ResultListBean<Expert> resultBean = null;
@@ -218,7 +218,7 @@ public class IndexAction extends ABaseAction {
 
         try {
             ResultBean resultBean = null;
-            if (NetWorkConfig.checkNetwork(context)) {
+            if (NetWorkUtils.checkNetwork(context)) {
                 resultBean = JSONTools.parseResult(RService.doPostSync(param, Constants.GET_HOME_ACHV_LIST_URL));
             }
             if (resultBean != null && resultBean.getStatus() == cn.fundview.app.domain.webservice.util.Constants.REQUEST_SUCCESS) {
@@ -282,7 +282,7 @@ public class IndexAction extends ABaseAction {
 
         try {
             ResultBean resultBeanRequ = null;
-            if (NetWorkConfig.checkNetwork(context)) {
+            if (NetWorkUtils.checkNetwork(context)) {
                 resultBeanRequ = JSONTools.parseResult(RService.doPostSync(param, Constants.GET_HOME_REQU_LIST_URL));
             }
             if (resultBeanRequ != null && resultBeanRequ.getStatus() == cn.fundview.app.domain.webservice.util.Constants.REQUEST_SUCCESS) {
@@ -343,7 +343,7 @@ public class IndexAction extends ABaseAction {
         //产品
         ProductDao productDao = DaoFactory.getInstance(context).getProductDao();
         // 检查网络
-        if (NetWorkConfig.checkNetwork(context)) {
+        if (NetWorkUtils.checkNetwork(context)) {
 
             // 首先从网上下载相应的json信息  uid 用户id
             ResultListBean<Product> resultBean = null;
@@ -410,7 +410,7 @@ public class IndexAction extends ABaseAction {
         }
 
         //融资项目
-        if (NetWorkConfig.checkNetwork(context)) {
+        if (NetWorkUtils.checkNetwork(context)) {
 
             // 首先从网上下载相应的json信息  uid 用户id
             ResultListBean<FundProject> fundProjectResultListBean = null;
@@ -443,7 +443,7 @@ public class IndexAction extends ABaseAction {
         imgs[2] = "http://static.fundview.cn/thumb/ad/banner3.jpg";
 
         String js = "";
-        if (NetWorkConfig.checkNetwork(context)) {
+        if (NetWorkUtils.checkNetwork(context)) {
 
             webView.loadUrl("javascript:Page.clearImg();");
             for (String path : imgs) {

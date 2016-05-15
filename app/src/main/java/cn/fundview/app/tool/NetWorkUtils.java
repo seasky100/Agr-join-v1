@@ -2,7 +2,9 @@ package cn.fundview.app.tool;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
+import android.net.Network;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
@@ -23,6 +25,39 @@ public class NetWorkUtils {
     public static final String NETWORK_TYPE_WAP = "wap";
     public static final String NETWORK_TYPE_UNKNOWN = "unknown";
     public static final String NETWORK_TYPE_DISCONNECT = "disconnect";
+
+    public static boolean checkNetwork(Context context) {
+        ConnectivityManager manager = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            Network[] networks = manager.getAllNetworks();
+            if (networks != null && networks.length > 0) {
+
+                for (Network item : networks) {
+
+                    NetworkInfo networkInfo = manager.getNetworkInfo(item);
+                    if (networkInfo != null && networkInfo.isAvailable() && networkInfo.isConnected()) {
+
+                        return true;
+                    }
+                }
+            }
+            return false;
+        } else {
+
+            NetworkInfo mWifi = manager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            NetworkInfo mMobile = manager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+            boolean flag = false;
+            if ((mWifi != null) && ((mWifi.isAvailable()) || (mMobile.isAvailable()))) {
+                if ((mWifi.isConnected()) || (mMobile.isConnected())) {
+                    flag = true;
+                }
+            }
+            return flag;
+        }
+    }
 
     /**
      * 获得网络类型
@@ -49,7 +84,6 @@ public class NetWorkUtils {
         if (manager == null || (networkInfo = manager.getActiveNetworkInfo()) == null) {
             return type;
         }
-        ;
 
         if (networkInfo.isConnected()) {
             String typeName = networkInfo.getTypeName();

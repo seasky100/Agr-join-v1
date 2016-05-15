@@ -351,8 +351,12 @@
     <color name="guide_2">#ffb070</color>
     <color name="guide_3">#37b059</color>
 
-    <color name="receive_time_color">#bb000000</color>
-    <color name="publish_time_color">#666666</color>
+    <color name="receive_time_color">#77000000</color>
+    <color name="publish_time_color">#666</color>
     <color name="summary_color">#555</color>
     <color name="fundivew_info_bg">#ffcdcdcd</color>
+
+    <color name="colorPrimary">#1cae42</color>
+    <color name="colorPrimaryDark">#1cae42</color>
+    <color name="colorAccent">#1cae42</color>
 </resources>

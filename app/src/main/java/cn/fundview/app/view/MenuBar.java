@@ -128,7 +128,7 @@ public class MenuBar extends LinearLayout implements NewFundviewInforObserver {
     }
 
 
-    public static interface MenuBarListener {
+    public interface MenuBarListener {
 
         void onMenuItemClick(int flag);
     }

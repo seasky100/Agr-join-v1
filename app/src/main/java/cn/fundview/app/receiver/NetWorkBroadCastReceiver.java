@@ -7,7 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import cn.fundview.app.tool.NetWorkConfig;
+import cn.fundview.app.tool.NetWorkUtils;
 import cn.fundview.app.view.NetWorkChangeListener;
 
 public class NetWorkBroadCastReceiver extends BroadcastReceiver {
@@ -19,7 +19,7 @@ public class NetWorkBroadCastReceiver extends BroadcastReceiver {
         // TODO Auto-generated method stub
 
         System.out.println("NetWorkBroadCastReceiver");
-        if (NetWorkConfig.checkNetwork(context)) {
+        if (NetWorkUtils.checkNetwork(context)) {
 
             // 网络可用
             if (observers != null && observers.size() > 0) {

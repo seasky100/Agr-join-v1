@@ -92,13 +92,7 @@ public class DetailAction extends ABaseAction {
 
         parseJson(requSavePath + fileName);
 
-        if (null == DaoFactory.getInstance(context).getFavoriteDao().findFavoriteByFavoriteIdAndFavoriteType(requId, Favorite.FAVORITE_REQU_TYPE)) {
-
-            isFavorite = false;
-        } else {
-
-            isFavorite = true;
-        }
+        isFavorite = null != DaoFactory.getInstance(context).getFavoriteDao().findFavoriteByFavoriteIdAndFavoriteType(requId, Favorite.FAVORITE_REQU_TYPE);
     }
 
     @Override
@@ -142,7 +136,7 @@ public class DetailAction extends ABaseAction {
             Map<String, String> textParams = new HashMap<String, String>();
             textParams.put("pid", String.valueOf(requId));
             tools.setTextParams(textParams);
-            result = tools.saveDownFile(savaPath, fileName, tools.doGet(Constants.GET_REQU_DETAIL));
+            result = FileTools.saveDownFile(savaPath, fileName, tools.doGet(Constants.GET_REQU_DETAIL));
         } catch (Exception e) {
             e.printStackTrace();
         }

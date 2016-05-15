@@ -21,7 +21,7 @@ import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.tool.Constants;
 import cn.fundview.app.tool.JsMethod;
-import cn.fundview.app.tool.NetWorkConfig;
+import cn.fundview.app.tool.NetWorkUtils;
 import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
@@ -73,7 +73,7 @@ public class AttentListAction extends ABaseAction {
         CompanyDao companyDao = DaoFactory.getInstance(context).getCompDao();//企业Dao
         ExpertDao expertDao = DaoFactory.getInstance(context).getExpertDao();//专家Dao
         //如果网络获取失败，则获取本地的
-        if (NetWorkConfig.checkNetwork(context)) {
+        if (NetWorkUtils.checkNetwork(context)) {
 
             //网络连接正常
             Map<String, String> param = new HashMap<>();

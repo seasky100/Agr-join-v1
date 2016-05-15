@@ -1,7 +1,6 @@
 package cn.fundview.app.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.WindowManager;
@@ -114,12 +113,12 @@ public abstract class ABaseActivity extends Activity {
 
     protected void animation_1() {
 
-        this.overridePendingTransition(R.anim.slide_right_in, R.anim.slide_right_out);
+        //this.overridePendingTransition(R.anim.activityOpenEnterAnimation, R.anim.activity_close_exit_animation);
     }
 
     protected void animation_2() {
 
-        this.overridePendingTransition(R.anim.slide_left_in, R.anim.slide_left_out);
+        //this.overridePendingTransition(R.anim.activity_close_enter_animation, R.anim.activityOpenExitAnimation);
     }
 
     public void setConfigCallback(WindowManager windowManager) {

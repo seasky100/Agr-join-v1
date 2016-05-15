@@ -18,5 +18,4 @@ public class HotActivity extends ABaseActivity {
         this.setCommonTitleBar("客服热线", R.id.webView, null, false);
     }
 
-    ;
 }

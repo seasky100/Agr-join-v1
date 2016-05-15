@@ -50,7 +50,7 @@ public class FileLoadAction extends ABaseAction {
         FileTools tools = new FileTools();
         try {
 
-            tools.saveDownFile(saveLocalPath, fileName, tools.doGet(downPath));
+            FileTools.saveDownFile(saveLocalPath, fileName, tools.doGet(downPath));
             //删除老图片
             if (oldName != null && oldName.trim() != "")
                 FileTools.delFile(saveLocalPath + oldName);

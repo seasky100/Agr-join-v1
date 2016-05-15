@@ -23,7 +23,7 @@ import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.tool.DeviceConfig;
 import cn.fundview.app.tool.file.FileTools;
 import cn.fundview.app.tool.JsMethod;
-import cn.fundview.app.tool.NetWorkConfig;
+import cn.fundview.app.tool.NetWorkUtils;
 import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
@@ -159,7 +159,7 @@ public class DetailAction extends ABaseAction {
         //查询企业需求
         RequDao requDao = DaoFactory.getInstance(context).getRequDao();
         // 检查网络
-        if (NetWorkConfig.checkNetwork(context)) {
+        if (NetWorkUtils.checkNetwork(context)) {
 
             // 首先从网上下载相应的json信息  uid 用户id
             ResultBean resultBean;
@@ -213,7 +213,7 @@ public class DetailAction extends ABaseAction {
 
         ProductDao productDao = DaoFactory.getInstance(context).getProductDao();
         //查询企业产品
-        if (NetWorkConfig.checkNetwork(context)) {
+        if (NetWorkUtils.checkNetwork(context)) {
 
             // 首先从网上下载相应的json信息  uid 用户id
             ResultBean resultBean;

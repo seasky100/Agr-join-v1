@@ -15,7 +15,7 @@ import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.domain.webservice.util.Constants;
 import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.tool.JsMethod;
-import cn.fundview.app.tool.NetWorkConfig;
+import cn.fundview.app.tool.NetWorkUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
 
@@ -58,7 +58,7 @@ public class FundviewInforHistoryAction extends cn.fundview.app.action.ABaseActi
         if (this.id != 0) {
             FundviewInforDao fundviewInforDao = DaoFactory.getInstance(context).getFundviewInforDao();
             // 检查网络
-            if (NetWorkConfig.checkNetwork(context)) {
+            if (NetWorkUtils.checkNetwork(context)) {
 
                 // 首先从网上下载相应的json信息  uid 用户id currentId=100&pageSize=10
                 ResultBean resultBean = null;

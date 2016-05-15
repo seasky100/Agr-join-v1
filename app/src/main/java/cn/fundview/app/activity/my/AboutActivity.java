@@ -18,5 +18,4 @@ public class AboutActivity extends ABaseActivity {
         this.setCommonTitleBar("关于丰景", R.id.aboutWebview, null, false);
     }
 
-    ;
 }

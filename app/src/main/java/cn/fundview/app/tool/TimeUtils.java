@@ -75,4 +75,5 @@ public class TimeUtils {
     public static String getCurrentTimeInString(SimpleDateFormat dateFormat) {
         return getTime(getCurrentTimeInLong(), dateFormat);
     }
+
 }

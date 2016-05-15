@@ -5,5 +5,5 @@ package cn.fundview.app.view;
  **/
 public interface OptionMenuListener {
 
-    public void onClick(int menuId);
+    void onClick(int menuId);
 }

@@ -1,21 +1,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:titleBar="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:context=".app.activity.msg.FundViewInforListActivity"
+    >
 
-    <cn.fundview.app.view.SearchTitleBar
-        android:id="@+id/titleBarView"
+    <android.support.v7.widget.Toolbar
+        android:id="@id/toolBar"
+        style="@style/Toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        titleBar:type="common"
-        titleBar:back_btn="true" />
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorAccent">
 
-    <cn.fundview.app.view.msg.RefreshFundViewInforListView
-        android:id="@+id/pull_webview"
+        <ImageButton
+            android:id="@id/backImageBtn"
+            android:layout_width="?android:attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:paddingLeft="0dp"
+            android:scaleType="center"
+            android:src="@mipmap/title_back" />
+        <TextView
+            android:id="@id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/fundview_info"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"/>
+    </android.support.v7.widget.Toolbar>
+    <android.support.v7.widget.RecyclerView
+        android:id="@id/recycleView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/white" />
+        android:layout_height="match_parent"
+        android:background="@color/fundivew_info_bg"/>
 </LinearLayout>

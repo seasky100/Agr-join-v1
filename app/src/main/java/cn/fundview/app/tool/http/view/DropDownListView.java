@@ -620,7 +620,7 @@ public class DropDownListView extends ListView implements OnScrollListener {
         /**
          * called when header released
          */
-        public void onDropDown();
+        void onDropDown();
     }
 
     /**

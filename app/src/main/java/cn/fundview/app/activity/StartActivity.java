@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -35,15 +36,17 @@ public class StartActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //全屏显示状态栏
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         drawables = new ArrayList<>();
         drawables.add(R.drawable.guide_1);
         drawables.add(R.drawable.guide_2);
         drawables.add(R.drawable.guide_3);
         handler = new Handler();
-//if (PreferencesUtils.getInt(this, Constants.FIRST_OPEN_TAG, 0) == 1) {
 
         //判断是否是第一次安装
-        if(PreferencesUtils.getBoolean(this, Constants.FIRST_INSTALL_TAG, true)) {
+        if (PreferencesUtils.getBoolean(this, Constants.FIRST_INSTALL_TAG, true)) {
 
             //发送网络请求,统计安装
 //            RService.doAsync(cn.fundview.app.domain.webservice.util.Constants.INSTALL_COUNT_URL + "?deviceId=" + Installation.getDriverId(this) + "&type=1");
@@ -60,6 +63,8 @@ public class StartActivity extends FragmentActivity {
 
         if (PreferencesUtils.getInt(this, Constants.FIRST_OPEN_TAG, 0) > 0) {
 
+//            getWindow().setBackgroundDrawableResource(R.mipmap.start_bg);
+
             setContentView(R.layout.activity_appstart);
             handler.postDelayed(new Runnable() {
                 @Override
@@ -71,7 +76,7 @@ public class StartActivity extends FragmentActivity {
                 }
             }, 1000);
         } else {
-
+//            getWindow().setBackgroundDrawableResource(R.mipmap.qd1_bj);
             setContentView(R.layout.first_guide);
             GuideViewAdapter viewPagerAdapter = new GuideViewAdapter(getSupportFragmentManager(), drawables);
             final ViewPager viewPager = (ViewPager) this.findViewById(R.id.pager);

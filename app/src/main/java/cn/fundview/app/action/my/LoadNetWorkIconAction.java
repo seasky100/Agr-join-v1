@@ -44,7 +44,7 @@ public class LoadNetWorkIconAction {
                         try {
                             // 下载文件
                             FileTools tools = new FileTools();
-                            boolean downResult = tools.saveDownFile(savePath, name, tools.doGet(downUrl));
+                            boolean downResult = FileTools.saveDownFile(savePath, name, tools.doGet(downUrl));
                             if (downResult) {
                                 handleResult(filePath, callback);
                             } else {

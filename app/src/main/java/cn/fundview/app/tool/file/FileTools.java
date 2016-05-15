@@ -445,12 +445,7 @@ public class FileTools {
         File temp = new File(file);
         boolean result = false;
         try {
-            if (temp.exists()) {
-                result = true;
-
-            } else {
-                result = false;
-            }
+            result = temp.exists();
         } catch (Exception e1) {
             Log.w(TAG, "文件不存在");
         }

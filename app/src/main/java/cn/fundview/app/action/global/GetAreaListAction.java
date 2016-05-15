@@ -24,7 +24,7 @@ import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.model.ResultListBean;
 import cn.fundview.app.tool.AreaInforParser;
 import cn.fundview.app.tool.JsMethod;
-import cn.fundview.app.tool.NetWorkConfig;
+import cn.fundview.app.tool.NetWorkUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
 
@@ -64,7 +64,7 @@ public class GetAreaListAction extends ABaseAction {
     protected void doAsynchHandle() {
 
         // 检查网络
-        if (NetWorkConfig.checkNetwork(context)) {
+        if (NetWorkUtils.checkNetwork(context)) {
 
             // 首先从网上下载相应的json信息  uid 用户id
             ResultBean resultBean = null;

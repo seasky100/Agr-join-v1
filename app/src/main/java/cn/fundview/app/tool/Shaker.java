@@ -139,8 +139,8 @@ public class Shaker implements SensorEventListener {
      *
      * @author ouda
      */
-    public static interface ShakerListener {
+    public interface ShakerListener {
 
-        public void onShake();
+        void onShake();
     }
 }

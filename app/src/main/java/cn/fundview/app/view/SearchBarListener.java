@@ -7,9 +7,9 @@ package cn.fundview.app.view;
  */
 public interface SearchBarListener {
 
-    public void keyChange(String key);
+    void keyChange(String key);
 
-    public void doSearch(String key);
+    void doSearch(String key);
 
-    public void closeView();
+    void closeView();
 }

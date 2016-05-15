@@ -19,7 +19,7 @@ import cn.fundview.app.tool.DeviceConfig;
 import cn.fundview.app.tool.file.FileTools;
 import cn.fundview.app.tool.Installation;
 import cn.fundview.app.tool.JsMethod;
-import cn.fundview.app.tool.NetWorkConfig;
+import cn.fundview.app.tool.NetWorkUtils;
 import cn.fundview.app.tool.file.PreferencesUtils;
 import cn.fundview.app.tool.StringUtils;
 import cn.fundview.app.tool.ToastUtils;
@@ -54,7 +54,7 @@ public class InitProfileAction extends ABaseAction {
         final UserInforDao userInforDao = DaoFactory.getInstance(context).getUserInforDao();
 
         // 检查网络
-        if (NetWorkConfig.checkNetwork(context)) {
+        if (NetWorkUtils.checkNetwork(context)) {
 
             // 首先从网上下载相应的json信息  uid 用户id
             Map<String, String> param = new HashMap<>();
@@ -109,7 +109,7 @@ public class InitProfileAction extends ABaseAction {
 
                             String fileName = headIcon.substring(headIcon.lastIndexOf("/") + 1);
                             try {
-                                boolean result = tools.saveDownFile(DeviceConfig.getSysPath(context) + Constants.MY_ICON_SAVE_DIR + uid + "/", fileName,
+                                boolean result = FileTools.saveDownFile(DeviceConfig.getSysPath(context) + Constants.MY_ICON_SAVE_DIR + uid + "/", fileName,
                                         tools.doGet(userInfor.getHeadIcon()));
                                 if (result) {
                                     userInfor.setHeadIconLocalPath(DeviceConfig.getSysPath(context)
@@ -125,7 +125,7 @@ public class InitProfileAction extends ABaseAction {
 
                             String fileName = qrcodeImg.substring(qrcodeImg.lastIndexOf("/") + 1);
                             try {
-                                boolean result = tools.saveDownFile(DeviceConfig.getSysPath(context) + Constants.MY_ICON_SAVE_DIR + uid + "/", fileName,
+                                boolean result = FileTools.saveDownFile(DeviceConfig.getSysPath(context) + Constants.MY_ICON_SAVE_DIR + uid + "/", fileName,
                                         tools.doGet(userInfor.getQrCodeImg()));
                                 if (result) {
                                     userInfor.setQrCodeImgLocalPath(DeviceConfig.getSysPath(context)
@@ -157,7 +157,7 @@ public class InitProfileAction extends ABaseAction {
 
                             String fileName = headIcon.substring(headIcon.lastIndexOf("/") + 1);
                             try {
-                                boolean result = tools.saveDownFile(DeviceConfig.getSysPath(context) + Constants.MY_ICON_SAVE_DIR + uid + "/", fileName, tools.doGet(headIcon));
+                                boolean result = FileTools.saveDownFile(DeviceConfig.getSysPath(context) + Constants.MY_ICON_SAVE_DIR + uid + "/", fileName, tools.doGet(headIcon));
                                 if (result) {
                                     userInfor.setHeadIconLocalPath(DeviceConfig.getSysPath(context) + Constants.MY_ICON_SAVE_DIR + uid + "/" + fileName);
                                 } else {
@@ -174,7 +174,7 @@ public class InitProfileAction extends ABaseAction {
 
                             String fileName = qrcodeImg.substring(qrcodeImg.lastIndexOf("/") + 1);
                             try {
-                                boolean result = tools.saveDownFile(DeviceConfig.getSysPath(context) + Constants.MY_ICON_SAVE_DIR + uid + "/", fileName,
+                                boolean result = FileTools.saveDownFile(DeviceConfig.getSysPath(context) + Constants.MY_ICON_SAVE_DIR + uid + "/", fileName,
                                         tools.doGet(userInfor.getQrCodeImg()));
                                 if (result) {
                                     userInfor.setQrCodeImgLocalPath(DeviceConfig.getSysPath(context)

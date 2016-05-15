@@ -74,7 +74,7 @@ public class SaveIconAction extends ABaseAction {
             DaoFactory.getInstance(context).getUserInforDao().updateUserInforHeadIcon(fileSaveDir + fileName, uid);
 
             // 上传到网络
-            RService.updateProfileIcon(uid, fileSaveDir + fileName, (PhotoPreviewWebView) webView);
+            RService.updateProfileIcon(uid, fileSaveDir + fileName, webView);
 
         } catch (Exception e) {
             e.printStackTrace();

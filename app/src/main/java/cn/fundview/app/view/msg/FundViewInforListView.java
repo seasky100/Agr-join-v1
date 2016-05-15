@@ -1,14 +1,11 @@
 package cn.fundview.app.view.msg;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
 import android.webkit.JavascriptInterface;
 
-import cn.fundview.app.action.msg.FundviewInforDetailAction;
 import cn.fundview.app.action.msg.FundviewInforHistoryAction;
-import cn.fundview.app.action.msg.InitFundviewInforListAction;
 import cn.fundview.app.activity.msg.FundViewInforDetailActivity;
 import cn.fundview.app.view.ABaseWebView;
 
@@ -25,10 +22,10 @@ public class FundViewInforListView extends ABaseWebView {
     @Override
     public void init() {
 
-        int id = ((Activity) context).getIntent().getIntExtra("id", 0);//设置未读的最大的id
-        int size = ((Activity) context).getIntent().getIntExtra("size", 0);//标示在资讯列表页中显示的资讯条数
-        InitFundviewInforListAction action = new InitFundviewInforListAction(context, this);
-        action.execute(id, size);
+//        int id = ((Activity) context).getIntent().getIntExtra("id", 0);//设置未读的最大的id
+//        int size = ((Activity) context).getIntent().getIntExtra("size", 0);//标示在资讯列表页中显示的资讯条数
+//        InitFundviewInforListAction action = new InitFundviewInforListAction(context, this);
+//        action.execute(id, size);
     }
 
     /**

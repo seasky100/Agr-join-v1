@@ -19,7 +19,7 @@ import cn.fundview.app.domain.model.Org;
 import cn.fundview.app.domain.webservice.RService;
 import cn.fundview.app.model.ResultListBean;
 import cn.fundview.app.tool.JsMethod;
-import cn.fundview.app.tool.NetWorkConfig;
+import cn.fundview.app.tool.NetWorkUtils;
 import cn.fundview.app.tool.json.JSONTools;
 import cn.fundview.app.view.ABaseWebView;
 import cn.fundview.app.view.expert.ExpertListView;
@@ -66,7 +66,7 @@ public class OrgListAction extends ABaseAction {
 
         OrgDao orgDao = DaoFactory.getInstance(context).getOrgDao();
         // 检查网络
-        if (NetWorkConfig.checkNetwork(context)) {
+        if (NetWorkUtils.checkNetwork(context)) {
 
             // 首先从网上下载相应的json信息  uid 用户id
             ResultListBean<Org> resultBean = null;

@@ -19,4 +19,7 @@
     <item type="id" name="title"/>
     <item type="id" name="logo"/>
     <item type="id" name="summary"/>
+    <item type="id" name="toolBar"/>
+    <item type="id" name="backImageBtn"/>
+    <item type="id" name="recycleView"/>
 </resources>

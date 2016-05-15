@@ -145,13 +145,7 @@ public class DetailAction extends ABaseAction {
 
         parseJson(achvSavePath + fileName);
 
-        if (null == DaoFactory.getInstance(context).getFavoriteDao().findFavoriteByFavoriteIdAndFavoriteType(achvId, Favorite.FAVORITE_ACHV_TYPE)) {
-
-            isFavorite = false;
-        } else {
-
-            isFavorite = true;
-        }
+        isFavorite = null != DaoFactory.getInstance(context).getFavoriteDao().findFavoriteByFavoriteIdAndFavoriteType(achvId, Favorite.FAVORITE_ACHV_TYPE);
 
         //解析成果图片
         if (detail != null) {

@@ -7,7 +7,7 @@ package cn.fundview.app.view;
  */
 public interface ChatBarListener {
 
-    public void sendMsg(String txt);
+    void sendMsg(String txt);
 
-    public void sendPhotoMsg();
+    void sendPhotoMsg();
 }
