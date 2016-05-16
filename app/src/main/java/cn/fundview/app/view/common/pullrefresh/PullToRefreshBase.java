@@ -909,7 +909,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
             mScrollFromY = fromY;
             mScrollToY = toY;
             mDuration = duration;
-            mInterpolator = new DecelerateInterpolator();
+            mInterpolator = new DecelerateInterpolator();//减速
         }
 
         @Override

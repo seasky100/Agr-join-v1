@@ -29,8 +29,20 @@ import cz.msebera.android.httpclient.Header;
  */
 public class InitFundviewInforListAction extends BaseAction {
 
-    public InitFundviewInforListAction(Context context, AsyncTaskCompleteListener asyncTaskCompleteListener) {
+    private int id;
+    private int size;
+
+    public InitFundviewInforListAction(Context context,int id,int size, AsyncTaskCompleteListener asyncTaskCompleteListener) {
         super(context,asyncTaskCompleteListener);
+        execute(id,size);
+    }
+
+    @Override
+    public void execute(Object... params) {
+
+        this.id = (int)params[0];
+        this.size = (int)params[1];
+        super.execute(params);
     }
 
     @Override
@@ -46,8 +58,8 @@ public class InitFundviewInforListAction extends BaseAction {
 
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        params.put("currentId", "0");
-        params.put("pageSize", "1");
+        params.put("currentId", id);
+        params.put("pageSize", this.size);
         client.get(Constants.GET_FUNDVIEW_INFOR_LIST_HISTORY_URL,params, new JsonHttpResponseHandler(){
 
             @Override

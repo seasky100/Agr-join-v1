@@ -32,8 +32,8 @@
             android:textColor="@android:color/white"
             android:textSize="18sp"/>
     </android.support.v7.widget.Toolbar>
-    <android.support.v7.widget.RecyclerView
-        android:id="@id/recycleView"
+    <cn.fundview.app.view.common.pullrefresh.PullToRefreshRecyclerView
+        android:id="@id/pullRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/fundivew_info_bg"/>

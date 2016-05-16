@@ -23,10 +23,8 @@ public abstract class BaseAction implements NetWorkListener {
 
         this.mContext = context;
         this.mAsyncTaskCompleteListener = asyncTaskCompleteListener;
-        execute();
     }
-
-    public void execute() {
+    public void execute(Object... params) {
 
         String networkName = NetWorkUtils.getNetworkTypeName(mContext);
 

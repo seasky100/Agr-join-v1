@@ -30,10 +30,40 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
         this.mLayoutId = layoutId;
     }
 
+    /**
+     * 追加数据源
+     *
+     * @param datas
+     */
+    public void appendData(List<T> datas) {
+
+        if (datas != null && datas.size() > 0) {
+
+            int startPosition = mDataSource.size() - 1;
+            mDataSource.addAll(datas);
+            notifyItemRangeChanged(startPosition, datas.size());
+        }
+    }
+
+    /**
+     * 向前插入数据
+     *
+     * @param datas
+     */
+    public void insertData(List<T> datas) {
+
+        if (datas != null && datas.size() > 0) {
+
+            datas.addAll(mDataSource);
+            mDataSource = datas;
+            notifyItemRangeChanged(0, datas.size());
+        }
+    }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        MyViewHolder viewHolder = new MyViewHolder(LayoutInflater.from(mContext).inflate(mLayoutId, parent,false));
+        MyViewHolder viewHolder = new MyViewHolder(LayoutInflater.from(mContext).inflate(mLayoutId, parent, false));
         return viewHolder;
     }
 
@@ -45,6 +75,7 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
 
     /**
      * 真实的负责 将数据和view 绑定
+     *
      * @param viewHolder
      * @param item
      */

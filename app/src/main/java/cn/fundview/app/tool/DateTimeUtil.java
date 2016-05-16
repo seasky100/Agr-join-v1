@@ -73,7 +73,7 @@ public class DateTimeUtil {
         if (yearDelta == 0 && dayDelta == 0) {
 
             //同一天
-            result = isAm == Calendar.AM ? "上午 " : "下午 " + (hour > 9 ? hour : ("0" + hour)) + ":" + (minutes > 9 ? minutes : ("0" + minutes));
+            result = (isAm == Calendar.AM ? "上午 " : "下午 " )+ (hour > 9 ? hour : ("0" + hour)) + ":" + (minutes > 9 ? minutes : ("0" + minutes));
         } else if (yearDelta == 0 && dayDelta == 1) {
 
             result = "昨天 " + (isAm == Calendar.AM ? "上午 " : "下午 ") + (hour > 9 ? hour : ("0" + hour)) + ":" + (minutes > 9 ? minutes : ("0" + minutes));
