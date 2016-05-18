@@ -23,4 +23,5 @@
     <item type="id" name="backImageBtn"/>
     <item type="id" name="recycleView"/>
     <item type="id" name="pullRecyclerView"/>
+    <item type="id" name="swipeRefreshLayout"/>
 </resources>

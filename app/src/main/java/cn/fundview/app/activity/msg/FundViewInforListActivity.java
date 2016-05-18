@@ -1,10 +1,14 @@
 package cn.fundview.app.activity.msg;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -19,14 +23,12 @@ import cn.fundview.app.domain.model.FundviewInfor;
 import cn.fundview.app.tool.DateTimeUtil;
 import cn.fundview.app.tool.adapter.RecyclerViewAdapter;
 import cn.fundview.app.view.AsyncTaskCompleteListener;
-import cn.fundview.app.view.common.pullrefresh.PullToRefreshBase;
-import cn.fundview.app.view.common.pullrefresh.PullToRefreshRecyclerView;
 
-public class FundViewInforListActivity extends AppCompatActivity implements AsyncTaskCompleteListener {
+public class FundViewInforListActivity extends AppCompatActivity implements AsyncTaskCompleteListener,SwipeRefreshLayout.OnRefreshListener {
 
-    private PullToRefreshRecyclerView mPullToRefreshRecyclerView;
     private SimpleDateFormat mDateFormat = new SimpleDateFormat("MM-dd HH:mm");
 
+    private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
     private Toolbar mToolbar;
     private ImageButton mBackImageButton;
@@ -34,6 +36,8 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
     private int id;//当前页面中存储的最小id,用于查看历史
     private int size;//每次查询的条数
     private List<FundviewInfor> dataSource;//recyclerview 数据源
+    private Handler handler;
+    private int lastVisibleItem = -1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,29 +46,11 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
         setContentView(R.layout.activity_findview_infor_list);
         int id = getIntent().getIntExtra("id", 0);//设置未读的最大的id
         size = 1;//标示在资讯列表页中显示的资讯条数
+        handler = new Handler();
 
         initViews();
         attachEvents();
         initData(id,size);
-
-        mPullToRefreshRecyclerView = (PullToRefreshRecyclerView) findViewById(R.id.pullRecyclerView);//new PullToRefreshWebView(this);
-        mPullToRefreshRecyclerView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<RecyclerView>() {
-
-            @Override
-            public void onPullDownToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
-
-                loadHistoryData();
-                mPullToRefreshRecyclerView.onPullDownRefreshComplete();
-            }
-
-            @Override
-            public void onPullUpToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
-            }
-        });
-//
-        mRecyclerView = mPullToRefreshRecyclerView.getRefreshableView();
-
-        setLastUpdateTime();
     }
 
     /**
@@ -99,9 +85,30 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
                     }
 
                 });
-            }else if(responseCode == 1) {
+                this.mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
+                    @Override
+                    public void onScrollStateChanged(RecyclerView recyclerView,
+                                                     int newState) {
+                        super.onScrollStateChanged(recyclerView, newState);
+                        if (newState == RecyclerView.SCROLL_STATE_IDLE
+                                && lastVisibleItem + 1 == recyclerView.getAdapter().getItemCount()) {
+                            mSwipeRefreshLayout.setRefreshing(true);
+                        }
+                    }
+
+                    @Override
+                    public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                        super.onScrolled(recyclerView, dx, dy);
+                        LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                        lastVisibleItem =linearLayoutManager.findLastCompletelyVisibleItemPosition();
+                    }
+
+                });
+            }else if(responseCode == 1) {
+                id = fundviewInforList.get(0).getId()-1;
                 ((RecyclerViewAdapter)this.mRecyclerView.getAdapter()).insertData(fundviewInforList);
+                this.mSwipeRefreshLayout.setRefreshing(false);
             }
         }
 
@@ -114,9 +121,15 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
 
         this.mToolbar = (Toolbar) this.findViewById(R.id.toolBar);
         this.mBackImageButton = (ImageButton) (this.mToolbar.findViewById(R.id.backImageBtn));
-        this.mPullToRefreshRecyclerView = (PullToRefreshRecyclerView) this.findViewById(R.id.pullRecyclerView);
-        this.mRecyclerView = this.mPullToRefreshRecyclerView.mRefreshableView;
+        this.mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);//new PullToRefreshWebView(this);
+        this.mRecyclerView = (RecyclerView) findViewById(R.id.recycleView);
         this.mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        this.mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        this.mSwipeRefreshLayout.setColorSchemeColors(R.color.aliceblue, R.color.antiquewhite,
+                R.color.aqua, R.color.beige);
+
+        mRecyclerView.setHasFixedSize(true);
     }
 
     /**
@@ -130,6 +143,12 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
                 finish();
             }
         });
+        this.mSwipeRefreshLayout.setOnRefreshListener(this);
+
+        // 这句话是为了，第一次进入页面的时候显示加载进度条
+        this.mSwipeRefreshLayout.setProgressViewOffset(false, 0, (int) TypedValue
+                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources()
+                        .getDisplayMetrics()));
     }
 
     /**
@@ -139,14 +158,14 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
      */
     private void initData(int id,int size) {
 
-        new InitFundviewInforListAction(this,0,size,this);
+        new InitFundviewInforListAction(this,id,size,this);
     }
 
 
-    private void setLastUpdateTime() {
-        String text = formatDateTime(System.currentTimeMillis());
-        mPullToRefreshRecyclerView.setLastUpdatedLabel(text);
-    }
+//    private void setLastUpdateTime() {
+//        String text = formatDateTime(System.currentTimeMillis());
+//        mPullToRefreshRecyclerView.setLastUpdatedLabel(text);
+//    }
 
     private String formatDateTime(long time) {
         if (0 == time) {
@@ -159,5 +178,11 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
     private void loadHistoryData() {
 
         new FundviewInforHistoryAction(this,id,size, this);
+    }
+
+    @Override
+    public void onRefresh() {
+
+        loadHistoryData();
     }
 }
