@@ -38,12 +38,6 @@ public interface  ILoadingLayout {
         REFRESHING,
 
         /**
-         * When the UI is currently refreshing, caused by a pull gesture.
-         */
-        @Deprecated
-        LOADING,
-
-        /**
          * No more data
          */
         NO_MORE_DATA,

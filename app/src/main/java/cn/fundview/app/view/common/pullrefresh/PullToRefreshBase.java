@@ -1,6 +1,7 @@
 package cn.fundview.app.view.common.pullrefresh;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
+import cn.fundview.app.tool.LogUtils;
 
 
 /**
@@ -140,7 +143,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     private void init(Context context, AttributeSet attrs) {
         setOrientation(LinearLayout.VERTICAL);
 
-        mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
+        mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();//ui 移动的手指最小移动距离 默认是24px
 
         mHeaderLayout = createHeaderLoadingLayout(context, attrs);
         mFooterLayout = createFooterLoadingLayout(context, attrs);
@@ -158,7 +161,14 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
             @Override
             public void onGlobalLayout() {
                 refreshLoadingViewsSize();
-                getViewTreeObserver().removeGlobalOnLayoutListener(this);
+
+                if(Build.VERSION.SDK_INT <= 16) {
+
+                    getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                }else {
+
+                    getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                }
             }
         });
     }
@@ -205,6 +215,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     @Override
     protected final void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
+        LogUtils.d("onSizeChanged");
 
         // We need to update the header/footer when our size changes
         refreshLoadingViewsSize();
@@ -236,6 +247,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 
     @Override
     public final boolean onInterceptTouchEvent(MotionEvent event) {
+        LogUtils.d("onInterceptTouchEvent");
         if (!isInterceptTouchEventEnabled()) {
             return false;
         }
@@ -296,7 +308,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     }
 
     @Override
-    public final boolean onTouchEvent(MotionEvent ev) {
+    public final boolean onTouchEvent(MotionEvent ev) {LogUtils.d("onTouchEvent");
         boolean handled = false;
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:

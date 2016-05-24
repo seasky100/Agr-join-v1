@@ -8,7 +8,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -23,12 +22,13 @@ import cn.fundview.app.domain.model.FundviewInfor;
 import cn.fundview.app.tool.DateTimeUtil;
 import cn.fundview.app.tool.adapter.RecyclerViewAdapter;
 import cn.fundview.app.view.AsyncTaskCompleteListener;
+import cn.fundview.app.view.common.pullrefresh.PullToRefreshRecyclerView;
 
 public class FundViewInforListActivity extends AppCompatActivity implements AsyncTaskCompleteListener,SwipeRefreshLayout.OnRefreshListener {
 
     private SimpleDateFormat mDateFormat = new SimpleDateFormat("MM-dd HH:mm");
 
-    private SwipeRefreshLayout mSwipeRefreshLayout;
+    private PullToRefreshRecyclerView mPullToRefreshRecyclerView;
     private RecyclerView mRecyclerView;
     private Toolbar mToolbar;
     private ImageButton mBackImageButton;
@@ -93,7 +93,7 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
                         super.onScrollStateChanged(recyclerView, newState);
                         if (newState == RecyclerView.SCROLL_STATE_IDLE
                                 && lastVisibleItem + 1 == recyclerView.getAdapter().getItemCount()) {
-                            mSwipeRefreshLayout.setRefreshing(true);
+//                            mSwipeRefreshLayout.setRefreshing(true);
                         }
                     }
 
@@ -108,7 +108,7 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
             }else if(responseCode == 1) {
                 id = fundviewInforList.get(0).getId()-1;
                 ((RecyclerViewAdapter)this.mRecyclerView.getAdapter()).insertData(fundviewInforList);
-                this.mSwipeRefreshLayout.setRefreshing(false);
+//                this.mSwipeRefreshLayout.setRefreshing(false);
             }
         }
 
@@ -121,13 +121,10 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
 
         this.mToolbar = (Toolbar) this.findViewById(R.id.toolBar);
         this.mBackImageButton = (ImageButton) (this.mToolbar.findViewById(R.id.backImageBtn));
-        this.mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);//new PullToRefreshWebView(this);
-        this.mRecyclerView = (RecyclerView) findViewById(R.id.recycleView);
+        this.mPullToRefreshRecyclerView = (PullToRefreshRecyclerView) findViewById(R.id.pullRecyclerView);//new PullToRefreshWebView(this);
+        this.mRecyclerView = this.mPullToRefreshRecyclerView.getRecyclerView();
         this.mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         this.mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
-        this.mSwipeRefreshLayout.setColorSchemeColors(R.color.aliceblue, R.color.antiquewhite,
-                R.color.aqua, R.color.beige);
 
         mRecyclerView.setHasFixedSize(true);
     }
@@ -143,12 +140,24 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
                 finish();
             }
         });
-        this.mSwipeRefreshLayout.setOnRefreshListener(this);
-
-        // 这句话是为了，第一次进入页面的时候显示加载进度条
-        this.mSwipeRefreshLayout.setProgressViewOffset(false, 0, (int) TypedValue
-                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources()
-                        .getDisplayMetrics()));
+//        this.mPullToRefreshRecyclerView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<RecyclerView>() {
+//            @Override
+//            public void onPullDownToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
+//
+//                LogUtils.d("onPullDownToRefresh");
+//                try {
+//                    Thread.sleep(3000);
+////                    refreshView.set
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//            @Override
+//            public void onPullUpToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
+//
+//            }
+//        });
     }
 
     /**
