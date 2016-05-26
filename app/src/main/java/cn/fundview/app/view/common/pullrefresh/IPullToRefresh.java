@@ -90,11 +90,4 @@ public interface IPullToRefresh<T extends View> {
      * @return Footer布局对象
      */
     LoadingLayout getFooterLoadingLayout();
-
-    /**
-     * 设置最后更新的时间文本
-     *
-     * @param label 文本
-     */
-    void setLastUpdatedLabel(CharSequence label);
 }

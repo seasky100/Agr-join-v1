@@ -64,9 +64,6 @@ public class FooterLoadingLayout extends LoadingLayout {
         return container;
     }
 
-    @Override
-    public void setLastUpdatedLabel(CharSequence label) {
-    }
 
     @Override
     public int getContentSize() {

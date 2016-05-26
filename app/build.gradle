@@ -5,7 +5,7 @@ apply plugin: 'com.android.application'
 android {
 
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion '23.0.2'
     defaultConfig {
         applicationId "cn.fundview"
         minSdkVersion 11
@@ -26,10 +26,13 @@ android {
         }
 
     }
-    sourceSets.main {
-        jniLibs.srcDirs = ['libs']  // <-- Set your folder here!
-    }
 
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/java-gen']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 
@@ -45,5 +48,5 @@ dependencies {
     compile files('libs/org.apache.http.legacy.jar')
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-
+    compile 'de.greenrobot:greendao:2.1.0'
 }

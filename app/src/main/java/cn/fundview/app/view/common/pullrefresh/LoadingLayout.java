@@ -99,14 +99,6 @@ public abstract class LoadingLayout extends FrameLayout implements ILoadingLayou
         }
     }
 
-    /**
-     * 设置最后更新的时间文本
-     *
-     * @param label 文本
-     */
-    public void setLastUpdatedLabel(CharSequence label) {
-
-    }
 
     /**
      * 设置加载中的图片

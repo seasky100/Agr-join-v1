@@ -453,16 +453,6 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
         return mFooterLayout;
     }
 
-    @Override
-    public void setLastUpdatedLabel(CharSequence label) {
-        if (null != mHeaderLayout) {
-            mHeaderLayout.setLastUpdatedLabel(label);
-        }
-
-        if (null != mFooterLayout) {
-            mFooterLayout.setLastUpdatedLabel(label);
-        }
-    }
 
     /**
      * 开始刷新，通常用于调用者主动刷新，典型的情况是进入界面，开始主动刷新，这个刷新并不是由用户拉动引起的

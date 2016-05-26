@@ -1,7 +1,6 @@
 package cn.fundview.app.view.common.pullrefresh;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,18 +43,13 @@ public class RotateLoadingLayout extends LoadingLayout {
      * 状态提示TextView
      */
     private TextView mHintTextView;
-    /**
-     * 最后更新时间的TextView
-     */
-    private TextView mHeaderTimeView;
-    /**
-     * 最后更新时间的标题
-     */
-    private TextView mHeaderTimeViewTitle;
-    /**
-     * 旋转的动画
-     */
+
+    /* 旋转的动画
+    */
     private Animation mRotateAnimation;
+
+    private String hintTextNormal;//下拉提示
+    private String hintTextRelease;//松开后的提示
 
     /**
      * 构造方法
@@ -87,8 +81,6 @@ public class RotateLoadingLayout extends LoadingLayout {
         mHeaderContainer = (RelativeLayout) findViewById(R.id.pull_to_refresh_header_content);
         mArrowImageView = (ImageView) findViewById(R.id.pull_to_refresh_header_arrow);
         mHintTextView = (TextView) findViewById(R.id.pull_to_refresh_header_hint_textview);
-        mHeaderTimeView = (TextView) findViewById(R.id.pull_to_refresh_header_time);
-        mHeaderTimeViewTitle = (TextView) findViewById(R.id.pull_to_refresh_last_update_time_text);
 
         mArrowImageView.setScaleType(ScaleType.CENTER);
         mArrowImageView.setImageResource(R.mipmap.default_ptr_rotate);
@@ -110,12 +102,6 @@ public class RotateLoadingLayout extends LoadingLayout {
         return container;
     }
 
-    @Override
-    public void setLastUpdatedLabel(CharSequence label) {
-        // 如果最后更新的时间的文本是空的话，隐藏前面的标题
-        mHeaderTimeViewTitle.setVisibility(TextUtils.isEmpty(label) ? View.INVISIBLE : View.VISIBLE);
-        mHeaderTimeView.setText(label);
-    }
 
     @Override
     public int getContentSize() {
@@ -134,12 +120,22 @@ public class RotateLoadingLayout extends LoadingLayout {
     @Override
     protected void onReset() {
         resetRotation();
-        mHintTextView.setText(R.string.pull_to_refresh_header_hint_normal);
+
+        if (hintTextNormal == null)
+            mHintTextView.setText(R.string.pull_to_refresh_header_hint_normal);
+        else
+            mHintTextView.setText(hintTextNormal);
+
     }
 
     @Override
     protected void onReleaseToRefresh() {
-        mHintTextView.setText(R.string.pull_to_refresh_header_hint_ready);
+
+        if (hintTextRelease != null)
+
+            mHintTextView.setText(hintTextRelease);
+        else
+            mHintTextView.setText(R.string.pull_to_refresh_header_hint_ready);
     }
 
     @Override
@@ -166,5 +162,13 @@ public class RotateLoadingLayout extends LoadingLayout {
     private void resetRotation() {
         mArrowImageView.clearAnimation();
         mArrowImageView.setRotation(0);
+    }
+
+    public void setHintTextNormal(String hintTextNormal) {
+        this.hintTextNormal = hintTextNormal;
+    }
+
+    public void setHintTextRelease(String hintTextRelease) {
+        this.hintTextRelease = hintTextRelease;
     }
 }

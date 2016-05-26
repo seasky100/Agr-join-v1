@@ -22,7 +22,7 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
     private List<T> mDataSource;
     private Context mContext;
     private int mLayoutId;
-
+    private MyRecyclerViewItemOnClickListener clickListener;
     public RecyclerViewAdapter(List<T> dataSource, Context context, int layoutId) {
 
         this.mContext = context;
@@ -64,6 +64,7 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         MyViewHolder viewHolder = new MyViewHolder(LayoutInflater.from(mContext).inflate(mLayoutId, parent, false));
+        viewHolder.setClickListener(clickListener);
         return viewHolder;
     }
 
@@ -86,13 +87,23 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
         return mDataSource.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public interface  MyRecyclerViewItemOnClickListener{
+
+        void onClick(View view, int position);
+    }
+
+    public void setClickListener(MyRecyclerViewItemOnClickListener clickListener) {
+        this.clickListener = clickListener;
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private View convertView;
-
+        private MyRecyclerViewItemOnClickListener clickListener;
         public MyViewHolder(View itemView) {
             super(itemView);
             convertView = itemView;
+            convertView.setOnClickListener(this);
         }
 
         public <T extends View> T getView(int viewId) {
@@ -162,6 +173,19 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
                     .build();
             ImageLoader.getInstance().displayImage(url, view, options);
             return this;
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            if(clickListener != null) {
+
+                clickListener.onClick(v,getAdapterPosition());
+            }
+        }
+
+        public void setClickListener(MyRecyclerViewItemOnClickListener clickListener) {
+            this.clickListener = clickListener;
         }
     }
 }
