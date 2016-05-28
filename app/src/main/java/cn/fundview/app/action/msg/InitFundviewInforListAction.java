@@ -18,11 +18,12 @@ import cn.fundview.app.domain.dao.FundviewInforDao;
 import cn.fundview.app.domain.model.FundviewInfor;
 import cn.fundview.app.domain.webservice.util.Constants;
 import cn.fundview.app.model.ResultBean;
+import cn.fundview.app.tool.ToastUtils;
 import cn.fundview.app.view.AsyncTaskCompleteListener;
 
 /**
  * 丰景资讯列表页 初始化,加载本地的所有未读的数据
- *
+ * <p/>
  * 返回的数据结构：
  * (1) 查询不到数据
  * {"message":"查询成功","result":[],"status":2}
@@ -35,26 +36,37 @@ public class InitFundviewInforListAction extends BaseAction {
     private int size;
 
     private FundviewInforDao fundviewInforDao;
-    public InitFundviewInforListAction(Context context,int id,int size, AsyncTaskCompleteListener asyncTaskCompleteListener) {
-        super(context,asyncTaskCompleteListener);
+
+    public InitFundviewInforListAction(Context context, int id, int size, AsyncTaskCompleteListener asyncTaskCompleteListener) {
+        super(context, asyncTaskCompleteListener);
         fundviewInforDao = DaoFactory.getInstance(context).getFundviewInforDao();
-        execute(id,size);
+        execute(id, size);
     }
 
     @Override
     public void execute(Object... params) {
 
-        this.id = (int)params[0];
-        this.size = (int)params[1];
+        this.id = (int) params[0];
+        this.size = (int) params[1];
         super.execute(params);
     }
 
     @Override
     public void disConnectedHandler() {
+
+        super.disConnectedHandler();
+        //本地没有未读的消息,查询本地的最新的2条资讯, 从列表中进入的
+        List<FundviewInfor> results = DaoFactory.getInstance(mContext).getFundviewInforDao().getLastest(1);
+        if (null != results && results.size() > 0) {
+
+            mAsyncTaskCompleteListener.complete(0, 0, results);
+        }
     }
+
 
     @Override
     public void mobileHandler() {
+        wifiHandler();
     }
 
     @Override
@@ -77,12 +89,38 @@ public class InitFundviewInforListAction extends BaseAction {
 
                         String result = responseInfo.result;
 
-                        ResultBean resultBean = JSON.parseObject(result,ResultBean.class);
+                        ResultBean resultBean = JSON.parseObject(result, ResultBean.class);
                         List<FundviewInfor> list = JSON.parseArray(resultBean.getResult(), FundviewInfor.class);
-                        mAsyncTaskCompleteListener.complete(0,0,list);
 
                         //save to DB
-//                        fundviewInforDao.
+                        if (list != null && list.size() > 0) {
+
+                            for (FundviewInfor item : list) {
+                                FundviewInfor localItem = fundviewInforDao.getById(item.getId());
+                                if (localItem == null) {
+
+                                    //添加资讯
+                                    item.setRead(1);//设置历史已读
+                                    item.setPublishDate(item.getUpdateDate());
+                                    fundviewInforDao.save(item);
+                                } else {
+
+                                    item.setPublishDate(localItem.getPublishDate()); //显示用
+                                    fundviewInforDao.update(item);
+                                }
+                                item.setPublishDate(localItem.getPublishDate()); //显示用
+                            }
+
+                            mAsyncTaskCompleteListener.complete(0, 0, list);
+                            //设置所有的消息已读
+                            DaoFactory.getInstance(mContext).getFundviewInforDao().setRead(id);
+                        } else {
+
+                            //没有从server获取到
+                            list = DaoFactory.getInstance(mContext).getFundviewInforDao().getLastest(1);
+                            mAsyncTaskCompleteListener.complete(0, 0, list);
+                        }
+
                     }
 
                     @Override
@@ -91,10 +129,12 @@ public class InitFundviewInforListAction extends BaseAction {
 
                     @Override
                     public void onFailure(HttpException error, String msg) {
+                        ToastUtils.show(mContext,"网络连接失败");
+                        List<FundviewInfor> list = DaoFactory.getInstance(mContext).getFundviewInforDao().getLastest(1);
+                        mAsyncTaskCompleteListener.complete(0, 0, list);
                     }
                 });
     }
-
 
 
 //    /**

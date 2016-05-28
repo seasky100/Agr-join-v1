@@ -4,6 +4,7 @@ import android.content.Context;
 
 import cn.fundview.app.listener.NetWorkListener;
 import cn.fundview.app.tool.NetWorkUtils;
+import cn.fundview.app.tool.ToastUtils;
 import cn.fundview.app.view.AsyncTaskCompleteListener;
 
 /**
@@ -46,15 +47,15 @@ public abstract class BaseAction implements NetWorkListener {
     @Override
     public void wifiHandler() {
 
+
     }
 
     @Override
     public void mobileHandler() {
-
     }
 
     @Override
     public void disConnectedHandler() {
-
+        ToastUtils.show(mContext,"网络连接失败");
     }
 }

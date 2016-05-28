@@ -44,6 +44,7 @@ public class FundviewInforHistoryAction extends BaseAction {
 
     @Override
     public void disConnectedHandler() {
+
     }
 
     @Override
