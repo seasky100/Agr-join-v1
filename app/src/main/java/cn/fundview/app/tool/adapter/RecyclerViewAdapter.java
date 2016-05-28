@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,10 +54,12 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
     public void insertData(List<T> datas) {
 
         if (datas != null && datas.size() > 0) {
+            List<T> tempDatas = new ArrayList<>();
 
-            datas.addAll(mDataSource);
-            mDataSource = datas;
-            notifyItemRangeChanged(0, datas.size());
+            tempDatas.addAll(datas);
+            tempDatas.addAll(mDataSource);
+            mDataSource = tempDatas;
+            notifyItemRangeChanged(0, mDataSource.size());
         }
     }
 

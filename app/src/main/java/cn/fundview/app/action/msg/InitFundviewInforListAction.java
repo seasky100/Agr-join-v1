@@ -3,20 +3,22 @@ package cn.fundview.app.action.msg;
 import android.content.Context;
 
 import com.alibaba.fastjson.JSON;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
 
 import java.util.List;
 
 import cn.fundview.app.action.BaseAction;
+import cn.fundview.app.domain.dao.DaoFactory;
+import cn.fundview.app.domain.dao.FundviewInforDao;
 import cn.fundview.app.domain.model.FundviewInfor;
 import cn.fundview.app.domain.webservice.util.Constants;
+import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.view.AsyncTaskCompleteListener;
-import cz.msebera.android.httpclient.Header;
 
 /**
  * 丰景资讯列表页 初始化,加载本地的所有未读的数据
@@ -32,8 +34,10 @@ public class InitFundviewInforListAction extends BaseAction {
     private int id;
     private int size;
 
+    private FundviewInforDao fundviewInforDao;
     public InitFundviewInforListAction(Context context,int id,int size, AsyncTaskCompleteListener asyncTaskCompleteListener) {
         super(context,asyncTaskCompleteListener);
+        fundviewInforDao = DaoFactory.getInstance(context).getFundviewInforDao();
         execute(id,size);
     }
 
@@ -56,29 +60,42 @@ public class InitFundviewInforListAction extends BaseAction {
     @Override
     public void wifiHandler() {
 
-        AsyncHttpClient client = new AsyncHttpClient();
+        HttpUtils http = new HttpUtils();
         RequestParams params = new RequestParams();
-        params.put("currentId", id);
-        params.put("pageSize", this.size);
-        client.get(Constants.GET_FUNDVIEW_INFOR_LIST_HISTORY_URL,params, new JsonHttpResponseHandler(){
+        params.addQueryStringParameter("currentId", id + "");
+        params.addQueryStringParameter("pageSize", size + "");
+        http.send(HttpRequest.HttpMethod.GET, Constants.GET_FUNDVIEW_INFOR_LIST_HISTORY_URL, params,
+                new RequestCallBack<String>() {
+                    @Override
+                    public void onLoading(long total, long current, boolean isUploading) {
+//                testTextView.setText(current + / + total);
+                    }
 
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
+                    @Override
+                    public void onSuccess(ResponseInfo<String> responseInfo) {
+//                textView.setText(responseInfo.result);
 
-                try {
-                    String result = response.getString("result");
+                        String result = responseInfo.result;
 
-                    List<FundviewInfor> list = JSON.parseArray(result, FundviewInfor.class);
-                    mAsyncTaskCompleteListener.complete(0,0,list);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
+                        ResultBean resultBean = JSON.parseObject(result,ResultBean.class);
+                        List<FundviewInfor> list = JSON.parseArray(resultBean.getResult(), FundviewInfor.class);
+                        mAsyncTaskCompleteListener.complete(0,0,list);
 
+                        //save to DB
+//                        fundviewInforDao.
+                    }
 
-        });
+                    @Override
+                    public void onStart() {
+                    }
+
+                    @Override
+                    public void onFailure(HttpException error, String msg) {
+                    }
+                });
     }
+
+
 
 //    /**
 //     * 执行异步处理
