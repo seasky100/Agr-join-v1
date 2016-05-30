@@ -35,7 +35,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/search"
+            android:id="@id/search"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@null"

@@ -6,13 +6,12 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+
     <cn.fundview.app.view.SearchTitleBar
         android:id="@+id/titleBarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         fundview:type="home" />
-
-
     <cn.fundview.app.view.home.HomeView
         android:id="@+id/homewebView"
         android:layout_width="match_parent"

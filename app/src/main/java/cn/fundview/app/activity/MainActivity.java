@@ -47,7 +47,6 @@ public class MainActivity extends ABaseActivity implements MenuBarListener {
 
     private AppUpdateConn conn = new AppUpdateConn();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

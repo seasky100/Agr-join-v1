@@ -24,4 +24,9 @@
     <item type="id" name="recycleView"/>
     <item type="id" name="pullRecyclerView"/>
     <item type="id" name="swipeRefreshLayout"/>
+    <item type="id" name="loading_container"/>
+    <item type="id" name="slidePagerView" ></item>
+    <item name="viewPager" type="id" />
+    <item name="dotContainer" type="id" />
+    <item name="search" type="id" />
 </resources>

@@ -27,6 +27,7 @@ import cn.fundview.app.activity.company.CompListActivity;
 import cn.fundview.app.activity.company.CompanyProductDetailActivity;
 import cn.fundview.app.activity.expert.DetailActivity;
 import cn.fundview.app.activity.expert.ExpertListActivity;
+import cn.fundview.app.activity.expert.GuestExpertListActivity;
 import cn.fundview.app.activity.history.SearchHistoryActivity;
 import cn.fundview.app.activity.org.OrgListActivity;
 import cn.fundview.app.activity.product.ProductListActivity;
@@ -312,6 +313,13 @@ public class HomeView extends ABaseWebView {
         Intent intent = new Intent(context, FundProjectListActivity.class);
         context.startActivity(intent);
     }
+
+    @JavascriptInterface
+    public void openGuestExpert() {
+        Intent intent = new Intent(context, GuestExpertListActivity.class);
+        context.startActivity(intent);
+    }
+
 
     @Override
     public void onClickRight() {

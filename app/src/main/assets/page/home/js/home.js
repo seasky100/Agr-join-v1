@@ -128,6 +128,9 @@ function onBtnClick(id, e) {
 	}else if(id=="fundProject") {
 
     	SDK.openFundProjectList();
+    }else if(id="guestExpert") {
+
+        SDK.openGuestExpert();
     }
 
 

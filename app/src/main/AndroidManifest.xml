@@ -226,17 +226,18 @@
 
         <service android:name=".app.service.UpdateService" />
 
-        <receiver android:name=".app.receiver.PackageAddEndReceiver"
+        <receiver
+            android:name=".app.receiver.PackageAddEndReceiver"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true">
             >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
                 <data android:scheme="package" />
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
@@ -396,9 +397,16 @@
         <activity
             android:name=".app.activity.qrcode.KyorgDetailActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".app.activity.my.ForgetPasswordActivity"  android:screenOrientation="portrait" />
-        <activity android:name=".app.activity.FundProject.FundProjectListActivity"  android:screenOrientation="portrait" />
-        <activity android:name=".app.activity.FundProject.FundProjectDetailActivity" android:screenOrientation="portrait" />
+        <activity
+            android:name=".app.activity.my.ForgetPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".app.activity.FundProject.FundProjectListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".app.activity.FundProject.FundProjectDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".app.activity.expert.GuestExpertListActivity"></activity>
     </application>
 
 </manifest>

@@ -1,8 +1,8 @@
 package cn.fundview.app.activity.msg;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,7 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,14 +19,13 @@ import cn.fundview.app.action.msg.FundviewInforHistoryAction;
 import cn.fundview.app.action.msg.InitFundviewInforListAction;
 import cn.fundview.app.domain.model.FundviewInfor;
 import cn.fundview.app.tool.DateTimeUtil;
+import cn.fundview.app.tool.ToastUtils;
 import cn.fundview.app.tool.adapter.RecyclerViewAdapter;
 import cn.fundview.app.view.AsyncTaskCompleteListener;
 import cn.fundview.app.view.common.pullrefresh.PullToRefreshBase;
 import cn.fundview.app.view.common.pullrefresh.PullToRefreshRecyclerView;
 
 public class FundViewInforListActivity extends AppCompatActivity implements AsyncTaskCompleteListener,RecyclerViewAdapter.MyRecyclerViewItemOnClickListener {
-
-    private SimpleDateFormat mDateFormat = new SimpleDateFormat("MM-dd HH:mm");
 
     private PullToRefreshRecyclerView mPullToRefreshRecyclerView;
     private RecyclerView mRecyclerView;
@@ -37,8 +35,9 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
     private int id;//当前页面中存储的最小id,用于查看历史
     private int size;//每次查询的条数
     private List<FundviewInfor> dataSource;//recyclerview 数据源
-    private Handler handler;
-    private int lastVisibleItem = -1;
+
+    private ProgressDialog progressDialog;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,8 +47,6 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
 
         int id = getIntent().getIntExtra("id", 0);//设置未读的最大的id
         size = 1;//标示在资讯列表页中显示的资讯条数
-        handler = new Handler();
-
         initViews();
         attachEvents();
         initData(id,size);
@@ -102,11 +99,18 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
                     tempDatas.addAll(dataSource);
                     dataSource = tempDatas;
 
+                }else {
+
+                    ToastUtils.show(this,"已是最后一条数据");
                 }
 
                 mPullToRefreshRecyclerView.onPullDownRefreshComplete();
 
             }
+        }else {
+
+            ToastUtils.show(this,"已是最后一条数据");
+            mPullToRefreshRecyclerView.onPullDownRefreshComplete();
         }
 
     }
@@ -175,7 +179,5 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
         intent.putExtra("updateDate",dataSource.get(position).getUpdateDate()+"");
         startActivity(intent);
     }
-
-
 
 }
