@@ -25,4 +25,11 @@
         <attr name="right_btn" format="string" />
     </declare-styleable>
 
+    <!-- 圆形imageView -->
+    <declare-styleable name="circleView">
+
+        <attr name="border_radius" format="float"/>
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
+    </declare-styleable>
 </resources>
