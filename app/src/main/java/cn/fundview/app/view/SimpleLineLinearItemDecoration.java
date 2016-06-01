@@ -18,15 +18,18 @@ public class SimpleLineLinearItemDecoration extends RecyclerView.ItemDecoration 
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
         super.onDraw(c, parent, state);
+        System.out.println("onDraw");
     }
 
     @Override
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
         super.onDrawOver(c, parent, state);
+        System.out.println("onDrawOver");
     }
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
+        System.out.println("getItemOffsets");
     }
 }

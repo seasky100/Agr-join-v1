@@ -6,12 +6,15 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageButton;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import cn.fundview.R;
+import cn.fundview.app.action.msg.InitFundviewInforListAction;
+import cn.fundview.app.view.common.pullrefresh.PullToRefreshBase;
 import cn.fundview.app.view.common.pullrefresh.PullToRefreshRecyclerView;
 
 public class GuestExpertListActivity extends AppCompatActivity {
@@ -41,12 +44,33 @@ public class GuestExpertListActivity extends AppCompatActivity {
      * 加载数据
      */
     private void initData() {
+
+        
     }
 
     /**
      * 事件绑定
      */
     private void attachEvents() {
+
+        this.mBackImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        this.mPullToRefreshRecyclerView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<RecyclerView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
+
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
+
+
+            }
+        });
     }
 
     /**
@@ -57,7 +81,7 @@ public class GuestExpertListActivity extends AppCompatActivity {
         this.mRecyclerView = this.mPullToRefreshRecyclerView.getRecyclerView();
         this.mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         this.mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        this.mRecyclerView.addItemDecoration(null);
+//        this.mRecyclerView.addItemDecoration(null);
         mRecyclerView.setHasFixedSize(true);
     }
 

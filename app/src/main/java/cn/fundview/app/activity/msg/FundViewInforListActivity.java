@@ -156,7 +156,7 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
     }
 
     /**
-     * 进入该 activity 后 第一次加载数据
+     * 进入该 activity 后 第一次加载数据|
      * @param id 未读的最小的id
      * @param size 查询的条数
      */
