@@ -12,15 +12,11 @@ import com.lidroid.xutils.http.client.HttpRequest;
 
 import java.util.List;
 
-import cn.fundview.app.action.ABaseAction;
 import cn.fundview.app.action.BaseAction;
 import cn.fundview.app.domain.dao.DaoFactory;
 import cn.fundview.app.domain.dao.ExpertDao;
-import cn.fundview.app.domain.dao.FundviewInforDao;
 import cn.fundview.app.domain.model.Expert;
-import cn.fundview.app.domain.model.FundviewInfor;
 import cn.fundview.app.domain.webservice.util.Constants;
-import cn.fundview.app.model.ResultBean;
 import cn.fundview.app.model.ResultListBean;
 import cn.fundview.app.tool.StringUtils;
 import cn.fundview.app.tool.ToastUtils;
@@ -42,7 +38,7 @@ public class GuestExpertListAction extends BaseAction {
 
     private ExpertDao expertDao;
 
-    public GuestExpertListAction(Context context, int pageSize, int currentPage, String searcher, AsyncTaskCompleteListener asyncTaskCompleteListener) {
+    public GuestExpertListAction(Context context, int currentPage, int pageSize, String searcher, AsyncTaskCompleteListener asyncTaskCompleteListener) {
         super(context, asyncTaskCompleteListener);
         expertDao = DaoFactory.getInstance(context).getExpertDao();
         execute(pageSize, currentPage, searcher);

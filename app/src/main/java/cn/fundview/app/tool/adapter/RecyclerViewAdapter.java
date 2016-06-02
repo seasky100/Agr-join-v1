@@ -182,7 +182,6 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
         public void onClick(View v) {
 
             if(clickListener != null) {
-
                 clickListener.onClick(v,getAdapterPosition());
             }
         }

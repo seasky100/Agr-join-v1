@@ -46,7 +46,7 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
 
-        <item name="android:windowBackground">@mipmap/start_bg</item>
+        <item name="android:windowBackground">@color/white</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:listViewStyle">@style/FDListView</item>
         <item name="android:windowAnimationStyle">@style/FDAnimation.Activity</item>
@@ -166,10 +166,8 @@
     </style>
 
 
-
     <!-- lodaingDialogStyle -->
     <style name="loadingDialogStyle">
-
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@color/transparent</item>

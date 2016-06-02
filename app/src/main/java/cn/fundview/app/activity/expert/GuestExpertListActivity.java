@@ -17,15 +17,14 @@ import java.util.List;
 
 import cn.fundview.R;
 import cn.fundview.app.action.expert.GuestExpertListAction;
-import cn.fundview.app.action.msg.InitFundviewInforListAction;
 import cn.fundview.app.domain.model.Expert;
 import cn.fundview.app.domain.model.FundviewInfor;
-import cn.fundview.app.tool.DateTimeUtil;
 import cn.fundview.app.tool.ToastUtils;
 import cn.fundview.app.tool.adapter.RecyclerViewAdapter;
 import cn.fundview.app.view.AsyncTaskCompleteListener;
 import cn.fundview.app.view.common.pullrefresh.PullToRefreshBase;
 import cn.fundview.app.view.common.pullrefresh.PullToRefreshRecyclerView;
+import cn.fundview.app.view.expert.guest.GuestExpertItemDecoration;
 
 public class GuestExpertListActivity extends AppCompatActivity implements AsyncTaskCompleteListener, RecyclerViewAdapter.MyRecyclerViewItemOnClickListener {
 
@@ -89,11 +88,13 @@ public class GuestExpertListActivity extends AppCompatActivity implements AsyncT
      * 初始化view
      */
     private void initView() {
+        this.mPullToRefreshRecyclerView.setPullRefreshEnabled(false);
+        this.mPullToRefreshRecyclerView.setPullLoadEnabled(true);
         this.mBackImageButton = (ImageButton) (this.mToolbar.findViewById(R.id.backImageBtn));
         this.mRecyclerView = this.mPullToRefreshRecyclerView.getRecyclerView();
         this.mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         this.mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-//        this.mRecyclerView.addItemDecoration(null);
+        this.mRecyclerView.addItemDecoration(new GuestExpertItemDecoration(this,20));
         mRecyclerView.setHasFixedSize(true);
     }
 
@@ -129,11 +130,12 @@ public class GuestExpertListActivity extends AppCompatActivity implements AsyncT
                     @Override
                     public void bindViewHolder(MyViewHolder viewHolder, Expert item) {
 
-//                        viewHolder.setText(R.id.receive_time, DateTimeUtil.getRelativeTimeSinceNow(item.getUpdateDate()));
-//                        viewHolder.setText(R.id.title, item.getTitle());
-//                        viewHolder.setText(R.id.publish_time, DateTimeUtil.formatTime(item.getUpdateDate()));
-//                        viewHolder.setImageByUrl(R.id.logo, item.getLogo(), R.mipmap.zx_moren, R.mipmap.zx_moren);
-//                        viewHolder.setText(R.id.summary, item.getIntroduction());
+                        viewHolder.setText(R.id.name,item.getName());
+                        viewHolder.setText(R.id.professionalTitle, item.getProfessionalTitle());
+                        viewHolder.setText(R.id.tradeName, item.getTradeName());
+                        viewHolder.setText(R.id.addr, item.getAreaName());
+                        viewHolder.setImageByUrl(R.id.circleLogo, item.getLogo(), R.mipmap.zx_moren, R.mipmap.zx_moren);
+//                        viewHolder.
                     }
 
                 };
@@ -156,5 +158,6 @@ public class GuestExpertListActivity extends AppCompatActivity implements AsyncT
     @Override
     public void onClick(View view, int position) {
 
+        ToastUtils.show(this,dataSource.get(position).getName());
     }
 }

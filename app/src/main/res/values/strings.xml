@@ -94,4 +94,5 @@
     <string name="guest_expert">特约专家</string>
     <string name="trade">行业:</string>
     <string name="tel_consultation">电话咨询</string>
+    <string name="video_consultation">视频咨询</string>
 </resources>

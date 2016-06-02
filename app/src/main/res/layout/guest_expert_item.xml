@@ -14,16 +14,15 @@
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
         android:src="@mipmap/expert_logo"
-        app:border_width="2dp"
-        app:border_color="@color/blue"
+        app:border_width="1dp"
+        app:border_color="@color/gray"
         />
     <TextView
         android:id="@id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/circleLogo"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textSize="16sp"
         tool:text="专家名"/>
     <TextView
         android:id="@id/professionalTitle"
@@ -31,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/name"
         android:layout_alignBottom="@id/name"
-        android:textSize="20sp"
+        android:textSize="12sp"
         android:layout_marginLeft="5dp"
         tool:text="专家职称"/>
     <TextView
@@ -40,9 +39,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/name"
         android:layout_below="@id/name"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp"
         android:text="@string/trade"/>
     <TextView
         android:id="@id/tradeName"
@@ -50,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/trade"
         android:layout_alignBottom="@id/trade"
-        android:textSize="20sp"
+        android:textSize="14sp"
         android:layout_marginLeft="5dp"
         tool:text="专家行业"/>
     <ImageView
@@ -60,7 +58,7 @@
         android:src="@mipmap/area_icon"
         android:layout_below="@id/trade"
         android:layout_alignLeft="@id/trade"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="8dp"/>
     <TextView
         android:id="@id/addr"
         android:layout_width="wrap_content"
@@ -69,14 +67,14 @@
         android:layout_alignBottom="@id/area_icon"
         android:layout_toRightOf="@id/area_icon"
         android:layout_marginLeft="4dp"
-        android:textSize="16sp"
+        android:textSize="12sp"
         />
     <View
         android:id="@id/seprator_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/gray"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_below="@id/addr"
         android:layout_alignLeft="@id/area_icon"/>
 
@@ -87,6 +85,15 @@
         android:text="@string/tel_consultation"
         android:layout_below="@id/seprator_line"
         android:layout_alignLeft="@id/seprator_line"
-        android:layout_marginTop="10dp"
-        android:drawableLeft="@mipmap/ic_launcher"/>
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@mipmap/tel_call"/>
+    <TextView
+        android:id="@id/videoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/video_consultation"
+        android:layout_alignBottom="@id/telTextView"
+        android:layout_toRightOf="@id/telTextView"
+        android:layout_marginLeft="30dp"
+        android:drawableLeft="@mipmap/video_call"/>
 </RelativeLayout>

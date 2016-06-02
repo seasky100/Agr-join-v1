@@ -38,4 +38,5 @@
     <item name="addr" type="id" />
     <item name="telTextView" type="id" />
     <item name="seprator_line" type="id" />
+    <item name="videoTextView" type="id" />
 </resources>
