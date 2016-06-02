@@ -3,9 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:background="@color/white"
+    xmlns:tool="http://schemas.android.com/tools">
 
     <cn.fundview.app.view.CircleImageView
+        android:id="@id/circleLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
@@ -13,4 +17,76 @@
         app:border_width="2dp"
         app:border_color="@color/blue"
         />
+    <TextView
+        android:id="@id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/circleLogo"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tool:text="专家名"/>
+    <TextView
+        android:id="@id/professionalTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/name"
+        android:layout_alignBottom="@id/name"
+        android:textSize="20sp"
+        android:layout_marginLeft="5dp"
+        tool:text="专家职称"/>
+    <TextView
+        android:id="@id/trade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/name"
+        android:layout_below="@id/name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:text="@string/trade"/>
+    <TextView
+        android:id="@id/tradeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/trade"
+        android:layout_alignBottom="@id/trade"
+        android:textSize="20sp"
+        android:layout_marginLeft="5dp"
+        tool:text="专家行业"/>
+    <ImageView
+        android:id="@id/area_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/area_icon"
+        android:layout_below="@id/trade"
+        android:layout_alignLeft="@id/trade"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@id/addr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tool:text="广东 广州市 天河区"
+        android:layout_alignBottom="@id/area_icon"
+        android:layout_toRightOf="@id/area_icon"
+        android:layout_marginLeft="4dp"
+        android:textSize="16sp"
+        />
+    <View
+        android:id="@id/seprator_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/addr"
+        android:layout_alignLeft="@id/area_icon"/>
+
+    <TextView
+        android:id="@id/telTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tel_consultation"
+        android:layout_below="@id/seprator_line"
+        android:layout_alignLeft="@id/seprator_line"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@mipmap/ic_launcher"/>
 </RelativeLayout>

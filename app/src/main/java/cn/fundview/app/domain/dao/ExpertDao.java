@@ -130,4 +130,15 @@ public class ExpertDao extends BaseDao<Expert> {
         return null;
     }
 
+    /**
+     * 特约专家 分页查询
+     * @param pageSize 每页显示的条数
+     * @param currentPage 当前页数
+     * @param searcher 搜索关键字  name tradeName areaName 职称 擅长领域
+     * @return
+     */
+    public List<Expert> findGuestExpert(int pageSize, int currentPage, String searcher) {
+
+        return null;
+    }
 }

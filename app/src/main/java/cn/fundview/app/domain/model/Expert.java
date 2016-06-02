@@ -18,6 +18,9 @@ public class Expert {
 
     private static final long serialVersionUID = 1L;
 
+    public static final int EXPERT_TYPE_GUEST = 1;
+    public static final int EXPERT_TYPE_NORMAL = 0;
+
     //@Id // 如果主键没有命名名为id或_id的时，需要为主键添加此注解
     @JSONField(name = "accountId")
     @NoAutoIncrement // int,long类型的id默认自增，不想使用自增时添加此注解
@@ -42,6 +45,7 @@ public class Expert {
     @Column(column = "area_name")
     private String areaName;
 
+    @JSONField(name="attentNum")
     @Column(column = "attention")
     private int attention;
 
@@ -55,6 +59,12 @@ public class Expert {
     @JSONField(name = "professionalTitle")
     @Column(column = "professional_title")
     private String professionalTitle;//专业职称
+
+    private String specialty;//擅长领域
+    private int expertType;//专家类型 1特约专家 0普通专家
+
+    private boolean phoneConsulation;//是否接受电话咨询 true 接受
+    private boolean videoConsulation;//是否接受视频咨询 true 接受
 
     @Transient
     @JSONField(name = "attentDate")

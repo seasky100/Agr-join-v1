@@ -29,4 +29,13 @@
     <item name="viewPager" type="id" />
     <item name="dotContainer" type="id" />
     <item name="search" type="id" />
+    <item name="name" type="id" />
+    <item name="circleLogo" type="id" />
+    <item name="professionalTitle" type="id" />
+    <item name="tradeName" type="id"></item>
+    <item name="trade" type="id" />
+    <item name="area_icon" type="id" />
+    <item name="addr" type="id" />
+    <item name="telTextView" type="id" />
+    <item name="seprator_line" type="id" />
 </resources>

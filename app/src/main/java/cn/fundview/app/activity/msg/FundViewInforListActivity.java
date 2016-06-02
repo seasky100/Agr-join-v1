@@ -105,7 +105,6 @@ public class FundViewInforListActivity extends AppCompatActivity implements Asyn
                 }
 
                 mPullToRefreshRecyclerView.onPullDownRefreshComplete();
-
             }
         }else {
 

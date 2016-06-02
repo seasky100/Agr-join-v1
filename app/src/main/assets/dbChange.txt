@@ -1,0 +1,7 @@
+2016-06-02 :
+数据库更改:
+专家表:
+specialty;//擅长领域
+expertType;//专家类型 1特约专家 0普通专家
+phoneConsulation;//是否接受电话咨询 true 接受
+videoConsulation;//是否接受视频咨询 true 接受

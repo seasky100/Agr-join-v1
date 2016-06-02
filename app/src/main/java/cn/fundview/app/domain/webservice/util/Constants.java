@@ -6,13 +6,12 @@ public class Constants {
      * 服务器使用的地址
      **/
 //    public static final String SERVER = "http://192.168.1.108:8080/api";
-    public static final String SERVER = "http://m.fundview.cn/api/";
-
+//    public static final String SERVER = "http://m.fundview.cn/api/";
+    public static final String SERVER = "http://findview.cn/api/";
     //    public static final String QR_CODE_IMG_PATH = "http://192.168.1.10:8080/static/";
     public static final String QR_CODE_IMG_PATH = "http://static.fundview.cn/";
 
     //二维码传递参数 http://m.fundview.cn/
-//    public static final String M_DOMAIN = "m.fundview.cn";
     public static final String M_DOMAIN = "m.fundview.cn";
 
     /**
@@ -191,5 +190,10 @@ public class Constants {
     public static final int PRODUCT_ITEM_HEIGHT = 83;
     public static final int ORG_ITEM_HEIGHT = 65;//机构
     public static final int PROJECT_ITEM_HEIGHT = 87;//融资项目
+
+    /**
+     * 特约专家列表url
+     */
+    public static final String GUEST_EXPERT_LIST_URL = SERVER + "/expert/special-list.action";
 
 }
